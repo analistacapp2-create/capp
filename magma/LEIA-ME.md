@@ -17,9 +17,8 @@ Cada arquivo é o código completo de um bloco de código. Para atualizar, apagu
 
 ## Paleta (a partir do logo)
 
-- Verde da marca `#6D9A38`: detalhes, linhas, ícones e destaques
-- Verde escuro `#3A561E`: títulos e botões (contraste adequado para leitura)
-- Verde médio `#4E7329`: hover e textos verdes no rodapé
+- Verde da marca `#6D9A38`: cor única de títulos, botões, textos em destaque, links, linhas e ícones
+- Verde `#5F8A30`: só no efeito de passar o mouse (hover) dos botões e links
 - Azul `#486BA3` e laranja `#BF5E20`: cores do logo, usadas como contraste em detalhes
 
 ## Fotos da seção "Por dentro da Magma" (página Sobre)
