@@ -1421,15 +1421,14 @@
       font-size: 14px;
     }
   }
+  /* Com "reduzir movimento" ligado no aparelho, o infográfico continua animando;
+     só a flutuação e o giro das órbitas ficam parados */
   @media (prefers-reduced-motion: reduce) {
-    #mg-sobre .mg-etapas *,
-    #mg-sobre .mg-etapas *::before,
-    #mg-sobre .mg-etapas *::after {
+    #mg-sobre .mg-etapas.is-loop .mg-et-node {
       animation: none !important;
-      transition: none !important;
     }
-    #mg-sobre .mg-et-dot {
-      display: none;
+    #mg-sobre .mg-et.is-on .mg-et-node::before {
+      animation: none !important;
     }
   }
 </style>
@@ -1515,7 +1514,6 @@
       var dot = box.querySelector(".mg-et-dot");
       var passos = box.querySelectorAll(".mg-et");
       var total = passos.length;
-      var calmo = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var ENTRADA_MS = 1000; // intervalo entre uma etapa e outra na primeira passada
       var CICLO_MS = 2800; // tempo que cada etapa fica em destaque depois
       var timer = 0,
@@ -1529,7 +1527,7 @@
         });
         wrap.style.setProperty("--mg-p", "1");
       }
-      if (calmo || !("IntersectionObserver" in window)) {
+      if (!("IntersectionObserver" in window)) {
         mostrarTudo();
         return;
       }
