@@ -775,7 +775,34 @@
     transition-delay: 0.39s;
   }
   #mg-sobre .mg-etapas.is-loop .mg-et-node {
-    animation: none !important;
+    animation: mg-et-flutua 3.2s ease-in-out calc(var(--i) * -0.45s) infinite !important;
+  }
+
+  /* Órbita tracejada que gira em volta de cada bolinha */
+  #mg-sobre .mg-et-node::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(109, 154, 56, 0.55);
+    opacity: 0;
+    transform: scale(0.85);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s var(--mg-ease);
+    pointer-events: none;
+  }
+  #mg-sobre .mg-et.is-on .mg-et-node::before {
+    opacity: 1;
+    transform: scale(1);
+    animation: mg-et-orbita 14s linear infinite;
+  }
+  #mg-sobre .mg-et:nth-child(even).is-on .mg-et-node::before {
+    animation-direction: reverse;
+  }
+  #mg-sobre .mg-et.is-ativo .mg-et-node::before {
+    border-color: rgba(191, 94, 32, 0.7);
+    animation-duration: 5s;
   }
 
   /* Bolinha que percorre as etapas */
@@ -898,6 +925,160 @@
     animation: mg-a-brilho 1s ease var(--d, 0s) both;
   }
 
+
+  /* Depois da entrada, todas as bolinhas seguem animando a sua cena, em onda */
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-mapa path {
+    animation: mg-a-tracar-loop 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-pin {
+    animation: mg-a-pino 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-onda {
+    animation: mg-a-onda 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-linha {
+    animation: mg-a-tracar-loop 4.2s ease calc(var(--i) * 0.7s + var(--d, 0s)) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-lupa {
+    animation: mg-a-lupa 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-esq {
+    animation: mg-a-esquadro 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-traco {
+    animation: mg-a-traco 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-lapis {
+    animation: mg-a-lapis 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-carimbo {
+    animation: mg-a-carimbo 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-marca {
+    animation: mg-a-marca 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-barra {
+    animation: mg-a-sobe-loop 4.2s ease calc(var(--i) * 0.7s + var(--d, 0s)) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-cabo {
+    animation: mg-a-cabo 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-bloco {
+    animation: mg-a-bloco 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-selo {
+    animation: mg-a-selo-loop 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-check {
+    animation: mg-a-tracar-loop 4.2s ease calc(var(--i) * 0.7s + 0.55s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-raios {
+    animation: mg-a-raios 4.2s ease calc(var(--i) * 0.7s + 0.8s) infinite;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et .a-brilho {
+    animation: mg-a-brilho 4.2s ease calc(var(--i) * 0.7s + var(--d, 0s)) infinite;
+  }
+  /* A bolinha em destaque reinicia a sua cena com mais energia */
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-mapa path {
+    animation: mg-a-tracar 0.9s ease both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-pin {
+    animation: mg-a-pino 2.2s ease both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-onda {
+    animation: mg-a-onda 2.2s ease-out both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-linha {
+    animation: mg-a-tracar 0.5s ease var(--d, 0s) both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-lupa {
+    animation: mg-a-lupa 2.3s ease-in-out both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-esq {
+    animation: mg-a-esquadro 2.2s ease both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-traco {
+    animation: mg-a-traco 2.2s ease both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-lapis {
+    animation: mg-a-lapis 2.2s ease both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-carimbo {
+    animation: mg-a-carimbo 2.2s ease both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-marca {
+    animation: mg-a-marca 2.2s ease both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-barra {
+    animation: mg-a-sobe 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s) both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-cabo {
+    animation: mg-a-cabo 2.3s ease-in-out both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-bloco {
+    animation: mg-a-bloco 2.3s ease-in-out both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-selo {
+    animation: mg-a-selo 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-check {
+    animation: mg-a-tracar 0.6s ease 0.55s both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-raios {
+    animation: mg-a-raios 1.4s ease-out 0.8s both;
+  }
+  #mg-sobre .mg-etapas.is-loop .mg-et.is-ativo .a-brilho {
+    animation: mg-a-brilho 1s ease var(--d, 0s) both;
+  }
+  @keyframes mg-et-flutua {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -6px;
+    }
+  }
+  @keyframes mg-et-orbita {
+    to {
+      rotate: 360deg;
+    }
+  }
+  @keyframes mg-a-tracar-loop {
+    0% {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    25%,
+    100% {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes mg-a-sobe-loop {
+    0% {
+      transform: scaleY(0);
+    }
+    18%,
+    100% {
+      transform: scaleY(1);
+    }
+  }
+  @keyframes mg-a-selo-loop {
+    0% {
+      opacity: 0;
+      transform: scale(0.4) rotate(-20deg);
+    }
+    18% {
+      opacity: 1;
+      transform: scale(1.08) rotate(0);
+    }
+    24%,
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0);
+    }
+  }
   @keyframes mg-et-entra {
     0% {
       opacity: 0;
@@ -1356,10 +1537,18 @@
 
       function posicionar(i, instantaneo) {
         if (!dot) return;
-        var r = passos[i].querySelector(".mg-et-node").getBoundingClientRect(),
-          w = wrap.getBoundingClientRect();
+        // posição pelo layout (não muda com a flutuação das bolinhas)
+        var node = passos[i].querySelector(".mg-et-node");
+        var x = node.offsetWidth / 2,
+          y = node.offsetHeight / 2,
+          el = node;
+        while (el && el !== wrap) {
+          x += el.offsetLeft;
+          y += el.offsetTop;
+          el = el.offsetParent;
+        }
         if (instantaneo) dot.style.transition = "none";
-        dot.style.transform = "translate(" + (r.left - w.left + r.width / 2) + "px," + (r.top - w.top + r.height / 2) + "px)";
+        dot.style.transform = "translate(" + x + "px," + y + "px)";
         if (instantaneo) {
           void dot.offsetWidth;
           dot.style.transition = "";
