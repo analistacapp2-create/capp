@@ -1,0 +1,1390 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<section id="mg-contato" class="mg-ct">
+  <canvas class="mg-ct-topo" aria-hidden="true"></canvas>
+  <div class="mg-ct-top">
+    <div class="mg-ct-wrap mg-ct-grid">
+      <div class="mg-ct-intro">
+        <span class="mg-ct-eyebrow mg-rv">Contato</span>
+        <h1 class="mg-rv">Fale com a nossa equipe</h1>
+        <p class="mg-ct-lead mg-rv">
+          Estamos prontos para entender a sua necessidade e desenvolver a melhor solução em engenharia e meio ambiente.
+        </p>
+        <ul class="mg-ct-canais">
+          <li class="mg-rv">
+            <a href="tel:+5551999592732">
+              <i
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg
+              ></i>
+              <span><small>Telefone</small><strong>(51) 99959-2732</strong></span>
+            </a>
+          </li>
+          <li class="mg-rv">
+            <a href="mailto:contato@magma.eco.br">
+              <i
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" /></svg
+              ></i>
+              <span><small>E-mail</small><strong>contato@magma.eco.br</strong></span>
+            </a>
+          </li>
+          <li class="mg-rv">
+            <a href="#mg-ct-local">
+              <i
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+                  <circle cx="12" cy="9.5" r="2.5" /></svg
+              ></i>
+              <span><small>Endereço</small><strong>Arroio do Meio – RS</strong></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mg-ct-card mg-rv">
+        <form class="mg-ct-form" novalidate>
+          <h2>Envie sua mensagem</h2>
+          <p>Preencha o formulário abaixo e nossa equipe entrará em contato em breve.</p>
+          <div class="mg-ct-fields">
+            <div class="mg-f">
+              <label for="mg-ct-nome">Nome completo</label>
+              <input id="mg-ct-nome" name="nome" type="text" placeholder="Nome completo *" autocomplete="name" maxlength="120" required />
+            </div>
+            <div class="mg-f">
+              <label for="mg-ct-email">E-mail</label>
+              <input id="mg-ct-email" name="email" type="email" placeholder="E-mail *" autocomplete="email" maxlength="160" required />
+            </div>
+            <div class="mg-f">
+              <label for="mg-ct-fone">Telefone / WhatsApp</label>
+              <input
+                id="mg-ct-fone"
+                name="telefone"
+                type="tel"
+                placeholder="Telefone / WhatsApp"
+                autocomplete="tel"
+                inputmode="tel"
+                maxlength="16"
+              />
+            </div>
+            <div class="mg-f">
+              <label for="mg-ct-empresa">Empresa</label>
+              <input id="mg-ct-empresa" name="empresa" type="text" placeholder="Empresa" autocomplete="organization" maxlength="120" />
+            </div>
+            <div class="mg-f mg-f--full mg-f--select">
+              <label for="mg-ct-assunto">Assunto / Área de interesse</label>
+              <select id="mg-ct-assunto" name="assunto" required>
+                <option value="" selected disabled hidden>Assunto / Área de interesse *</option>
+                <option>Topografia, Geoprocessamento e Geotecnologias</option>
+                <option>Engenharia, Projetos e Obras</option>
+                <option>Consultoria, Gestão e Serviços Técnicos</option>
+                <option>Recursos Hídricos e Saneamento</option>
+                <option>Meio Ambiente e Licenciamento Ambiental</option>
+                <option>Geologia e Mineração</option>
+                <option>Outro assunto</option>
+              </select>
+            </div>
+            <div class="mg-f mg-f--full">
+              <label for="mg-ct-msg">Como podemos ajudar?</label>
+              <textarea id="mg-ct-msg" name="mensagem" rows="5" placeholder="Como podemos ajudar? *" maxlength="3000" required></textarea>
+            </div>
+            <div class="mg-f-hp" aria-hidden="true">
+              <label for="mg-ct-site">Não preencha este campo</label>
+              <input id="mg-ct-site" name="site" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+          </div>
+          <div class="mg-ct-actions">
+            <p class="mg-ct-erro" role="alert" hidden></p>
+            <button type="submit" class="mg-ct-btn"><span>Enviar mensagem</span><i aria-hidden="true"></i></button>
+          </div>
+        </form>
+        <div class="mg-ct-ok" role="status" hidden tabindex="-1">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="21" />
+            <path d="m15 24.5 6.5 6.5L34 18" />
+          </svg>
+          <h2>Mensagem enviada</h2>
+          <p>Obrigado pelo contato. Nossa equipe vai retornar em breve pelo e-mail ou telefone informado.</p>
+          <button type="button" class="mg-ct-outra">Enviar outra mensagem</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mg-ct-local" id="mg-ct-local">
+    <div class="mg-ct-wrap mg-ct-grid2">
+      <div class="mg-ct-mapa mg-rv">
+        <iframe
+          title="Mapa com a localização da Magma em Arroio do Meio, RS"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="mg-ct-onde">
+        <span class="mg-ct-eyebrow mg-rv">Onde estamos</span>
+        <h2 class="mg-rv">Nossa localização</h2>
+        <p class="mg-rv">Visite nosso escritório ou entre em contato pelos nossos canais de atendimento.</p>
+        <p class="mg-ct-end mg-rv">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+            <circle cx="12" cy="9.5" r="2.5" />
+          </svg>
+          <strong>Arroio do Meio – RS</strong>
+        </p>
+        <a class="mg-ct-maps mg-rv" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+          </svg>
+          Ver no Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mg-ct-wrap mg-ct-cta-wrap">
+    <div class="mg-ct-cta mg-rv">
+      <span class="mg-ct-cta-mark" aria-hidden="true"></span>
+      <h2>Prefere um atendimento <br />direto com um especialista?</h2>
+      <a
+        href="https://wa.me/5551999592732?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista."
+        target="_blank"
+        rel="noopener"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" />
+          <path
+            d="M9 8.5c-.3 1 .2 2.600 1.800 4.200s3.200 2.100 4.200 1.800l.8-1.300-1.700-1-.9.700c-.7-.3-1.900-1.500-2.200-2.200l.7-.9-1-1.700z"
+            class="f"
+          />
+        </svg>
+        Falar pelo WhatsApp <i aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+  #b_3668874_2_179433089948954213.mg-ct-on {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  #b_3668874_2_179433089948954213.mg-ct-on > .center {
+    display: none !important;
+  }
+  #mg-contato {
+    --mg-bg: #f5f3ee;
+    --mg-card: #fbfaf7;
+    --mg-field: #ffffff;
+    --mg-tile: #e6ecda;
+    --mg-line: #d9ddd3;
+    --mg-ink: #2c3a31;
+    --mg-ink-soft: #4a554d;
+    --mg-ink-mute: #6b756d;
+    --mg-green-deep: #3a561e;
+    --mg-green: #6d9a38;
+    --mg-err: #b3401a;
+    --mg-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--mg-bg);
+    color: var(--mg-ink);
+    font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+    box-sizing: border-box;
+  }
+  #mg-contato *,
+  #mg-contato *::before,
+  #mg-contato *::after {
+    box-sizing: border-box;
+  }
+  #mg-contato a {
+    text-decoration: none !important;
+    color: inherit;
+  }
+  #mg-contato h1,
+  #mg-contato h2,
+  #mg-contato p,
+  #mg-contato ul {
+    margin: 0;
+    padding: 0;
+  }
+  #mg-contato ul {
+    list-style: none;
+  }
+  #mg-contato svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #mg-contato .mg-ct-topo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  #mg-contato .mg-ct-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1188px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  #mg-contato .mg-ct-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mg-green-deep);
+  }
+  #mg-contato .mg-ct-eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--mg-green);
+  }
+  #mg-contato h1,
+  #mg-contato h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-variation-settings:
+      "SOFT" 0,
+      "WONK" 0;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    color: var(--mg-green-deep);
+  }
+  #mg-contato h1 {
+    margin-top: 12px;
+    font-size: clamp(31px, 3.1vw, 38px);
+    line-height: 1.1;
+  }
+  #mg-contato .mg-ct-top {
+    padding: 60px 0 56px;
+  }
+  #mg-contato .mg-ct-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 470px) minmax(0, 600px);
+    justify-content: space-between;
+    gap: 48px;
+    align-items: start;
+  }
+  #mg-contato .mg-ct-lead {
+    margin-top: 16px;
+    max-width: 430px;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--mg-ink-soft);
+  }
+  #mg-contato .mg-ct-canais {
+    margin-top: 30px;
+    max-width: 430px;
+  }
+  #mg-contato .mg-ct-canais li + li {
+    border-top: 1px solid var(--mg-line);
+  }
+  #mg-contato .mg-ct-canais a {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 16px 0;
+  }
+  #mg-contato .mg-ct-canais i {
+    flex: 0 0 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--mg-tile);
+    color: var(--mg-green-deep);
+    transition:
+      background 0.35s ease,
+      color 0.35s ease,
+      transform 0.5s var(--mg-ease);
+  }
+  #mg-contato .mg-ct-canais svg {
+    width: 24px;
+    height: 24px;
+  }
+  #mg-contato .mg-ct-canais a:hover i {
+    background: var(--mg-green-deep);
+    color: #fff;
+    transform: translateY(-2px) rotate(-3deg);
+  }
+  #mg-contato .mg-ct-canais small {
+    display: block;
+    font-size: 13px;
+    color: var(--mg-ink-mute);
+  }
+  #mg-contato .mg-ct-canais strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--mg-ink);
+    overflow-wrap: anywhere;
+  }
+  #mg-contato .mg-ct-card {
+    padding: 30px 30px 28px;
+    border: 1px solid var(--mg-line);
+    border-radius: 14px;
+    background: var(--mg-card);
+    box-shadow:
+      0 1px 2px rgba(30, 45, 35, 0.05),
+      0 14px 40px rgba(30, 45, 35, 0.08);
+  }
+  #mg-contato .mg-ct-card h2 {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+  #mg-contato .mg-ct-card h2 + p {
+    margin-top: 8px;
+    max-width: 420px;
+    font-size: 15px;
+    color: var(--mg-ink-soft);
+  }
+  #mg-contato .mg-ct-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  #mg-contato .mg-f {
+    position: relative;
+    min-width: 0;
+  }
+  #mg-contato .mg-f--full {
+    grid-column: 1 / -1;
+  }
+  #mg-contato .mg-f > label,
+  #mg-contato .mg-f-hp {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  #mg-contato .mg-f input,
+  #mg-contato .mg-f select,
+  #mg-contato .mg-f textarea {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 16px;
+    height: 46px;
+    border: 1px solid var(--mg-line);
+    border-radius: 8px;
+    background: var(--mg-field);
+    color: var(--mg-ink);
+    font:
+      500 15px/1.4 "Manrope",
+      "Segoe UI",
+      Arial,
+      sans-serif;
+    box-shadow: none;
+    outline: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  #mg-contato .mg-f textarea {
+    height: auto;
+    min-height: 132px;
+    padding: 12px 16px;
+    resize: vertical;
+  }
+  #mg-contato .mg-f ::placeholder {
+    color: var(--mg-ink-mute);
+    opacity: 1;
+  }
+  #mg-contato .mg-f select {
+    padding-right: 44px;
+    cursor: pointer;
+  }
+  #mg-contato .mg-f select:invalid {
+    color: var(--mg-ink-mute);
+  }
+  #mg-contato .mg-f select option {
+    color: var(--mg-ink);
+  }
+  #mg-contato .mg-f--select::after {
+    content: "";
+    position: absolute;
+    right: 18px;
+    top: 17px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--mg-ink);
+    border-bottom: 2px solid var(--mg-ink);
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+  #mg-contato .mg-f input:hover,
+  #mg-contato .mg-f select:hover,
+  #mg-contato .mg-f textarea:hover {
+    border-color: #b7beb2;
+  }
+  #mg-contato .mg-f input:focus,
+  #mg-contato .mg-f select:focus,
+  #mg-contato .mg-f textarea:focus {
+    border-color: var(--mg-green);
+    box-shadow: 0 0 0 3px rgba(109, 154, 56, 0.18);
+  }
+  #mg-contato .mg-f.is-erro input,
+  #mg-contato .mg-f.is-erro select,
+  #mg-contato .mg-f.is-erro textarea {
+    border-color: var(--mg-err);
+    box-shadow: 0 0 0 3px rgba(179, 64, 26, 0.12);
+  }
+  #mg-contato .mg-f-msg {
+    display: block;
+    margin: 5px 2px 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--mg-err);
+  }
+  #mg-contato .mg-ct-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 18px;
+  }
+  #mg-contato .mg-ct-erro {
+    flex: 1;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--mg-err);
+  }
+  #mg-contato .mg-ct-btn,
+  #mg-contato .mg-ct-outra {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-width: 232px;
+    height: 48px;
+    margin: 0;
+    padding: 0 26px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--mg-green-deep);
+    color: #fff;
+    font:
+      700 15px/1 "Manrope",
+      "Segoe UI",
+      Arial,
+      sans-serif;
+    transition:
+      transform 0.35s var(--mg-ease),
+      box-shadow 0.35s var(--mg-ease),
+      background 0.3s ease;
+  }
+  #mg-contato .mg-ct-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(58, 86, 30, 0.28);
+    background: #2a4016;
+  }
+  #mg-contato .mg-ct-btn[disabled] {
+    cursor: progress;
+    opacity: 0.75;
+    transform: none;
+    box-shadow: none;
+  }
+  #mg-contato .mg-ct-btn i,
+  #mg-contato .mg-ct-cta a i {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.4s var(--mg-ease);
+  }
+  #mg-contato .mg-ct-btn i::after,
+  #mg-contato .mg-ct-cta a i::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  #mg-contato .mg-ct-btn:hover i,
+  #mg-contato .mg-ct-cta a:hover i {
+    transform: translateX(4px);
+  }
+  #mg-contato .mg-ct-ok {
+    padding: 34px 8px 26px;
+    text-align: center;
+    outline: 0;
+  }
+  #mg-contato .mg-ct-ok[hidden],
+  #mg-contato .mg-ct-form[hidden],
+  #mg-contato .mg-ct-erro[hidden] {
+    display: none !important;
+  }
+  #mg-contato .mg-ct-ok svg {
+    width: 64px;
+    height: 64px;
+    color: var(--mg-green);
+    stroke-width: 2.4;
+  }
+  #mg-contato .mg-ct-ok h2 {
+    margin-top: 14px;
+  }
+  #mg-contato .mg-ct-ok p {
+    margin: 10px auto 0 !important;
+    max-width: 380px;
+  }
+  #mg-contato .mg-ct-outra {
+    margin-top: 24px;
+    background: transparent;
+    color: var(--mg-green-deep);
+    border: 1.5px solid var(--mg-green-deep);
+  }
+  #mg-contato .mg-ct-outra:hover {
+    background: var(--mg-green-deep);
+    color: #fff;
+  }
+  #mg-contato .mg-ct-local {
+    position: relative;
+    z-index: 1;
+    padding: 34px 0;
+    background: rgba(251, 250, 247, 0.78);
+    border-top: 1px solid rgba(217, 221, 211, 0.7);
+    border-bottom: 1px solid rgba(217, 221, 211, 0.7);
+  }
+  #mg-contato .mg-ct-grid2 {
+    display: grid;
+    grid-template-columns: minmax(0, 560px) minmax(0, 470px);
+    justify-content: space-between;
+    gap: 48px;
+    align-items: center;
+  }
+  #mg-contato .mg-ct-mapa {
+    position: relative;
+    height: 298px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--mg-tile);
+    box-shadow:
+      0 1px 2px rgba(30, 45, 35, 0.05),
+      0 10px 30px rgba(30, 45, 35, 0.08);
+  }
+  #mg-contato .mg-ct-mapa iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.72) contrast(0.96) brightness(1.03);
+  }
+  #mg-contato .mg-ct-mapa::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(109, 154, 56, 0.13);
+    mix-blend-mode: multiply;
+  }
+  #mg-contato .mg-ct-onde h2 {
+    margin-top: 10px;
+    font-size: clamp(27px, 2.8vw, 33px);
+    line-height: 1.12;
+  }
+  #mg-contato .mg-ct-onde > p {
+    margin-top: 12px;
+    max-width: 380px;
+    font-size: 16.5px;
+    color: var(--mg-ink-soft);
+  }
+  #mg-contato .mg-ct-end {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px !important;
+    padding-bottom: 20px;
+    max-width: none !important;
+    border-bottom: 1px solid var(--mg-line);
+  }
+  #mg-contato .mg-ct-end svg {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    color: var(--mg-green-deep);
+  }
+  #mg-contato .mg-ct-end strong {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--mg-ink);
+  }
+  #mg-contato .mg-ct-maps {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-width: 262px;
+    height: 50px;
+    margin-top: 20px;
+    padding: 0 24px;
+    border: 1.5px solid var(--mg-green-deep);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--mg-green-deep) !important;
+    font-size: 15px;
+    font-weight: 700;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      transform 0.35s var(--mg-ease);
+  }
+  #mg-contato .mg-ct-maps svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+  }
+  #mg-contato .mg-ct-maps:hover {
+    background: var(--mg-green-deep);
+    color: #fff !important;
+    transform: translateY(-2px);
+  }
+  #mg-contato .mg-ct-cta-wrap {
+    padding-top: 36px;
+    padding-bottom: 44px;
+  }
+  #mg-contato .mg-ct-cta {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 44px;
+    padding: 34px 60px;
+    border-radius: 16px;
+    background: var(--mg-green-deep) radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.09), transparent 46%);
+    color: #fff;
+    box-shadow: 0 16px 40px rgba(58, 86, 30, 0.22);
+  }
+  #mg-contato .mg-ct-cta-mark {
+    display: block;
+    width: 98px;
+    height: 68px;
+    background: url("https://files.greatpages.com.br/images/67944/9Iw5ZBJHK4jI1u1fk3BdZZsd.webp") 50% 0 / 180.3% auto no-repeat;
+    filter: brightness(0) invert(1);
+  }
+  #mg-contato .mg-ct-cta h2 {
+    padding: 6px 0 6px 44px;
+    border-left: 1px solid rgba(255, 255, 255, 0.28);
+    color: #fff;
+    font-size: clamp(24px, 2.6vw, 31px);
+    line-height: 1.16;
+  }
+  #mg-contato .mg-ct-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    height: 54px;
+    padding: 0 30px;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--mg-green-deep) !important;
+    font-size: 15.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition:
+      transform 0.35s var(--mg-ease),
+      box-shadow 0.35s var(--mg-ease);
+  }
+  #mg-contato .mg-ct-cta a svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.8;
+  }
+  #mg-contato .mg-ct-cta a svg .f {
+    fill: currentColor;
+    stroke: none;
+  }
+  #mg-contato .mg-ct-cta a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  }
+  #mg-contato a:focus-visible,
+  #mg-contato button:focus-visible {
+    outline: 2px solid var(--mg-green);
+    outline-offset: 3px;
+  }
+  #mg-contato .mg-ct-cta a:focus-visible {
+    outline-color: #fff;
+  }
+  #mg-contato.mg-anim .mg-rv {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.8s var(--mg-ease),
+      transform 0.8s var(--mg-ease),
+      box-shadow 0.5s var(--mg-ease);
+    transition-delay: var(--mg-d, 0ms);
+  }
+  #mg-contato.mg-anim .mg-rv.is-in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (max-width: 1020px) {
+    #mg-contato .mg-ct-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 36px;
+    }
+    #mg-contato .mg-ct-lead,
+    #mg-contato .mg-ct-canais {
+      max-width: 560px;
+    }
+    #mg-contato .mg-ct-grid2 {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 32px;
+    }
+    #mg-contato .mg-ct-cta {
+      padding: 30px 34px;
+      gap: 28px;
+    }
+    #mg-contato .mg-ct-cta h2 {
+      padding-left: 28px;
+    }
+  }
+  @media (max-width: 760px) {
+    #mg-contato .mg-ct-wrap {
+      padding: 0 16px;
+    }
+    #mg-contato .mg-ct-top {
+      padding: 40px 0 40px;
+    }
+    #mg-contato .mg-ct-lead {
+      font-size: 16px;
+    }
+    #mg-contato .mg-ct-canais {
+      margin-top: 22px;
+    }
+    #mg-contato .mg-ct-canais a {
+      gap: 16px;
+      padding: 14px 0;
+    }
+    #mg-contato .mg-ct-canais i {
+      flex-basis: 46px;
+      height: 46px;
+    }
+    #mg-contato .mg-ct-canais strong {
+      font-size: 16.5px;
+    }
+    #mg-contato .mg-ct-card {
+      padding: 22px 16px 20px;
+    }
+    #mg-contato .mg-ct-fields {
+      grid-template-columns: 1fr;
+    }
+    #mg-contato .mg-f input,
+    #mg-contato .mg-f select,
+    #mg-contato .mg-f textarea {
+      font-size: 16px;
+      height: 48px;
+    }
+    #mg-contato .mg-f textarea {
+      height: auto;
+    }
+    #mg-contato .mg-f--select::after {
+      top: 18px;
+    }
+    #mg-contato .mg-ct-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    #mg-contato .mg-ct-btn,
+    #mg-contato .mg-ct-outra {
+      width: 100%;
+      min-width: 0;
+    }
+    #mg-contato .mg-ct-local {
+      padding: 30px 0 34px;
+    }
+    #mg-contato .mg-ct-grid2 {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    #mg-contato .mg-ct-mapa {
+      height: 240px;
+      border-radius: 14px;
+    }
+    #mg-contato .mg-ct-maps {
+      width: 100%;
+      min-width: 0;
+    }
+    #mg-contato .mg-ct-cta-wrap {
+      padding-top: 28px;
+      padding-bottom: 36px;
+    }
+    #mg-contato .mg-ct-cta {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 28px 22px;
+    }
+    #mg-contato .mg-ct-cta-mark {
+      width: 72px;
+      height: 50px;
+    }
+    #mg-contato .mg-ct-cta h2 {
+      padding: 0;
+      border-left: 0;
+    }
+    #mg-contato .mg-ct-cta h2 br {
+      display: none;
+    }
+    #mg-contato .mg-ct-cta a {
+      justify-content: center;
+      white-space: normal;
+    }
+  }
+</style>
+<a href="https://api.whatsapp.com/send?phone=5551999592732" class="float" aria-label="Botão para contato no WhatsApp">
+  <svg class="icon">
+    <path
+      d="M.33,48.33,3.06,35.62A23.67,23.67,0,0,1,0,24,24.06,24.06,0,0,1,24.12,0h0a23.95,23.95,0,1,1,0,47.89,24.33,24.33,0,0,1-11-2.61ZM13.7,41.08l.67.36a20.3,20.3,0,0,0,9.74,2.49A20,20,0,1,0,4,24a19.78,19.78,0,0,0,2.89,10.3l.41.68L5.52,43Z"
+    />
+    <path
+      d="M34.67,31.75C34.22,33,32,34.21,31,34.31S30,35.12,24.5,33s-9-7.77-9.27-8.13S13,21.92,13,19.27a6.08,6.08,0,0,1,1.89-4.5,2,2,0,0,1,1.45-.67c.36,0,.72.05,1,.05s.77-.18,1.22.9,1.54,3.72,1.67,4a1,1,0,0,1,.05.95,3.53,3.53,0,0,1-.54.89c-.28.32-.58.71-.82.95s-.55.56-.24,1.09a16.48,16.48,0,0,0,3,3.73,14.93,14.93,0,0,0,4.37,2.68c.54.26.86.22,1.17-.14s1.36-1.58,1.72-2.12.72-.45,1.22-.26,3.17,1.47,3.71,1.74.9.41,1,.63A4.4,4.4,0,0,1,34.67,31.75Z"
+    />
+  </svg>
+</a>
+<script>
+  (function () {
+    var BLOCO = "b_3668874_2_179433089948954213";
+
+    /* Cole aqui o endereço do app da web gerado na implantação do Apps Script (termina em /exec) */
+    var APPS_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbxJN0L0VhhmRt5ns8QEJd-o_Z6x4-hLVHmQcli4dir41B0HEl6z_VNW452w2GY76kvigQ/exec";
+
+    /* O que o mapa procura. Troque pelo endereço completo do escritório para o marcador ficar no lugar exato. */
+    var MAPA_BUSCA = "Arroio do Meio, RS";
+
+    function init() {
+      var root = document.getElementById("mg-contato");
+      if (!root) return;
+
+      var bloco = document.getElementById(BLOCO);
+      if (bloco && root.parentNode !== bloco) {
+        bloco.appendChild(root);
+        bloco.classList.add("mg-ct-on");
+      }
+
+      mapa(root);
+      formulario(root);
+      ancoras(root);
+      revelar(root);
+      topografia(root);
+    }
+
+    function mapa(root) {
+      var q = encodeURIComponent(MAPA_BUSCA);
+      root.querySelector(".mg-ct-mapa iframe").src = "https://www.google.com/maps?q=" + q + "&z=14&hl=pt-BR&output=embed";
+      root.querySelector(".mg-ct-maps").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+    }
+
+    function ancoras(root) {
+      root.querySelectorAll('a[href^="#mg-ct-"]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          var alvo = root.querySelector(a.getAttribute("href"));
+          if (!alvo) return;
+          e.preventDefault();
+          var header = document.querySelector("#mg-header .mg-bar");
+          var y = alvo.getBoundingClientRect().top + window.scrollY - (header ? header.offsetHeight : 0);
+          window.scrollTo({ top: y, behavior: "smooth" });
+        });
+      });
+    }
+
+    /* ---------- Formulário ---------- */
+    function formulario(root) {
+      var form = root.querySelector(".mg-ct-form");
+      var ok = root.querySelector(".mg-ct-ok");
+      var erro = root.querySelector(".mg-ct-erro");
+      var btn = root.querySelector(".mg-ct-btn");
+      var btnTxt = btn.querySelector("span");
+      var fone = form.elements.telefone;
+      var enviando = false;
+
+      fone.addEventListener("input", function () {
+        var d = fone.value.replace(/\D/g, "").slice(0, 11),
+          v = d;
+        if (d.length > 2) v = "(" + d.slice(0, 2) + ") " + d.slice(2);
+        if (d.length > 6) v = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(-4);
+        fone.value = v;
+      });
+
+      function marcar(campo, msg) {
+        var box = campo.closest(".mg-f");
+        var aviso = box.querySelector(".mg-f-msg");
+        box.classList.toggle("is-erro", !!msg);
+        campo.setAttribute("aria-invalid", msg ? "true" : "false");
+        if (msg) {
+          if (!aviso) {
+            aviso = document.createElement("span");
+            aviso.className = "mg-f-msg";
+            aviso.id = campo.id + "-erro";
+            box.appendChild(aviso);
+            campo.setAttribute("aria-describedby", aviso.id);
+          }
+          aviso.textContent = msg;
+        } else if (aviso) {
+          aviso.remove();
+          campo.removeAttribute("aria-describedby");
+        }
+      }
+
+      function checar(campo) {
+        var v = campo.value.trim(),
+          msg = "";
+        if (campo.required && !v) {
+          msg = campo.name === "assunto" ? "Escolha um assunto." : "Preencha este campo.";
+        } else if (campo.name === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+          msg = "Digite um e-mail válido, como nome@empresa.com.br.";
+        } else if (campo.name === "telefone" && v && v.replace(/\D/g, "").length < 10) {
+          msg = "Digite o telefone com DDD.";
+        }
+        marcar(campo, msg);
+        return !msg;
+      }
+
+      var campos = ["nome", "email", "telefone", "empresa", "assunto", "mensagem"].map(function (n) {
+        return form.elements[n];
+      });
+      campos.forEach(function (c) {
+        c.addEventListener("blur", function () {
+          if (c.value.trim() || c.closest(".mg-f").classList.contains("is-erro")) checar(c);
+        });
+        c.addEventListener("input", function () {
+          if (c.closest(".mg-f").classList.contains("is-erro")) checar(c);
+        });
+        c.addEventListener("change", function () {
+          if (c.closest(".mg-f").classList.contains("is-erro")) checar(c);
+        });
+      });
+
+      function falha(msg) {
+        erro.textContent = msg;
+        erro.hidden = false;
+      }
+      function ocupado(sim) {
+        enviando = sim;
+        btn.disabled = sim;
+        btnTxt.textContent = sim ? "Enviando…" : "Enviar mensagem";
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (enviando) return;
+        erro.hidden = true;
+
+        var invalidos = campos.filter(function (c) {
+          return !checar(c);
+        });
+        if (invalidos.length) {
+          invalidos[0].focus();
+          return;
+        }
+
+        if (!APPS_SCRIPT_URL) {
+          falha("O formulário ainda não foi conectado à planilha. Fale conosco pelo WhatsApp ou e-mail.");
+          return;
+        }
+
+        var dados = new URLSearchParams();
+        campos.forEach(function (c) {
+          dados.append(c.name, c.value.trim());
+        });
+        dados.append("site", form.elements.site.value);
+        dados.append("pagina", location.href.split("#")[0].split("?")[0]);
+
+        ocupado(true);
+        fetch(APPS_SCRIPT_URL, { method: "POST", body: dados })
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (j) {
+            if (!j || !j.ok) throw new Error((j && j.erro) || "erro");
+            form.reset();
+            form.hidden = true;
+            ok.hidden = false;
+            ok.focus({ preventScroll: true });
+          })
+          .catch(function () {
+            falha("Não foi possível enviar agora. Tente de novo ou fale conosco pelo WhatsApp.");
+          })
+          .then(function () {
+            ocupado(false);
+          });
+      });
+
+      root.querySelector(".mg-ct-outra").addEventListener("click", function () {
+        ok.hidden = true;
+        form.hidden = false;
+        form.elements.nome.focus();
+      });
+    }
+
+    function revelar(root) {
+      if (!("IntersectionObserver" in window)) return;
+      root.classList.add("mg-anim");
+      root.querySelectorAll(".mg-ct-intro .mg-rv").forEach(function (el, i) {
+        el.style.setProperty("--mg-d", i * 80 + "ms");
+      });
+      root.querySelectorAll(".mg-ct-onde .mg-rv").forEach(function (el, i) {
+        el.style.setProperty("--mg-d", i * 80 + "ms");
+      });
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            var el = en.target;
+            el.classList.add("is-in");
+            io.unobserve(el);
+            setTimeout(function () {
+              el.style.setProperty("--mg-d", "0ms");
+            }, 1400);
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -30px 0px" },
+      );
+      root.querySelectorAll(".mg-rv").forEach(function (el) {
+        io.observe(el);
+      });
+    }
+
+    /* ---------- Fundo topográfico (mesmo código das outras seções do site) ---------- */
+    /* Ruído simplex 3D (Stefan Gustavson, domínio público) */
+    var G3 = [1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 0, 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1];
+    var P = new Uint8Array(512),
+      PM = new Uint8Array(512);
+    (function () {
+      var p = [],
+        s = 1973,
+        i,
+        j,
+        t;
+      for (i = 0; i < 256; i++) p[i] = i;
+      for (i = 255; i > 0; i--) {
+        s = (s * 16807) % 2147483647;
+        j = s % (i + 1);
+        t = p[i];
+        p[i] = p[j];
+        p[j] = t;
+      }
+      for (i = 0; i < 512; i++) {
+        P[i] = p[i & 255];
+        PM[i] = (P[i] % 12) * 3;
+      }
+    })();
+    var F3 = 1 / 3,
+      G3c = 1 / 6;
+    function noise3(x, y, z) {
+      var s = (x + y + z) * F3,
+        i = Math.floor(x + s),
+        j = Math.floor(y + s),
+        k = Math.floor(z + s);
+      var t = (i + j + k) * G3c,
+        x0 = x - i + t,
+        y0 = y - j + t,
+        z0 = z - k + t;
+      var i1, j1, k1, i2, j2, k2;
+      if (x0 >= y0) {
+        if (y0 >= z0) {
+          i1 = 1;
+          j1 = 0;
+          k1 = 0;
+          i2 = 1;
+          j2 = 1;
+          k2 = 0;
+        } else if (x0 >= z0) {
+          i1 = 1;
+          j1 = 0;
+          k1 = 0;
+          i2 = 1;
+          j2 = 0;
+          k2 = 1;
+        } else {
+          i1 = 0;
+          j1 = 0;
+          k1 = 1;
+          i2 = 1;
+          j2 = 0;
+          k2 = 1;
+        }
+      } else {
+        if (y0 < z0) {
+          i1 = 0;
+          j1 = 0;
+          k1 = 1;
+          i2 = 0;
+          j2 = 1;
+          k2 = 1;
+        } else if (x0 < z0) {
+          i1 = 0;
+          j1 = 1;
+          k1 = 0;
+          i2 = 0;
+          j2 = 1;
+          k2 = 1;
+        } else {
+          i1 = 0;
+          j1 = 1;
+          k1 = 0;
+          i2 = 1;
+          j2 = 1;
+          k2 = 0;
+        }
+      }
+      var x1 = x0 - i1 + G3c,
+        y1 = y0 - j1 + G3c,
+        z1 = z0 - k1 + G3c;
+      var x2 = x0 - i2 + 2 * G3c,
+        y2 = y0 - j2 + 2 * G3c,
+        z2 = z0 - k2 + 2 * G3c;
+      var x3 = x0 - 1 + 0.5,
+        y3 = y0 - 1 + 0.5,
+        z3 = z0 - 1 + 0.5;
+      i &= 255;
+      j &= 255;
+      k &= 255;
+      var n = 0,
+        g,
+        tt;
+      tt = 0.6 - x0 * x0 - y0 * y0 - z0 * z0;
+      if (tt > 0) {
+        g = PM[i + P[j + P[k]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x0 + G3[g + 1] * y0 + G3[g + 2] * z0);
+      }
+      tt = 0.6 - x1 * x1 - y1 * y1 - z1 * z1;
+      if (tt > 0) {
+        g = PM[i + i1 + P[j + j1 + P[k + k1]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x1 + G3[g + 1] * y1 + G3[g + 2] * z1);
+      }
+      tt = 0.6 - x2 * x2 - y2 * y2 - z2 * z2;
+      if (tt > 0) {
+        g = PM[i + i2 + P[j + j2 + P[k + k2]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x2 + G3[g + 1] * y2 + G3[g + 2] * z2);
+      }
+      tt = 0.6 - x3 * x3 - y3 * y3 - z3 * z3;
+      if (tt > 0) {
+        g = PM[i + 1 + P[j + 1 + P[k + 1]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x3 + G3[g + 1] * y3 + G3[g + 2] * z3);
+      }
+      return 32 * n;
+    }
+
+    function topografia(root) {
+      var cv = root.querySelector(".mg-ct-topo");
+      if (!cv || !cv.getContext) return;
+      var ctx = cv.getContext("2d");
+
+      var CELL = 9;
+      var STEP = 0.085;
+      var SPEED = 0.000035;
+      var W = 0,
+        H = 0,
+        cols = 0,
+        rows = 0,
+        dpr = 1,
+        field = null;
+      var visivel = true,
+        ultimo = 0,
+        t0 = 0,
+        raf = 0;
+
+      function medir() {
+        var r = root.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = Math.max(1, Math.round(r.width));
+        H = Math.max(1, Math.round(r.height));
+        cv.width = Math.round(W * dpr);
+        cv.height = Math.round(H * dpr);
+        cols = Math.ceil(W / CELL) + 1;
+        rows = Math.ceil(H / CELL) + 1;
+        field = new Float32Array(cols * rows);
+        desenhar(performance.now());
+      }
+
+      function desenhar(now) {
+        var t = (now - t0) * SPEED;
+        var x,
+          y,
+          idx = 0,
+          px,
+          py;
+        for (y = 0; y < rows; y++) {
+          py = y * CELL;
+          for (x = 0; x < cols; x++) {
+            px = x * CELL;
+            field[idx++] =
+              0.72 * noise3(px * 0.0017 + t * 0.35, py * 0.0019, t) + 0.28 * noise3(px * 0.0045, py * 0.0045 - t * 0.2, t * 1.6 + 17);
+          }
+        }
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.clearRect(0, 0, W, H);
+        ctx.lineWidth = 1;
+        ctx.lineJoin = "round";
+
+        var normal = new Path2D(),
+          mestra = new Path2D();
+        var c, r, tl, tr, br, bl, mn, mx, L, li, code, x0, y0, path;
+        var ax, ay, bx, by, cx2, cy2, dx, dy;
+        for (r = 0; r < rows - 1; r++) {
+          y0 = r * CELL;
+          for (c = 0; c < cols - 1; c++) {
+            x0 = c * CELL;
+            tl = field[r * cols + c];
+            tr = field[r * cols + c + 1];
+            bl = field[(r + 1) * cols + c];
+            br = field[(r + 1) * cols + c + 1];
+            mn = Math.min(tl, tr, bl, br);
+            mx = Math.max(tl, tr, bl, br);
+            for (li = Math.ceil(mn / STEP); li * STEP <= mx; li++) {
+              L = li * STEP;
+              code = (tl > L ? 8 : 0) | (tr > L ? 4 : 0) | (br > L ? 2 : 0) | (bl > L ? 1 : 0);
+              if (code === 0 || code === 15) continue;
+              path = li % 5 === 0 ? mestra : normal;
+              ax = x0 + (CELL * (L - tl)) / (tr - tl);
+              ay = y0;
+              bx = x0 + CELL;
+              by = y0 + (CELL * (L - tr)) / (br - tr);
+              cx2 = x0 + (CELL * (L - bl)) / (br - bl);
+              cy2 = y0 + CELL;
+              dx = x0;
+              dy = y0 + (CELL * (L - tl)) / (bl - tl);
+              switch (code) {
+                case 1:
+                case 14:
+                  path.moveTo(dx, dy);
+                  path.lineTo(cx2, cy2);
+                  break;
+                case 2:
+                case 13:
+                  path.moveTo(cx2, cy2);
+                  path.lineTo(bx, by);
+                  break;
+                case 3:
+                case 12:
+                  path.moveTo(dx, dy);
+                  path.lineTo(bx, by);
+                  break;
+                case 4:
+                case 11:
+                  path.moveTo(ax, ay);
+                  path.lineTo(bx, by);
+                  break;
+                case 6:
+                case 9:
+                  path.moveTo(ax, ay);
+                  path.lineTo(cx2, cy2);
+                  break;
+                case 7:
+                case 8:
+                  path.moveTo(dx, dy);
+                  path.lineTo(ax, ay);
+                  break;
+                case 5:
+                  path.moveTo(dx, dy);
+                  path.lineTo(ax, ay);
+                  path.moveTo(cx2, cy2);
+                  path.lineTo(bx, by);
+                  break;
+                case 10:
+                  path.moveTo(ax, ay);
+                  path.lineTo(bx, by);
+                  path.moveTo(dx, dy);
+                  path.lineTo(cx2, cy2);
+                  break;
+              }
+            }
+          }
+        }
+        ctx.strokeStyle = "rgba(78, 88, 74, 0.14)";
+        ctx.stroke(normal);
+        ctx.strokeStyle = "rgba(78, 88, 74, 0.22)";
+        ctx.stroke(mestra);
+
+        var estreito = W < 760;
+        var g = ctx.createLinearGradient(0, 0, W, 0);
+        var meio = estreito ? "rgba(0,0,0,0.55)" : "rgba(0,0,0,0.93)";
+        g.addColorStop(0, "rgba(0,0,0,0)");
+        g.addColorStop(estreito ? 0.12 : 0.07, "rgba(0,0,0,0)");
+        g.addColorStop(estreito ? 0.4 : 0.27, meio);
+        g.addColorStop(estreito ? 0.6 : 0.73, meio);
+        g.addColorStop(estreito ? 0.88 : 0.93, "rgba(0,0,0,0)");
+        g.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+        ctx.globalCompositeOperation = "source-over";
+      }
+
+      function loop(now) {
+        raf = 0;
+        if (!visivel || document.hidden) return;
+        if (now - ultimo > 40) {
+          ultimo = now;
+          desenhar(now);
+        }
+        raf = requestAnimationFrame(loop);
+      }
+      function iniciar() {
+        if (!raf) raf = requestAnimationFrame(loop);
+      }
+
+      t0 = performance.now() - 240000;
+      medir();
+
+      if ("ResizeObserver" in window) {
+        var tm;
+        new ResizeObserver(function () {
+          clearTimeout(tm);
+          tm = setTimeout(medir, 120);
+        }).observe(root);
+      } else {
+        window.addEventListener("resize", medir);
+      }
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) {
+          visivel = en[0].isIntersecting;
+          if (visivel) iniciar();
+        }).observe(root);
+      }
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) iniciar();
+      });
+      iniciar();
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+</script>

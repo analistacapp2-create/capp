@@ -1,0 +1,781 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<section id="mg-clientes" class="mg-cli" aria-label="Nossos Clientes">
+  <canvas class="mg-cli-topo" aria-hidden="true"></canvas>
+  <div class="mg-cli-inner">
+    <h2 class="mg-cli-title">Nossos Clientes</h2>
+    <div class="mg-cli-stage">
+      <button type="button" class="mg-cli-arrow mg-cli-prev" aria-label="Clientes anteriores">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+      </button>
+      <div class="mg-cli-viewport">
+        <div class="mg-cli-track">
+          <a href="https://www.carreralimentos.com.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/CtO9gxvued53kzDxLXKc339T.jpg" alt="Carrer Alimentos"
+          /></a>
+          <a href="https://www.construtorajachetti.com.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/lOLBgZlelrHTOBYJlasmEHOl.jpg" alt="Construtora Jachetti"
+          /></a>
+          <a href="https://www.metanox.ind.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/DTdz1ZtKv9xdwwaDMHltrzpR.jpg" alt="Metanox"
+          /></a>
+          <a href="https://trihoteis.com/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/3crmr3gbUicxD3xlDtwT9bb2.jpg" alt="Tri Hotéis"
+          /></a>
+          <a href="https://www.danfoss.com/pt-br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/MAvpIIT1zDHH9Ha4Tb4WIODf.jpg" alt="Danfoss Power Solutions"
+          /></a>
+          <a href="https://www.neugebauer.com.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/BpJpcTpGUY1pzhptrCUTbDfA.webp" alt="Neugebauer"
+          /></a>
+          <a href="https://www.sebigascotica.com.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/PT93UUjpt5lcLokKU9kUsYYI.jpg" alt="SebigasCótica Bioenergia"
+          /></a>
+          <a href="https://www.cenecoop.com.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/HbIjMIME3hrpsGohWmjz9Zm9.webp" alt="Cenecoop"
+          /></a>
+          <a href="https://www.divinechocolates.com.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/pziDDWTPIsww9pabEUmchCAZ.webp" alt="Divine Chocolates"
+          /></a>
+          <a href="https://www.facebook.com/agenciawodesign/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/U11gAz25GRgfOTKlhOhEwmRJ.jpg" alt="WO Design"
+          /></a>
+          <a href="https://www.nutrepampa.com.br/" target="_blank" rel="noopener"
+            ><img src="https://files.greatpages.com.br/images/67944/rJDhvEJGO5AEIROGUadxODTI.jpg" alt="Nutrepampa"
+          /></a>
+        </div>
+      </div>
+      <button type="button" class="mg-cli-arrow mg-cli-next" aria-label="Próximos clientes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+      </button>
+    </div>
+  </div>
+</section>
+<style>
+  #b_3666386_8_179389787879259874.mg-cli-on {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  #b_3666386_8_179389787879259874.mg-cli-on > .center {
+    display: none !important;
+  }
+  #mg-clientes {
+    --mg-bg: #f5f3ee;
+    --mg-green-deep: #3a561e;
+    --mg-green: #6d9a38;
+    --mg-ink: #1e2b22;
+    --mg-gap: 37px;
+    --mg-tile: 137px;
+    --mg-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--mg-bg);
+    font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+    padding: 40px 24px 74px;
+    box-sizing: border-box;
+  }
+  #mg-clientes *,
+  #mg-clientes *::before,
+  #mg-clientes *::after {
+    box-sizing: border-box;
+  }
+  #mg-clientes a {
+    text-decoration: none !important;
+  }
+  #mg-clientes .mg-cli-topo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  #mg-clientes .mg-cli-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  #mg-clientes .mg-cli-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 1181px;
+    margin: 0 auto 28px;
+    padding-left: 6px;
+    font-family: "Fraunces", Georgia, serif;
+    font-variation-settings:
+      "SOFT" 0,
+      "WONK" 0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.1;
+    color: var(--mg-green-deep);
+  }
+  #mg-clientes .mg-cli-title::before {
+    content: "";
+    flex: 0 0 30px;
+    width: 30px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--mg-green);
+  }
+  #mg-clientes .mg-cli-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  #mg-clientes .mg-cli-viewport {
+    position: relative;
+    flex: 0 1 1181px;
+    min-width: 0;
+    overflow: hidden;
+    padding: 10px 0 18px;
+    margin: -10px 0 -18px;
+    touch-action: pan-y;
+    cursor: grab;
+  }
+  #mg-clientes .mg-cli-viewport.is-dragging {
+    cursor: grabbing;
+  }
+  #mg-clientes .mg-cli-track {
+    display: flex;
+    gap: var(--mg-gap);
+    width: max-content;
+    will-change: transform;
+  }
+  #mg-clientes .mg-cli-track a {
+    position: relative;
+    display: block;
+    flex: 0 0 var(--mg-tile);
+    width: var(--mg-tile);
+    height: var(--mg-tile);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow:
+      0 1px 2px rgba(30, 45, 35, 0.05),
+      0 6px 18px rgba(30, 45, 35, 0.07);
+    transition:
+      transform 0.45s var(--mg-ease),
+      box-shadow 0.45s var(--mg-ease);
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+  #mg-clientes .mg-cli-track img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    transition: transform 0.6s var(--mg-ease);
+  }
+  #mg-clientes .mg-cli-track a:hover {
+    transform: translateY(-5px);
+    box-shadow:
+      0 2px 4px rgba(30, 45, 35, 0.06),
+      0 14px 28px rgba(30, 45, 35, 0.14);
+  }
+  #mg-clientes .mg-cli-track a:hover img {
+    transform: scale(1.05);
+  }
+  #mg-clientes .mg-cli-track a:focus-visible {
+    outline: 2px solid var(--mg-green);
+    outline-offset: 3px;
+  }
+  #mg-clientes .mg-cli-arrow {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--mg-ink);
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s var(--mg-ease);
+    -webkit-tap-highlight-color: transparent;
+  }
+  #mg-clientes .mg-cli-arrow svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #mg-clientes .mg-cli-arrow:hover {
+    background: rgba(58, 86, 30, 0.08);
+    color: var(--mg-green-deep);
+  }
+  #mg-clientes .mg-cli-prev:hover {
+    transform: translateX(-2px);
+  }
+  #mg-clientes .mg-cli-next:hover {
+    transform: translateX(2px);
+  }
+  #mg-clientes .mg-cli-arrow:focus-visible {
+    outline: 2px solid var(--mg-green);
+    outline-offset: 2px;
+  }
+  @media (max-width: 760px) {
+    #mg-clientes {
+      padding: 40px 12px 52px;
+      --mg-gap: 14px;
+    }
+    #mg-clientes .mg-cli-title {
+      font-size: 28px;
+      margin-bottom: 22px;
+      padding-left: 10px;
+    }
+    #mg-clientes .mg-cli-stage {
+      gap: 4px;
+    }
+    #mg-clientes .mg-cli-arrow {
+      width: 32px;
+      height: 32px;
+    }
+    #mg-clientes .mg-cli-arrow svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+</style>
+<script>
+  (function () {
+    var BLOCO = "b_3666386_8_179389787879259874";
+    var INTERVALO = 2800;
+
+    function init() {
+      var root = document.getElementById("mg-clientes");
+      if (!root) return;
+
+      setTimeout(function () {
+        var bloco = document.getElementById(BLOCO);
+        if (bloco && root.parentNode !== bloco) {
+          bloco.appendChild(root);
+          bloco.classList.add("mg-cli-on");
+        }
+        root.dispatchEvent(new Event("mg-movido"));
+      }, 0);
+
+      carrossel(root);
+      topografia(root);
+    }
+
+    function carrossel(root) {
+      var viewport = root.querySelector(".mg-cli-viewport");
+      var track = root.querySelector(".mg-cli-track");
+      var originais = Array.prototype.slice.call(track.children);
+      var N = originais.length;
+      if (!N) return;
+
+      function clonar(el) {
+        var c = el.cloneNode(true);
+        c.setAttribute("aria-hidden", "true");
+        c.setAttribute("tabindex", "-1");
+        return c;
+      }
+      var antes = document.createDocumentFragment(),
+        depois = document.createDocumentFragment();
+      originais.forEach(function (el) {
+        antes.appendChild(clonar(el));
+        depois.appendChild(clonar(el));
+      });
+      track.insertBefore(antes, track.firstChild);
+      track.appendChild(depois);
+
+      var idx = N,
+        passo = 0,
+        arrastando = false,
+        timer = 0,
+        pausado = false,
+        visivel = true,
+        animando = false;
+
+      function medir() {
+        var w = viewport.clientWidth;
+        if (w < 60) {
+          setTimeout(medir, 150);
+          return;
+        }
+        ultimaLargura = w;
+        var gap = parseFloat(getComputedStyle(root).getPropertyValue("--mg-gap")) || 37;
+        var k = w >= 1100 ? 7 : w >= 880 ? 6 : w >= 700 ? 5 : w >= 500 ? 4 : 3;
+        var tile = Math.floor((w - (k - 1) * gap) / k);
+        if (k === 7) tile = Math.min(tile, 137);
+        root.style.setProperty("--mg-tile", tile + "px");
+        passo = tile + gap;
+        posicionar(false);
+      }
+
+      function posicionar(anim, extra) {
+        track.style.transition = anim ? "transform .75s cubic-bezier(.22,.61,.36,1)" : "none";
+        track.style.transform = "translate3d(" + (-idx * passo + (extra || 0)) + "px,0,0)";
+      }
+
+      function normalizar() {
+        if (idx >= 2 * N) {
+          idx -= N;
+          posicionar(false);
+        } else if (idx < N) {
+          idx += N;
+          posicionar(false);
+        }
+      }
+
+      function ir(delta) {
+        normalizar();
+        void track.offsetWidth;
+        idx += delta;
+        animando = true;
+        posicionar(true);
+      }
+
+      track.addEventListener("transitionend", function (e) {
+        if (e.target !== track) return;
+        animando = false;
+        normalizar();
+      });
+
+      function agendar() {
+        clearTimeout(timer);
+        if (pausado || !visivel || document.hidden) return;
+        timer = setTimeout(function () {
+          ir(1);
+          agendar();
+        }, INTERVALO);
+      }
+
+      root.querySelector(".mg-cli-prev").addEventListener("click", function () {
+        ir(-1);
+        agendar();
+      });
+      root.querySelector(".mg-cli-next").addEventListener("click", function () {
+        ir(1);
+        agendar();
+      });
+
+      root.addEventListener("mouseenter", function () {
+        pausado = true;
+        clearTimeout(timer);
+      });
+      root.addEventListener("mouseleave", function () {
+        pausado = false;
+        agendar();
+      });
+      root.addEventListener("focusin", function () {
+        pausado = true;
+        clearTimeout(timer);
+      });
+      root.addEventListener("focusout", function () {
+        pausado = false;
+        agendar();
+      });
+
+      var x0 = 0,
+        dx = 0,
+        moveu = false,
+        idPointer = null;
+      viewport.addEventListener("pointerdown", function (e) {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        arrastando = true;
+        moveu = false;
+        dx = 0;
+        x0 = e.clientX;
+        idPointer = e.pointerId;
+        normalizar();
+        clearTimeout(timer);
+      });
+      window.addEventListener("pointermove", function (e) {
+        if (!arrastando || e.pointerId !== idPointer) return;
+        dx = e.clientX - x0;
+        if (!moveu && Math.abs(dx) > 6) {
+          moveu = true;
+          viewport.classList.add("is-dragging");
+          try {
+            viewport.setPointerCapture(idPointer);
+          } catch (err) {}
+        }
+        if (moveu) posicionar(false, dx);
+      });
+      function soltar(e) {
+        if (!arrastando || (e && e.pointerId !== idPointer)) return;
+        arrastando = false;
+        viewport.classList.remove("is-dragging");
+        if (moveu) {
+          var n = Math.round(-dx / passo) || (Math.abs(dx) > passo * 0.18 ? (dx < 0 ? 1 : -1) : 0);
+          idx += n;
+          posicionar(true);
+        }
+        agendar();
+      }
+      window.addEventListener("pointerup", soltar);
+      window.addEventListener("pointercancel", soltar);
+      track.addEventListener(
+        "click",
+        function (e) {
+          if (moveu) {
+            e.preventDefault();
+            e.stopPropagation();
+            moveu = false;
+          }
+        },
+        true,
+      );
+      track.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+      });
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) {
+          visivel = en[0].isIntersecting;
+          if (visivel) agendar();
+          else clearTimeout(timer);
+        }).observe(root);
+      }
+      document.addEventListener("visibilitychange", agendar);
+
+      var tm,
+        ultimaLargura = 0;
+      function aoRedimensionar() {
+        clearTimeout(tm);
+        tm = setTimeout(function () {
+          if (viewport.clientWidth !== ultimaLargura) {
+            ultimaLargura = viewport.clientWidth;
+            medir();
+          }
+        }, 80);
+      }
+      if ("ResizeObserver" in window) new ResizeObserver(aoRedimensionar).observe(viewport);
+      window.addEventListener("resize", aoRedimensionar);
+      window.addEventListener("load", medir);
+      root.addEventListener("mg-movido", medir);
+      medir();
+      agendar();
+    }
+
+    /* Ruído simplex 3D (Stefan Gustavson, domínio público) */
+    var G3 = [1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 0, 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1];
+    var P = new Uint8Array(512),
+      PM = new Uint8Array(512);
+    (function () {
+      var p = [],
+        s = 1973,
+        i,
+        j,
+        t;
+      for (i = 0; i < 256; i++) p[i] = i;
+      for (i = 255; i > 0; i--) {
+        s = (s * 16807) % 2147483647;
+        j = s % (i + 1);
+        t = p[i];
+        p[i] = p[j];
+        p[j] = t;
+      }
+      for (i = 0; i < 512; i++) {
+        P[i] = p[i & 255];
+        PM[i] = (P[i] % 12) * 3;
+      }
+    })();
+    var F3 = 1 / 3,
+      G3c = 1 / 6;
+    function noise3(x, y, z) {
+      var s = (x + y + z) * F3,
+        i = Math.floor(x + s),
+        j = Math.floor(y + s),
+        k = Math.floor(z + s);
+      var t = (i + j + k) * G3c,
+        x0 = x - i + t,
+        y0 = y - j + t,
+        z0 = z - k + t;
+      var i1, j1, k1, i2, j2, k2;
+      if (x0 >= y0) {
+        if (y0 >= z0) {
+          i1 = 1;
+          j1 = 0;
+          k1 = 0;
+          i2 = 1;
+          j2 = 1;
+          k2 = 0;
+        } else if (x0 >= z0) {
+          i1 = 1;
+          j1 = 0;
+          k1 = 0;
+          i2 = 1;
+          j2 = 0;
+          k2 = 1;
+        } else {
+          i1 = 0;
+          j1 = 0;
+          k1 = 1;
+          i2 = 1;
+          j2 = 0;
+          k2 = 1;
+        }
+      } else {
+        if (y0 < z0) {
+          i1 = 0;
+          j1 = 0;
+          k1 = 1;
+          i2 = 0;
+          j2 = 1;
+          k2 = 1;
+        } else if (x0 < z0) {
+          i1 = 0;
+          j1 = 1;
+          k1 = 0;
+          i2 = 0;
+          j2 = 1;
+          k2 = 1;
+        } else {
+          i1 = 0;
+          j1 = 1;
+          k1 = 0;
+          i2 = 1;
+          j2 = 1;
+          k2 = 0;
+        }
+      }
+      var x1 = x0 - i1 + G3c,
+        y1 = y0 - j1 + G3c,
+        z1 = z0 - k1 + G3c;
+      var x2 = x0 - i2 + 2 * G3c,
+        y2 = y0 - j2 + 2 * G3c,
+        z2 = z0 - k2 + 2 * G3c;
+      var x3 = x0 - 1 + 0.5,
+        y3 = y0 - 1 + 0.5,
+        z3 = z0 - 1 + 0.5;
+      i &= 255;
+      j &= 255;
+      k &= 255;
+      var n = 0,
+        g,
+        tt;
+      tt = 0.6 - x0 * x0 - y0 * y0 - z0 * z0;
+      if (tt > 0) {
+        g = PM[i + P[j + P[k]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x0 + G3[g + 1] * y0 + G3[g + 2] * z0);
+      }
+      tt = 0.6 - x1 * x1 - y1 * y1 - z1 * z1;
+      if (tt > 0) {
+        g = PM[i + i1 + P[j + j1 + P[k + k1]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x1 + G3[g + 1] * y1 + G3[g + 2] * z1);
+      }
+      tt = 0.6 - x2 * x2 - y2 * y2 - z2 * z2;
+      if (tt > 0) {
+        g = PM[i + i2 + P[j + j2 + P[k + k2]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x2 + G3[g + 1] * y2 + G3[g + 2] * z2);
+      }
+      tt = 0.6 - x3 * x3 - y3 * y3 - z3 * z3;
+      if (tt > 0) {
+        g = PM[i + 1 + P[j + 1 + P[k + 1]]];
+        tt *= tt;
+        n += tt * tt * (G3[g] * x3 + G3[g + 1] * y3 + G3[g + 2] * z3);
+      }
+      return 32 * n;
+    }
+
+    function topografia(root) {
+      var cv = root.querySelector(".mg-cli-topo");
+      if (!cv || !cv.getContext) return;
+      var ctx = cv.getContext("2d");
+
+      var CELL = 9;
+      var STEP = 0.085;
+      var SPEED = 0.000035;
+      var W = 0,
+        H = 0,
+        cols = 0,
+        rows = 0,
+        dpr = 1,
+        field = null;
+      var visivel = true,
+        ultimo = 0,
+        t0 = 0,
+        raf = 0;
+
+      function medir() {
+        var r = root.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = Math.max(1, Math.round(r.width));
+        H = Math.max(1, Math.round(r.height));
+        cv.width = Math.round(W * dpr);
+        cv.height = Math.round(H * dpr);
+        cols = Math.ceil(W / CELL) + 1;
+        rows = Math.ceil(H / CELL) + 1;
+        field = new Float32Array(cols * rows);
+        desenhar(performance.now());
+      }
+
+      function desenhar(now) {
+        var t = (now - t0) * SPEED;
+        var x,
+          y,
+          idx = 0,
+          px,
+          py;
+        for (y = 0; y < rows; y++) {
+          py = y * CELL;
+          for (x = 0; x < cols; x++) {
+            px = x * CELL;
+            field[idx++] =
+              0.72 * noise3(px * 0.0017 + t * 0.35, py * 0.0019, t) + 0.28 * noise3(px * 0.0045, py * 0.0045 - t * 0.2, t * 1.6 + 17);
+          }
+        }
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.clearRect(0, 0, W, H);
+        ctx.lineWidth = 1;
+        ctx.lineJoin = "round";
+
+        var normal = new Path2D(),
+          mestra = new Path2D();
+        var c, r, tl, tr, br, bl, mn, mx, L, li, code, x0, y0, path;
+        var ax, ay, bx, by, cx2, cy2, dx, dy;
+        for (r = 0; r < rows - 1; r++) {
+          y0 = r * CELL;
+          for (c = 0; c < cols - 1; c++) {
+            x0 = c * CELL;
+            tl = field[r * cols + c];
+            tr = field[r * cols + c + 1];
+            bl = field[(r + 1) * cols + c];
+            br = field[(r + 1) * cols + c + 1];
+            mn = Math.min(tl, tr, bl, br);
+            mx = Math.max(tl, tr, bl, br);
+            for (li = Math.ceil(mn / STEP); li * STEP <= mx; li++) {
+              L = li * STEP;
+              code = (tl > L ? 8 : 0) | (tr > L ? 4 : 0) | (br > L ? 2 : 0) | (bl > L ? 1 : 0);
+              if (code === 0 || code === 15) continue;
+              path = li % 5 === 0 ? mestra : normal;
+              ax = x0 + (CELL * (L - tl)) / (tr - tl);
+              ay = y0;
+              bx = x0 + CELL;
+              by = y0 + (CELL * (L - tr)) / (br - tr);
+              cx2 = x0 + (CELL * (L - bl)) / (br - bl);
+              cy2 = y0 + CELL;
+              dx = x0;
+              dy = y0 + (CELL * (L - tl)) / (bl - tl);
+              switch (code) {
+                case 1:
+                case 14:
+                  path.moveTo(dx, dy);
+                  path.lineTo(cx2, cy2);
+                  break;
+                case 2:
+                case 13:
+                  path.moveTo(cx2, cy2);
+                  path.lineTo(bx, by);
+                  break;
+                case 3:
+                case 12:
+                  path.moveTo(dx, dy);
+                  path.lineTo(bx, by);
+                  break;
+                case 4:
+                case 11:
+                  path.moveTo(ax, ay);
+                  path.lineTo(bx, by);
+                  break;
+                case 6:
+                case 9:
+                  path.moveTo(ax, ay);
+                  path.lineTo(cx2, cy2);
+                  break;
+                case 7:
+                case 8:
+                  path.moveTo(dx, dy);
+                  path.lineTo(ax, ay);
+                  break;
+                case 5:
+                  path.moveTo(dx, dy);
+                  path.lineTo(ax, ay);
+                  path.moveTo(cx2, cy2);
+                  path.lineTo(bx, by);
+                  break;
+                case 10:
+                  path.moveTo(ax, ay);
+                  path.lineTo(bx, by);
+                  path.moveTo(dx, dy);
+                  path.lineTo(cx2, cy2);
+                  break;
+              }
+            }
+          }
+        }
+        ctx.strokeStyle = "rgba(78, 88, 74, 0.14)";
+        ctx.stroke(normal);
+        ctx.strokeStyle = "rgba(78, 88, 74, 0.22)";
+        ctx.stroke(mestra);
+
+        var estreito = W < 760;
+        var g = ctx.createLinearGradient(0, 0, W, 0);
+        var meio = estreito ? "rgba(0,0,0,0.55)" : "rgba(0,0,0,0.93)";
+        g.addColorStop(0, "rgba(0,0,0,0)");
+        g.addColorStop(estreito ? 0.12 : 0.07, "rgba(0,0,0,0)");
+        g.addColorStop(estreito ? 0.4 : 0.27, meio);
+        g.addColorStop(estreito ? 0.6 : 0.73, meio);
+        g.addColorStop(estreito ? 0.88 : 0.93, "rgba(0,0,0,0)");
+        g.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+        ctx.globalCompositeOperation = "source-over";
+      }
+
+      function loop(now) {
+        raf = 0;
+        if (!visivel || document.hidden) return;
+        if (now - ultimo > 40) {
+          ultimo = now;
+          desenhar(now);
+        }
+        raf = requestAnimationFrame(loop);
+      }
+      function iniciar() {
+        if (!raf) raf = requestAnimationFrame(loop);
+      }
+
+      t0 = performance.now() - 320000;
+      medir();
+
+      if ("ResizeObserver" in window) {
+        var tm;
+        new ResizeObserver(function () {
+          clearTimeout(tm);
+          tm = setTimeout(medir, 120);
+        }).observe(root);
+      } else {
+        window.addEventListener("resize", medir);
+      }
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) {
+          visivel = en[0].isIntersecting;
+          if (visivel) iniciar();
+        }).observe(root);
+      }
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) iniciar();
+      });
+      iniciar();
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+</script>

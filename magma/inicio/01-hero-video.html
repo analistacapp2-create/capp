@@ -1,0 +1,115 @@
+<style>
+  #b_3666386_2_179387991530571514 {
+    position: relative !important;
+    overflow: hidden !important;
+    background-color: #1e2e10 !important;
+  }
+  #b_3666386_2_179387991530571514 > .mg-hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  #b_3666386_2_179387991530571514 > .mg-hero-video.is-on {
+    opacity: 0.85;
+  }
+  #b_3666386_2_179387991530571514 > .mg-hero-veu {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(26, 40, 12, 0.92) 0%,
+        rgba(32, 48, 16, 0.78) 28%,
+        rgba(42, 64, 22, 0.42) 52%,
+        rgba(42, 64, 22, 0.08) 78%,
+        rgba(42, 64, 22, 0) 100%
+      ),
+      linear-gradient(180deg, rgba(14, 22, 8, 0.25) 0%, rgba(14, 22, 8, 0) 30%, rgba(14, 22, 8, 0) 70%, rgba(14, 22, 8, 0.35) 100%);
+  }
+  #b_3666386_2_179387991530571514 > .mg-hero-blur {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 25%, transparent 55%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 25%, transparent 55%);
+  }
+  #b_3666386_2_179387991530571514 > .overlay {
+    z-index: 1 !important;
+  }
+  #b_3666386_2_179387991530571514 > .center {
+    position: relative;
+    z-index: 2 !important;
+  }
+  @media (max-width: 760px) {
+    #b_3666386_2_179387991530571514 > .mg-hero-veu {
+      background: linear-gradient(180deg, rgba(26, 40, 12, 0.55) 0%, rgba(32, 48, 16, 0.78) 45%, rgba(26, 40, 12, 0.88) 100%);
+    }
+    #b_3666386_2_179387991530571514 > .mg-hero-blur {
+      -webkit-mask-image: none;
+      mask-image: none;
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+    }
+  }
+</style>
+<script>
+  (function () {
+    var BLOCO = "b_3666386_2_179387991530571514";
+    var VIDEO = "https://github.com/analistacapp2-create/capp/raw/refs/heads/main/1109.mp4";
+
+    function init() {
+      var bloco = document.getElementById(BLOCO);
+      if (!bloco || bloco.querySelector(".mg-hero-video")) return;
+
+      var v = document.createElement("video");
+      v.className = "mg-hero-video";
+      v.muted = true;
+      v.defaultMuted = true;
+      v.loop = true;
+      v.autoplay = true;
+      v.playsInline = true;
+      v.preload = "auto";
+      v.setAttribute("muted", "");
+      v.setAttribute("playsinline", "");
+      v.setAttribute("webkit-playsinline", "");
+      v.setAttribute("aria-hidden", "true");
+      v.src = VIDEO;
+
+      var veu = document.createElement("div");
+      veu.className = "mg-hero-veu";
+      var blur = document.createElement("div");
+      blur.className = "mg-hero-blur";
+
+      bloco.insertBefore(blur, bloco.firstChild);
+      bloco.insertBefore(veu, bloco.firstChild);
+      bloco.insertBefore(v, bloco.firstChild);
+
+      function tocar() {
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      }
+      v.addEventListener("playing", function () {
+        v.classList.add("is-on");
+      });
+      v.addEventListener("canplay", tocar);
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) tocar();
+      });
+      document.addEventListener("touchstart", tocar, { once: true, passive: true });
+      tocar();
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+</script>
