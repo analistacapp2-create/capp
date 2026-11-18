@@ -244,7 +244,6 @@
       <span class="mg-qs-eyebrow mg-rv">Pessoas</span>
       <h2 class="mg-rv">Nossa equipe</h2>
       <p class="mg-rv">Contamos com um time multidisciplinar de profissionais com ampla experiência em engenharia e meio ambiente.</p>
-      <button type="button" class="mg-qs-btn mg-qs-btn--linha mg-qs-abrir mg-rv">Conheça a equipe <i aria-hidden="true"></i></button>
     </div>
     <div class="mg-qs-car mg-rv">
       <div class="mg-qs-track" tabindex="0" aria-label="Equipe da Magma"></div>
@@ -267,8 +266,7 @@
   .mg-qs-on > .center {
     display: none !important;
   }
-  #mg-quem,
-  #mg-qs-modal {
+  #mg-quem {
     --mg-bg: #f5f3ee;
     --mg-card: #fbfaf7;
     --mg-tile: #e6ecda;
@@ -295,10 +293,7 @@
   }
   #mg-quem *,
   #mg-quem *::before,
-  #mg-quem *::after,
-  #mg-qs-modal *,
-  #mg-qs-modal *::before,
-  #mg-qs-modal *::after {
+  #mg-quem *::after {
     box-sizing: border-box;
   }
   #mg-quem a {
@@ -308,19 +303,14 @@
   #mg-quem h1,
   #mg-quem h2,
   #mg-quem p,
-  #mg-quem ul,
-  #mg-qs-modal h3,
-  #mg-qs-modal p,
-  #mg-qs-modal dl,
-  #mg-qs-modal dd {
+  #mg-quem ul {
     margin: 0;
     padding: 0;
   }
   #mg-quem ul {
     list-style: none;
   }
-  #mg-quem svg,
-  #mg-qs-modal svg {
+  #mg-quem svg {
     fill: none;
     stroke: currentColor;
     stroke-width: 1.7;
@@ -361,8 +351,7 @@
     background: var(--mg-green);
   }
   #mg-quem h1,
-  #mg-quem h2,
-  #mg-qs-modal h3 {
+  #mg-quem h2 {
     font-family: "Fraunces", Georgia, serif;
     font-variation-settings:
       "SOFT" 0,
@@ -534,8 +523,8 @@
     display: block;
     margin-top: 8px;
     font-size: 16.5px;
-    font-weight: 700;
-    color: var(--mg-ink);
+    font-weight: 800;
+    color: var(--mg-green-deep);
   }
   #mg-quem .mg-qs-valores p {
     margin-top: 4px;
@@ -627,7 +616,7 @@
     padding: 22px 20px 20px;
     border: 1px solid var(--mg-line);
     border-radius: 12px;
-    cursor: pointer;
+    cursor: grab;
     background: var(--mg-card);
     color: var(--mg-ink);
     text-align: left;
@@ -649,8 +638,7 @@
       0 2px 4px rgba(30, 45, 35, 0.05),
       0 16px 34px rgba(30, 45, 35, 0.12);
   }
-  #mg-quem .mg-qs-av,
-  #mg-qs-modal .mg-qs-av {
+  #mg-quem .mg-qs-av {
     display: block;
     aspect-ratio: 1;
     border-radius: 50%;
@@ -659,8 +647,7 @@
     background-position: 50% 50%;
     background-size: cover;
   }
-  #mg-quem .mg-qs-av--arte,
-  #mg-qs-modal .mg-qs-av--arte {
+  #mg-quem .mg-qs-av--arte {
     background-size: 158.8% auto;
     background-position: 50% 24.5%;
   }
@@ -682,9 +669,9 @@
   #mg-quem .mg-qs-pessoa strong {
     display: block;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.3;
-    color: var(--mg-ink);
+    color: var(--mg-green-deep);
   }
   #mg-quem .mg-qs-pessoa small {
     display: block;
@@ -692,39 +679,6 @@
     font-size: 13.5px;
     line-height: 1.35;
     color: var(--mg-ink-mute);
-  }
-  #mg-quem .mg-qs-mais {
-    position: relative;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1.5px solid var(--mg-ink);
-    transition:
-      background 0.3s ease,
-      border-color 0.3s ease,
-      color 0.3s ease,
-      transform 0.45s var(--mg-ease);
-  }
-  #mg-quem .mg-qs-mais::before,
-  #mg-quem .mg-qs-mais::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 12px;
-    height: 1.8px;
-    margin: -0.9px 0 0 -6px;
-    background: currentColor;
-    border-radius: 2px;
-  }
-  #mg-quem .mg-qs-mais::after {
-    transform: rotate(90deg);
-  }
-  #mg-quem .mg-qs-pessoa:hover .mg-qs-mais {
-    background: var(--mg-green-deep);
-    border-color: var(--mg-green-deep);
-    color: #fff;
-    transform: rotate(90deg);
   }
   #mg-quem .mg-qs-car-nav {
     display: flex;
@@ -768,175 +722,9 @@
   }
   #mg-quem a:focus-visible,
   #mg-quem button:focus-visible,
-  #mg-quem .mg-qs-track:focus-visible,
-  #mg-qs-modal button:focus-visible,
-  #mg-qs-modal a:focus-visible {
+  #mg-quem .mg-qs-track:focus-visible {
     outline: 2px solid var(--mg-green);
     outline-offset: 3px;
-  }
-  #mg-qs-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 10050;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  #mg-qs-modal[hidden] {
-    display: none !important;
-  }
-  #mg-qs-modal.is-open {
-    opacity: 1;
-  }
-  #mg-qs-modal .mg-qsm-back {
-    position: absolute;
-    inset: 0;
-    background: rgba(24, 34, 12, 0.62);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-  }
-  #mg-qs-modal .mg-qsm-box {
-    position: relative;
-    display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
-    width: min(820px, 100%);
-    max-height: calc(100vh - 40px);
-    max-height: calc(100dvh - 40px);
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--mg-card);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-    transform: translateY(16px) scale(0.98);
-    transition: transform 0.4s var(--mg-ease);
-  }
-  #mg-qs-modal.is-open .mg-qsm-box {
-    transform: none;
-  }
-  #mg-qs-modal .mg-qsm-foto {
-    display: grid;
-    place-items: center;
-    padding: 36px 30px;
-    background: var(--mg-green-deep) radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.12), transparent 55%);
-  }
-  #mg-qs-modal .mg-qsm-foto .mg-qs-av {
-    width: 100%;
-    max-width: 230px;
-    box-shadow:
-      0 0 0 5px rgba(255, 255, 255, 0.92),
-      0 16px 34px rgba(0, 0, 0, 0.28);
-  }
-  #mg-qs-modal .mg-qsm-txt {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    padding: 34px 34px 26px;
-    overflow-y: auto;
-  }
-  #mg-qs-modal .mg-qsm-cargo {
-    align-self: flex-start;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: #e3edd3;
-    color: var(--mg-green-deep);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-  #mg-qs-modal h3 {
-    margin-top: 12px;
-    padding-right: 30px;
-    font-size: 30px;
-    line-height: 1.12;
-  }
-  #mg-qs-modal dl {
-    margin-top: 16px;
-    display: grid;
-    gap: 8px;
-  }
-  #mg-qs-modal dl > div {
-    display: grid;
-    grid-template-columns: 96px minmax(0, 1fr);
-    gap: 12px;
-    font-size: 14.5px;
-  }
-  #mg-qs-modal dt {
-    color: var(--mg-ink-mute);
-  }
-  #mg-qs-modal dd {
-    font-weight: 600;
-    color: var(--mg-ink);
-  }
-  #mg-qs-modal .mg-qsm-bio {
-    margin-top: 16px;
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--mg-ink-soft);
-    white-space: pre-line;
-  }
-  #mg-qs-modal .mg-qsm-link {
-    align-self: flex-start;
-    margin-top: 16px;
-    padding-bottom: 2px;
-    border-bottom: 2px solid var(--mg-green-deep);
-    color: var(--mg-green-deep) !important;
-    text-decoration: none !important;
-    font-size: 14.5px;
-    font-weight: 700;
-  }
-  #mg-qs-modal .mg-qsm-nav {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: auto;
-    padding-top: 24px;
-  }
-  #mg-qs-modal .mg-qsm-nav span {
-    margin-left: auto;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--mg-ink-mute);
-  }
-  #mg-qs-modal .mg-qsm-nav button,
-  #mg-qs-modal .mg-qsm-x {
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    place-items: center;
-    border: 1.5px solid var(--mg-green-deep);
-    border-radius: 50%;
-    cursor: pointer;
-    background: transparent;
-    color: var(--mg-green-deep);
-    transition:
-      background 0.3s ease,
-      color 0.3s ease;
-  }
-  #mg-qs-modal .mg-qsm-nav button:hover,
-  #mg-qs-modal .mg-qsm-x:hover {
-    background: var(--mg-green-deep);
-    color: #fff;
-  }
-  #mg-qs-modal .mg-qsm-nav svg,
-  #mg-qs-modal .mg-qsm-x svg {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2.2;
-  }
-  #mg-qs-modal .mg-qsm-x {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 2;
-    border-color: var(--mg-line);
-    background: var(--mg-card);
-    color: var(--mg-ink);
   }
   #mg-quem.mg-anim .mg-rv {
     opacity: 0;
@@ -1029,33 +817,6 @@
     }
     #mg-quem .mg-qs-pessoa {
       flex-basis: 74%;
-    }
-    #mg-qs-modal {
-      padding: 12px;
-      align-items: flex-end;
-    }
-    #mg-qs-modal .mg-qsm-box {
-      grid-template-columns: 1fr;
-      max-height: calc(100vh - 24px);
-      max-height: calc(100dvh - 24px);
-      overflow-y: auto;
-    }
-    #mg-qs-modal .mg-qsm-foto {
-      padding: 26px 20px;
-    }
-    #mg-qs-modal .mg-qsm-foto .mg-qs-av {
-      max-width: 150px;
-    }
-    #mg-qs-modal .mg-qsm-txt {
-      padding: 22px 20px 20px;
-      overflow: visible;
-    }
-    #mg-qs-modal h3 {
-      font-size: 26px;
-      padding-right: 0;
-    }
-    #mg-qs-modal .mg-qsm-x {
-      background: rgba(255, 255, 255, 0.94);
     }
   }
   /* ---------- Por dentro da Magma: números + mosaico de fotos ---------- */
@@ -1257,7 +1018,6 @@
       font-size: 18px;
     }
   }
-
   /* Galeria ampliada */
   #mg-qs-galbox {
     position: fixed;
@@ -1413,7 +1173,6 @@
     line-height: 1.5;
     color: var(--mg-ink-soft);
   }
-
   /* Estrutura */
   #mg-quem .mg-et-wrap {
     --mg-node: 80px;
@@ -1459,7 +1218,6 @@
     text-align: center;
     margin: 0;
   }
-
   /* Círculo de cada etapa */
   #mg-quem .mg-et-node {
     --mg-fill: #fff;
@@ -1524,7 +1282,6 @@
   #mg-quem .mg-et.is-ativo .mg-et-node::after {
     animation: mg-et-pulso 1.6s ease-out infinite;
   }
-
   /* Textos de cada etapa */
   #mg-quem .mg-et-txt {
     display: flex;
@@ -1572,7 +1329,6 @@
     line-height: 1.45;
     color: var(--mg-ink-soft);
   }
-
   /* Entrada item por item (só quando o script está ativo) */
   #mg-quem .mg-etapas.is-js .mg-et-node {
     opacity: 0;
@@ -1609,7 +1365,6 @@
   #mg-quem .mg-etapas.is-loop .mg-et-node {
     animation: mg-et-flutua 3.2s ease-in-out calc(var(--i) * -0.45s) infinite !important;
   }
-
   /* Órbita tracejada que gira em volta de cada bolinha */
   #mg-quem .mg-et-node::before {
     content: "";
@@ -1636,7 +1391,6 @@
     border-color: rgba(191, 94, 32, 0.7);
     animation-duration: 5s;
   }
-
   /* Bolinha que percorre as etapas */
   #mg-quem .mg-et-dot {
     position: absolute;
@@ -1659,9 +1413,9 @@
   #mg-quem .mg-etapas.is-loop .mg-et-dot {
     opacity: 1;
   }
-
   /* Cenas animadas de cada etapa (rodam quando a etapa está ativa) */
-  /* 1. Levantamento: mapa se desenha, pino cai e marca o ponto */
+  /* 1. Levantamento: mapa se desenha,
+  pino cai e marca o ponto */
   #mg-quem .a-onda {
     opacity: 0;
     transform-origin: center;
@@ -1678,7 +1432,6 @@
   #mg-quem .mg-et.is-ativo .a-onda {
     animation: mg-a-onda 2.2s ease-out both;
   }
-
   /* 2. Estudos: linhas se escrevem e a lupa analisa a página */
   #mg-quem .mg-et.is-ativo .a-linha {
     animation: mg-a-tracar 0.5s ease var(--d, 0s) both;
@@ -1686,7 +1439,6 @@
   #mg-quem .mg-et.is-ativo .a-lupa {
     animation: mg-a-lupa 2.3s ease-in-out both;
   }
-
   /* 3. Projeto: esquadro se posiciona e o lápis traça a linha */
   #mg-quem .a-esq {
     transform-origin: 0% 100%;
@@ -1703,7 +1455,6 @@
   #mg-quem .mg-et.is-ativo .a-lapis {
     animation: mg-a-lapis 2.2s ease both;
   }
-
   /* 4. Licenciamento: carimbo desce e aprova o documento */
   #mg-quem .a-carimbo {
     opacity: 0;
@@ -1717,7 +1468,6 @@
   #mg-quem .mg-et.is-ativo .a-marca {
     animation: mg-a-marca 2.2s ease both;
   }
-
   /* 5. Obra: prédios sobem e o guindaste desce um bloco */
   #mg-quem .a-barra {
     transform-origin: 50% 100%;
@@ -1734,8 +1484,8 @@
   #mg-quem .mg-et.is-ativo .a-bloco {
     animation: mg-a-bloco 2.3s ease-in-out both;
   }
-
-  /* 6. Licença final: selo aparece, check se desenha e brilha */
+  /* 6. Licença final: selo aparece,
+  check se desenha e brilha */
   #mg-quem .a-raios,
   #mg-quem .a-brilho {
     opacity: 0;
@@ -1756,9 +1506,9 @@
   #mg-quem .mg-et.is-ativo .a-brilho {
     animation: mg-a-brilho 1s ease var(--d, 0s) both;
   }
-
-
-  /* Depois da entrada, todas as bolinhas seguem animando a sua cena, em onda */
+  /* Depois da entrada,
+  todas as bolinhas seguem animando a sua cena,
+  em onda */
   #mg-quem .mg-etapas.is-loop .mg-et .a-mapa path {
     animation: mg-a-tracar-loop 4.2s ease calc(var(--i) * 0.7s + 0s) infinite;
   }
@@ -2293,12 +2043,11 @@
     var BLOCO = "b_3668902_1_1794333280088885103";
     /*
       Equipe. Para cada pessoa:
-        nome, cargo  → aparecem no card e no popup
+        nome, cargo  → aparecem no card
         foto         → link da imagem
         arte: true   → a foto é a arte quadrada com círculo e nome embaixo (o código recorta só o rosto);
                        para uma foto comum, use arte: false
-        formacao, registro, linkedin → opcionais; se ficarem vazios, não aparecem
-        bio          → texto do popup
+        formacao, registro, linkedin, bio → guardados para uso futuro; hoje não aparecem no site
     */
     var IMG = "https://files.greatpages.com.br/images/67944/";
     var BIO_PROVISORIA = "Texto de apresentação do profissional: formação, experiência e principais áreas de atuação na Magma.";
@@ -2365,11 +2114,7 @@
         bloco.classList.add("mg-qs-on");
       }
 
-      var popup = criarPopup();
-      carrossel(root, popup);
-      root.querySelector(".mg-qs-abrir").addEventListener("click", function (e) {
-        popup.abrir(0, e.currentTarget);
-      });
+      carrossel(root);
       revelar(root);
       etapas(root);
       galeria(root);
@@ -2386,7 +2131,7 @@
     }
 
     /* ---------- Carrossel ---------- */
-    function carrossel(root, popup) {
+    function carrossel(root) {
       var car = root.querySelector(".mg-qs-car");
       var track = root.querySelector(".mg-qs-track");
       var prev = root.querySelector(".mg-qs-seta--prev");
@@ -2394,11 +2139,8 @@
       var arrastou = false;
 
       EQUIPE.forEach(function (p, i) {
-        var b = document.createElement("button");
-        b.type = "button";
+        var b = document.createElement("div");
         b.className = "mg-qs-pessoa";
-        b.setAttribute("aria-haspopup", "dialog");
-        b.setAttribute("aria-label", p.nome + ", " + p.cargo + ". Ver detalhes");
         b.appendChild(avatar(p));
         var txt = document.createElement("span");
         var nome = document.createElement("strong");
@@ -2408,17 +2150,6 @@
         txt.appendChild(nome);
         txt.appendChild(cargo);
         b.appendChild(txt);
-        var mais = document.createElement("i");
-        mais.className = "mg-qs-mais";
-        mais.setAttribute("aria-hidden", "true");
-        b.appendChild(mais);
-        b.addEventListener("click", function () {
-          if (arrastou) {
-            arrastou = false;
-            return;
-          }
-          popup.abrir(i, b);
-        });
         track.appendChild(b);
       });
 
@@ -2487,140 +2218,6 @@
       setTimeout(estado, 400);
     }
 
-    /* ---------- Popup ---------- */
-    function criarPopup() {
-      var m = document.createElement("div");
-      m.id = "mg-qs-modal";
-      m.hidden = true;
-      m.setAttribute("role", "dialog");
-      m.setAttribute("aria-modal", "true");
-      m.setAttribute("aria-labelledby", "mg-qsm-nome");
-      m.innerHTML =
-        '<div class="mg-qsm-back"></div>' +
-        '<div class="mg-qsm-box">' +
-        '<button type="button" class="mg-qsm-x" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
-        '<div class="mg-qsm-foto"></div>' +
-        '<div class="mg-qsm-txt">' +
-        '<span class="mg-qsm-cargo"></span>' +
-        '<h3 id="mg-qsm-nome"></h3>' +
-        "<dl></dl>" +
-        '<p class="mg-qsm-bio"></p>' +
-        '<a class="mg-qsm-link" target="_blank" rel="noopener" hidden>Ver perfil no LinkedIn</a>' +
-        '<div class="mg-qsm-nav">' +
-        '<button type="button" class="mg-qsm-prev" aria-label="Pessoa anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>' +
-        '<button type="button" class="mg-qsm-next" aria-label="Próxima pessoa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>' +
-        '<span aria-live="polite"></span>' +
-        "</div>" +
-        "</div>" +
-        "</div>";
-      document.body.appendChild(m);
-
-      var foto = m.querySelector(".mg-qsm-foto");
-      var cargo = m.querySelector(".mg-qsm-cargo");
-      var nome = m.querySelector("h3");
-      var dl = m.querySelector("dl");
-      var bio = m.querySelector(".mg-qsm-bio");
-      var link = m.querySelector(".mg-qsm-link");
-      var conta = m.querySelector(".mg-qsm-nav span");
-      var fechar = m.querySelector(".mg-qsm-x");
-      var txt = m.querySelector(".mg-qsm-txt");
-      var atual = 0,
-        origem = null,
-        rolagem = ["", ""],
-        tm = 0;
-
-      function linha(rotulo, valor) {
-        if (!valor) return;
-        var d = document.createElement("div");
-        var dt = document.createElement("dt");
-        dt.textContent = rotulo;
-        var dd = document.createElement("dd");
-        dd.textContent = valor;
-        d.appendChild(dt);
-        d.appendChild(dd);
-        dl.appendChild(d);
-      }
-
-      function mostrar(i) {
-        atual = (i + EQUIPE.length) % EQUIPE.length;
-        var p = EQUIPE[atual];
-        foto.textContent = "";
-        foto.appendChild(avatar(p));
-        cargo.textContent = p.cargo;
-        nome.textContent = p.nome;
-        dl.textContent = "";
-        linha("Formação", p.formacao);
-        linha("Registro", p.registro);
-        dl.hidden = !dl.children.length;
-        bio.textContent = p.bio || "";
-        bio.hidden = !p.bio;
-        link.hidden = !p.linkedin;
-        if (p.linkedin) link.href = p.linkedin;
-        conta.textContent = atual + 1 + " / " + EQUIPE.length;
-        txt.scrollTop = 0;
-      }
-
-      function abrir(i, quem) {
-        origem = quem || document.activeElement;
-        mostrar(i);
-        clearTimeout(tm);
-        rolagem = [document.documentElement.style.overflow, document.body.style.overflow];
-        document.documentElement.style.overflow = "hidden";
-        document.body.style.overflow = "hidden";
-        m.hidden = false;
-        void m.offsetWidth; /* força o navegador a registrar o estado inicial antes de animar */
-        m.classList.add("is-open");
-        fechar.focus({ preventScroll: true });
-      }
-
-      function sair() {
-        if (m.hidden) return;
-        m.classList.remove("is-open");
-        document.documentElement.style.overflow = rolagem[0];
-        document.body.style.overflow = rolagem[1];
-        tm = setTimeout(function () {
-          m.hidden = true;
-        }, 300);
-        if (origem && origem.focus) origem.focus({ preventScroll: true });
-      }
-
-      fechar.addEventListener("click", sair);
-      m.querySelector(".mg-qsm-back").addEventListener("click", sair);
-      m.querySelector(".mg-qsm-prev").addEventListener("click", function () {
-        mostrar(atual - 1);
-      });
-      m.querySelector(".mg-qsm-next").addEventListener("click", function () {
-        mostrar(atual + 1);
-      });
-      document.addEventListener("keydown", function (e) {
-        if (m.hidden) return;
-        if (e.key === "Escape") {
-          e.preventDefault();
-          sair();
-        } else if (e.key === "ArrowRight") mostrar(atual + 1);
-        else if (e.key === "ArrowLeft") mostrar(atual - 1);
-        else if (e.key === "Tab") {
-          var f = Array.prototype.filter.call(m.querySelectorAll("button, a[href]"), function (el) {
-            return !el.hidden && el.offsetParent !== null;
-          });
-          if (!f.length) return;
-          var primeiro = f[0],
-            ultimo = f[f.length - 1];
-          if (e.shiftKey && document.activeElement === primeiro) {
-            e.preventDefault();
-            ultimo.focus();
-          } else if (!e.shiftKey && document.activeElement === ultimo) {
-            e.preventDefault();
-            primeiro.focus();
-          } else if (!m.contains(document.activeElement)) {
-            e.preventDefault();
-            primeiro.focus();
-          }
-        }
-      });
-
-      return { abrir: abrir };
-    }
 
     /* Infográfico: entrada item por item + cenas animadas em sequência */
     function etapas(root) {
