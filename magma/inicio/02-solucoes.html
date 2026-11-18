@@ -242,10 +242,13 @@
     color: var(--mg-ink-soft);
     white-space: nowrap;
   }
+  /* Extrabold: peso 800 (o máximo da Manrope) + traço extra para ficar ainda mais encorpado */
   #mg-solucoes .mg-sol-feat strong {
     font-weight: 800;
     color: var(--mg-green-deep);
-    letter-spacing: -0.005em;
+    letter-spacing: 0.005em;
+    -webkit-text-stroke: 0.6px currentColor;
+    paint-order: stroke fill;
   }
   #mg-solucoes .mg-sol-title {
     display: flex;
