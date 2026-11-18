@@ -42,6 +42,16 @@
               <span><small>Endereço</small><strong>Arroio do Meio – RS</strong></span>
             </a>
           </li>
+          <li class="mg-rv">
+            <div class="mg-ct-fixo">
+              <i
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 21V8l8-5 8 5v13" />
+                  <path d="M9 21v-6h6v6M3 21h18M9 10h.01M15 10h.01" /></svg
+              ></i>
+              <span><small>Razão social</small><strong class="mg-ct-razao">MAGMA PROJETOS E LICENCIAMENTOS LTDA</strong></span>
+            </div>
+          </li>
         </ul>
       </div>
       <div class="mg-ct-card mg-rv">
@@ -292,11 +302,18 @@
   #mg-contato .mg-ct-canais li + li {
     border-top: 1px solid var(--mg-line);
   }
-  #mg-contato .mg-ct-canais a {
+  #mg-contato .mg-ct-canais a,
+  #mg-contato .mg-ct-canais .mg-ct-fixo {
     display: flex;
     align-items: center;
     gap: 22px;
     padding: 16px 0;
+  }
+  #mg-contato .mg-ct-canais .mg-ct-razao {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--mg-green-deep);
   }
   #mg-contato .mg-ct-canais i {
     flex: 0 0 52px;
@@ -781,9 +798,13 @@
     #mg-contato .mg-ct-canais {
       margin-top: 22px;
     }
-    #mg-contato .mg-ct-canais a {
+    #mg-contato .mg-ct-canais a,
+    #mg-contato .mg-ct-canais .mg-ct-fixo {
       gap: 16px;
       padding: 14px 0;
+    }
+    #mg-contato .mg-ct-canais .mg-ct-razao {
+      font-size: 14px;
     }
     #mg-contato .mg-ct-canais i {
       flex-basis: 46px;
