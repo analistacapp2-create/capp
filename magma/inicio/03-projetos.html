@@ -10,7 +10,7 @@
       <a class="mg-proj-all" href="">Ver todos os projetos <span aria-hidden="true">→</span></a>
     </div>
     <div class="mg-proj-grid">
-      <a class="mg-pcard mg-rv" href="">
+      <a class="mg-pcard mg-cat-5 mg-rv" href="">
         <div class="mg-pcard-photo">
           <img
             src="https://files.greatpages.com.br/images/67944/e9OUCP9Cu9beMYzvDcLaRXtP.webp"
@@ -19,13 +19,13 @@
           />
         </div>
         <div class="mg-pcard-body">
-          <span class="mg-tag mg-tag--green">Meio Ambiente</span>
+          <span class="mg-tag" role="img" aria-label="Área: Meio Ambiente e Licenciamento Ambiental" title="Meio Ambiente e Licenciamento Ambiental"></span>
           <h3>Licenciamento ambiental <br />para indústria</h3>
           <p>Estudo, licenciamento e acompanhamento dos processos junto aos órgãos competentes</p>
           <span class="mg-pcard-go" aria-hidden="true"></span>
         </div>
       </a>
-      <a class="mg-pcard mg-rv" href="">
+      <a class="mg-pcard mg-cat-1 mg-rv" href="">
         <div class="mg-pcard-photo">
           <img
             src="https://files.greatpages.com.br/images/67944/gbhAUHdGABuUYwCEU3J33ws1.webp"
@@ -34,13 +34,13 @@
           />
         </div>
         <div class="mg-pcard-body">
-          <span class="mg-tag mg-tag--blue">Topografia</span>
+          <span class="mg-tag" role="img" aria-label="Área: Topografia, Geoprocessamento e Geotecnologias" title="Topografia, Geoprocessamento e Geotecnologias"></span>
           <h3>Levantamento planialtimétrico <br />para expansão de área</h3>
           <p>Mapeamento detalhado e georreferenciamento para suporte ao projeto</p>
           <span class="mg-pcard-go" aria-hidden="true"></span>
         </div>
       </a>
-      <a class="mg-pcard mg-rv" href="">
+      <a class="mg-pcard mg-cat-2 mg-rv" href="">
         <div class="mg-pcard-photo">
           <img
             src="https://files.greatpages.com.br/images/67944/jtk39bIKk3nl9Mvs5PjBPD39.webp"
@@ -49,7 +49,7 @@
           />
         </div>
         <div class="mg-pcard-body">
-          <span class="mg-tag mg-tag--orange">Engenharia</span>
+          <span class="mg-tag" role="img" aria-label="Área: Engenharia, Projetos e Obras" title="Engenharia, Projetos e Obras"></span>
           <h3>Projeto de drenagem e <br />controle de efluentes</h3>
           <p>Solução técnica para tratamento e destinação de efluentes industriais</p>
           <span class="mg-pcard-go" aria-hidden="true"></span>
@@ -230,24 +230,35 @@
     flex: 1 1 auto;
     padding: 12px 52px 38px 21px;
   }
+  /* Cores das soluções (mesmas usadas para identificar os projetos) */
+  #mg-solucoes .mg-cat-1, #mg-projetos .mg-cat-1 { --mg-cat: #486ba3; --mg-cat-bg: rgba(72, 107, 163, 0.14); } /* Topografia, Geoprocessamento e Geotecnologias */
+  #mg-solucoes .mg-cat-2, #mg-projetos .mg-cat-2 { --mg-cat: #bf5e20; --mg-cat-bg: rgba(191, 94, 32, 0.13); } /* Engenharia, Projetos e Obras */
+  #mg-solucoes .mg-cat-3, #mg-projetos .mg-cat-3 { --mg-cat: #c99a2e; --mg-cat-bg: rgba(201, 154, 46, 0.16); } /* Consultoria, Gestão e Serviços Técnicos */
+  #mg-solucoes .mg-cat-4, #mg-projetos .mg-cat-4 { --mg-cat: #3e9bbf; --mg-cat-bg: rgba(62, 155, 191, 0.14); } /* Recursos Hídricos e Saneamento */
+  #mg-solucoes .mg-cat-5, #mg-projetos .mg-cat-5 { --mg-cat: #6d9a38; --mg-cat-bg: rgba(109, 154, 56, 0.15); } /* Meio Ambiente e Licenciamento Ambiental */
+  #mg-solucoes .mg-cat-6, #mg-projetos .mg-cat-6 { --mg-cat: #8a5a3c; --mg-cat-bg: rgba(138, 90, 60, 0.14); } /* Geologia e Mineração */
+  /* Identificação do projeto pela cor da solução */
   #mg-projetos .mg-tag {
-    display: inline-block;
-    padding: 4px 6px 3px;
-    border-radius: 3px;
-    font-size: 10.5px;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: 0.01em;
-    color: #fff;
+    display: block;
+    width: 46px;
+    height: 7px;
+    margin: 2px 0 4px;
+    border-radius: 7px;
+    background: var(--mg-cat);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+    transition: width 0.45s var(--mg-ease);
   }
-  #mg-projetos .mg-tag--green {
-    background: var(--mg-green);
+  #mg-projetos .mg-pcard:hover .mg-tag {
+    width: 70px;
   }
-  #mg-projetos .mg-tag--blue {
-    background: var(--mg-blue);
-  }
-  #mg-projetos .mg-tag--orange {
-    background: var(--mg-orange);
+  #mg-projetos .mg-pcard-photo::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: var(--mg-cat);
   }
   #mg-projetos .mg-pcard h3 {
     margin: 15px 0 0;

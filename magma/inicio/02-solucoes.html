@@ -25,7 +25,7 @@
     </ul>
     <h2 class="mg-sol-title mg-rv">Nossas Soluções</h2>
     <div class="mg-sol-grid">
-      <a class="mg-card mg-rv" href="">
+      <a class="mg-card mg-cat-1 mg-rv" href="">
         <div class="mg-card-body">
           <img
             class="mg-card-icon"
@@ -46,7 +46,7 @@
           />
         </div>
       </a>
-      <a class="mg-card mg-rv" href="">
+      <a class="mg-card mg-cat-2 mg-rv" href="">
         <div class="mg-card-body">
           <img
             class="mg-card-icon"
@@ -67,7 +67,7 @@
           />
         </div>
       </a>
-      <a class="mg-card mg-rv" href="">
+      <a class="mg-card mg-cat-3 mg-rv" href="">
         <div class="mg-card-body">
           <img
             class="mg-card-icon"
@@ -88,7 +88,7 @@
           />
         </div>
       </a>
-      <a class="mg-card mg-rv" href="">
+      <a class="mg-card mg-cat-4 mg-rv" href="">
         <div class="mg-card-body">
           <img
             class="mg-card-icon"
@@ -105,7 +105,7 @@
           <img src="https://files.greatpages.com.br/images/67944/OzhHDEwUbZrL1sUReM5jhUic.jpg" alt="Teste de vazão de água em campo" loading="lazy" />
         </div>
       </a>
-      <a class="mg-card mg-rv" href="">
+      <a class="mg-card mg-cat-5 mg-rv" href="">
         <div class="mg-card-body">
           <img
             class="mg-card-icon"
@@ -122,7 +122,7 @@
           <img src="https://files.greatpages.com.br/images/67944/g9u2VlhOCDM4PbAIz3OWMeCW.jpg" alt="Área de empreendimento com lagoa e taludes" loading="lazy" />
         </div>
       </a>
-      <a class="mg-card mg-rv" href="">
+      <a class="mg-card mg-cat-6 mg-rv" href="">
         <div class="mg-card-body">
           <img
             class="mg-card-icon"
@@ -412,6 +412,35 @@
   #mg-solucoes.mg-anim .mg-card.is-in:hover {
     transform: translateY(-5px);
     transition-delay: 0ms;
+  }
+  /* Cores das soluções (mesmas usadas para identificar os projetos) */
+  #mg-solucoes .mg-cat-1, #mg-projetos .mg-cat-1 { --mg-cat: #486ba3; --mg-cat-bg: rgba(72, 107, 163, 0.14); } /* Topografia, Geoprocessamento e Geotecnologias */
+  #mg-solucoes .mg-cat-2, #mg-projetos .mg-cat-2 { --mg-cat: #bf5e20; --mg-cat-bg: rgba(191, 94, 32, 0.13); } /* Engenharia, Projetos e Obras */
+  #mg-solucoes .mg-cat-3, #mg-projetos .mg-cat-3 { --mg-cat: #c99a2e; --mg-cat-bg: rgba(201, 154, 46, 0.16); } /* Consultoria, Gestão e Serviços Técnicos */
+  #mg-solucoes .mg-cat-4, #mg-projetos .mg-cat-4 { --mg-cat: #3e9bbf; --mg-cat-bg: rgba(62, 155, 191, 0.14); } /* Recursos Hídricos e Saneamento */
+  #mg-solucoes .mg-cat-5, #mg-projetos .mg-cat-5 { --mg-cat: #6d9a38; --mg-cat-bg: rgba(109, 154, 56, 0.15); } /* Meio Ambiente e Licenciamento Ambiental */
+  #mg-solucoes .mg-cat-6, #mg-projetos .mg-cat-6 { --mg-cat: #8a5a3c; --mg-cat-bg: rgba(138, 90, 60, 0.14); } /* Geologia e Mineração */
+  #mg-solucoes .mg-card::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 4px;
+    background: var(--mg-cat, var(--mg-green));
+    transition: height 0.4s var(--mg-ease);
+  }
+  #mg-solucoes .mg-card:hover::before {
+    height: 6px;
+  }
+  #mg-solucoes .mg-card .mg-card-icon {
+    width: 46px;
+    height: 46px;
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--mg-cat-bg, rgba(109, 154, 56, 0.15));
+    box-shadow: inset 0 0 0 1.5px var(--mg-cat, var(--mg-green));
   }
   @media (max-width: 1280px) {
     #mg-solucoes .mg-sol-feats {
