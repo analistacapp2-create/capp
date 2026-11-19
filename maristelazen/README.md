@@ -34,6 +34,14 @@ Basta colocar o atributo no elemento; `style="--d:.2s"` define o atraso.
 | `data-reveal="grow"` | flor decorativa brota de baixo para cima e depois balança devagar |
 | `data-reveal="flower"` | ornamento de flor (`svg.msz-flower`) abre pétala por pétala |
 
-Os ícones de linha se desenham sozinhos ao aparecer. Quem tem "reduzir movimento" ativado no sistema vê tudo sem animação.
+Os ícones de linha se desenham sozinhos ao aparecer.
+
+**Modo de movimento.** Se o computador estiver com "reduzir movimento" ligado (no Windows: *Configurações > Acessibilidade >
+Efeitos visuais > Efeitos de animação* desligado), a página entra no **modo suave**: tudo continua surgindo com fade e
+desfoque, mas sem deslocamentos, pétalas ou balanço. Para ver o **modo completo** em qualquer máquina, abra a página com
+`?msz-motion=full` no fim do link. O console do navegador (F12) mostra qual modo está ativo.
+
+**Execução garantida.** Se o Great Pages inserir o código sem rodar o `<script>`, a imagem invisível no fim do arquivo
+o executa (uma única vez).
 
 Todas as classes têm o prefixo `msz-` e todo o CSS fica restrito a `#msz`, para não conflitar com o Great Pages.
