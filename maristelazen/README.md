@@ -21,4 +21,19 @@ Se o ID do bloco mudar, troque a constante `BLOCK_ID` no início do `<script>`.
 | Cores e fontes | variáveis `--msz-*` no início do `<style>` |
 | Imagens | URLs `cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/...` |
 
+### Animações (reaproveitáveis nas próximas páginas)
+
+Basta colocar o atributo no elemento; `style="--d:.2s"` define o atraso.
+
+| Atributo | Efeito |
+|---|---|
+| `data-reveal` | desabrocha: sobe de leve, sai do desfoque e ganha opacidade |
+| `data-reveal="words"` | título surge palavra por palavra |
+| `data-reveal="petal"` | card pousa como pétala (leve inclinação) |
+| `data-reveal="photo"` | foto se abre do centro para as bordas |
+| `data-reveal="grow"` | flor decorativa brota de baixo para cima e depois balança devagar |
+| `data-reveal="flower"` | ornamento de flor (`svg.msz-flower`) abre pétala por pétala |
+
+Os ícones de linha se desenham sozinhos ao aparecer. Quem tem "reduzir movimento" ativado no sistema vê tudo sem animação.
+
 Todas as classes têm o prefixo `msz-` e todo o CSS fica restrito a `#msz`, para não conflitar com o Great Pages.
