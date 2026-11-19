@@ -1,0 +1,708 @@
+<!--
+  Mari'Stela Zen — HOME
+  Great Pages · cole este código inteiro em um elemento HTML dentro do bloco
+  #b_3673729_2_179511681424173873 (bloco "Mari'Stela Zen").
+  O script ajusta o bloco para ocupar a largura total e crescer com o conteúdo.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300..700&display=swap">
+
+<style>
+/* ============ Base / tokens ============ */
+#msz{
+  --msz-cream:#F8F5F2;
+  --msz-lilac:#EDE8F0;
+  --msz-purple:#9E55AC;
+  --msz-purple-dark:#82408F;
+  --msz-plum:#493C4B;
+  --msz-text:#5B4E5D;
+  --msz-rose:#DDA9D3;
+  --msz-line:#E2D3E4;
+  --msz-white:#FFFFFF;
+  --msz-serif:'Libre Baskerville',Georgia,'Times New Roman',serif;
+  --msz-sans:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --msz-max:1280px;
+  --msz-gutter:clamp(20px,4vw,40px);
+  --msz-header-h:76px;
+  --msz-radius:24px;
+  --msz-shadow:0 22px 48px -24px rgba(73,60,75,.30);
+  --msz-ease:cubic-bezier(.22,.7,.2,1);
+  position:relative;width:100%;
+  font-family:var(--msz-sans);font-size:16px;line-height:1.6;font-weight:400;
+  color:var(--msz-text);background:var(--msz-cream);text-align:left;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
+}
+#msz :where(*),#msz :where(*)::before,#msz :where(*)::after{box-sizing:border-box;margin:0;padding:0;border:0}
+#msz :where(img,svg,iframe){display:block;max-width:100%}
+#msz :where(a){color:inherit;text-decoration:none}
+#msz :where(ul,ol){list-style:none}
+#msz :where(button){font:inherit;color:inherit;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#msz :where(h1,h2,h3,h4){font-family:var(--msz-serif);font-weight:600;color:var(--msz-plum);line-height:1.22;letter-spacing:-.005em;text-wrap:balance}
+#msz :where(p){text-wrap:pretty}
+#msz :where(a,button):focus-visible{outline:2px solid var(--msz-purple);outline-offset:3px;border-radius:6px}
+#msz .msz-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+#msz .msz-container{width:100%;max-width:calc(var(--msz-max) + 2*var(--msz-gutter));margin:0 auto;padding:0 var(--msz-gutter);position:relative;z-index:1}
+#msz .msz-section{position:relative;overflow:hidden;padding:clamp(56px,6.2vw,88px) 0}
+#msz .msz-section--lilac{background:var(--msz-lilac)}
+#msz .msz-eyebrow{display:block;font-family:var(--msz-sans);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--msz-purple);margin-bottom:14px}
+#msz .msz-title{font-size:clamp(26px,1.2vw + 14px,37px)}
+#msz .msz-lead{font-size:clamp(15px,.3vw + 14px,17px);color:var(--msz-text);max-width:560px}
+#msz .msz-head{text-align:center;margin:0 auto clamp(36px,4vw,56px);max-width:880px}
+#msz .msz-head .msz-lead{margin:14px auto 0}
+#msz .msz-deco{position:absolute;pointer-events:none;user-select:none;z-index:0}
+
+/* ============ Botões ============ */
+#msz .msz-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 28px;border-radius:999px;font-family:var(--msz-sans);font-size:14px;font-weight:600;line-height:1.2;white-space:nowrap;transition:background-color .3s,color .3s,box-shadow .3s,transform .3s var(--msz-ease)}
+#msz .msz-btn svg{width:16px;height:16px;flex:none;transition:transform .3s var(--msz-ease)}
+#msz .msz-btn:hover svg{transform:translateX(3px)}
+#msz .msz-btn--primary{background:var(--msz-purple);color:#fff;text-transform:uppercase;letter-spacing:.03em;font-weight:700;font-size:13px}
+#msz .msz-btn--primary:hover{background:var(--msz-purple-dark);transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(130,64,143,.7)}
+#msz .msz-btn--light{background:#fff;color:var(--msz-purple);text-transform:uppercase;letter-spacing:.03em;font-weight:700;font-size:13px;box-shadow:0 10px 30px -14px rgba(73,30,85,.55)}
+#msz .msz-btn--light:hover{transform:translateY(-2px);background:var(--msz-cream)}
+#msz .msz-btn--soft{background:#fff;color:var(--msz-plum);font-weight:500;font-size:15px;box-shadow:0 8px 24px -16px rgba(73,60,75,.45)}
+#msz .msz-btn--soft:hover{background:var(--msz-purple);color:#fff;transform:translateY(-2px)}
+
+/* ============ Header ============ */
+#msz .msz-header-wrap{position:relative;height:var(--msz-header-h);z-index:9990}
+#msz .msz-header{position:absolute;top:0;left:0;right:0;height:var(--msz-header-h);background:rgba(248,245,242,.94);-webkit-backdrop-filter:saturate(1.3) blur(14px);backdrop-filter:saturate(1.3) blur(14px);transition:box-shadow .35s,background-color .35s}
+#msz .msz-header.is-fixed{position:fixed;animation:msz-drop .45s var(--msz-ease) both;box-shadow:0 10px 30px -18px rgba(73,60,75,.45)}
+#msz .msz-header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+#msz .msz-logo{display:flex;align-items:center;flex:none}
+#msz .msz-logo img{height:34px;width:auto}
+#msz .msz-nav{display:flex;align-items:center;gap:clamp(20px,2.6vw,44px)}
+#msz .msz-nav-links{display:flex;align-items:center;gap:clamp(18px,2.2vw,36px)}
+#msz .msz-nav-links a{position:relative;font-size:15px;font-weight:500;color:var(--msz-purple);padding:6px 0;transition:color .25s}
+#msz .msz-nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;border-radius:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--msz-ease)}
+#msz .msz-nav-links a:hover::after,#msz .msz-nav-links a.is-active::after{transform:scaleX(1)}
+#msz .msz-nav .msz-btn{min-height:40px;padding:10px 22px;font-size:12px}
+#msz .msz-burger{display:none;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;color:var(--msz-purple)}
+#msz .msz-burger span{position:relative;display:block;width:22px;height:1.8px;background:currentColor;border-radius:2px;transition:background-color .2s}
+#msz .msz-burger span::before,#msz .msz-burger span::after{content:"";position:absolute;left:0;width:100%;height:100%;background:currentColor;border-radius:2px;transition:transform .35s var(--msz-ease)}
+#msz .msz-burger span::before{transform:translateY(-7px)}
+#msz .msz-burger span::after{transform:translateY(7px)}
+#msz .msz-burger[aria-expanded="true"] span{background:transparent}
+#msz .msz-burger[aria-expanded="true"] span::before{transform:rotate(45deg)}
+#msz .msz-burger[aria-expanded="true"] span::after{transform:rotate(-45deg)}
+
+/* ============ Hero ============ */
+#msz .msz-hero{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:center;min-height:clamp(520px,36.5vw,720px);padding:72px 0;color:#fff}
+#msz .msz-hero-bg{position:absolute;z-index:-2;top:-48px;left:-48px;width:calc(100% + 96px);height:calc(100% + 96px);max-width:none;object-fit:cover;object-position:30% 42%;animation:msz-kenburns 2.6s var(--msz-ease) both}
+#msz .msz-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(247,226,214,.30) 0%,rgba(232,186,214,.42) 26%,rgba(205,148,202,.80) 48%,rgba(192,134,196,.90) 64%,rgba(190,132,196,.92) 100%)}
+#msz .msz-hero-content{margin-left:auto;margin-right:clamp(0px,5vw,96px);max-width:720px;text-align:right}
+#msz .msz-hero-title{color:#fff;font-size:clamp(34px,1.6vw + 16px,48px);line-height:1.18;font-weight:400;text-shadow:0 2px 24px rgba(110,50,120,.18)}
+#msz .msz-hero-title strong{display:block;font-weight:700}
+#msz .msz-hero-title span{display:block}
+#msz .msz-hero-text{margin:18px 0 0 auto;max-width:440px;font-size:clamp(16px,.4vw + 14px,19px);line-height:1.5;font-weight:400;color:rgba(255,255,255,.96)}
+#msz .msz-hero .msz-btn{margin-top:clamp(28px,3vw,40px)}
+#msz .msz-hero-content > *{animation:msz-rise 1s var(--msz-ease) both}
+#msz .msz-hero-content > :nth-child(2){animation-delay:.12s}
+#msz .msz-hero-content > :nth-child(3){animation-delay:.24s}
+
+/* ============ Intro + Áreas ============ */
+#msz .msz-flowers{top:clamp(30px,4vw,70px);left:50%;transform:translateX(-50%);width:max(100%,1180px);max-width:none;height:auto}
+#msz .msz-intro{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,6vw,90px);align-items:center;padding:clamp(24px,3vw,40px) 0}
+#msz .msz-intro-head{position:relative;text-align:center;padding:36px 0 36px 24px}
+#msz .msz-intro-head .msz-title{color:var(--msz-purple);font-weight:700;font-size:clamp(26px,1.1vw + 14px,35px)}
+#msz .msz-arc{position:absolute;color:var(--msz-rose)}
+#msz .msz-arc--tl{top:-8px;left:-6px;width:96px;height:120px}
+#msz .msz-arc--br{right:-44px;bottom:-56px;width:96px;height:96px}
+#msz .msz-features{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,32px);padding:24px 0}
+#msz .msz-feature{text-align:center;color:var(--msz-purple)}
+#msz .msz-feature svg{width:58px;height:58px;margin:0 auto 18px;transition:transform .5s var(--msz-ease)}
+#msz .msz-feature:hover svg{transform:translateY(-4px)}
+#msz .msz-feature p{font-size:14px;line-height:1.5;max-width:220px;margin:0 auto}
+
+#msz .msz-areas{margin-top:clamp(48px,6vw,84px)}
+#msz .msz-areas .msz-eyebrow{color:var(--msz-plum)}
+#msz .msz-area-list{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px);max-width:1120px;margin:0 auto}
+#msz .msz-area{display:flex;align-items:flex-start;gap:20px}
+#msz .msz-area-icon{flex:none;display:grid;place-items:center;width:clamp(76px,6vw,96px);aspect-ratio:1;border-radius:14px;background:var(--msz-purple);color:#fff;box-shadow:0 14px 30px -16px rgba(130,64,143,.75);transition:transform .45s var(--msz-ease),background-color .3s}
+#msz .msz-area-icon svg{width:52%;height:52%}
+#msz .msz-area:hover .msz-area-icon{transform:translateY(-4px) rotate(-3deg);background:var(--msz-purple-dark)}
+#msz .msz-area h3{font-size:clamp(18px,.5vw + 14px,22px);font-weight:500;margin:2px 0 10px}
+#msz .msz-area p{font-size:14px;line-height:1.55}
+
+/* ============ Procedimentos ============ */
+#msz .msz-flor{width:clamp(200px,20vw,340px);height:auto}
+#msz .msz-flor--left{left:-30px;top:-20px}
+#msz .msz-flor--right{right:-20px;bottom:-30px;transform:scaleX(-1)}
+#msz .msz-flor--gallery{left:-10px;bottom:-60px}
+#msz .msz-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px)}
+#msz .msz-card{position:relative;display:flex;flex-direction:column;min-height:380px;padding:28px 22px 30px;background:#fff;border-radius:var(--msz-radius);box-shadow:var(--msz-shadow);overflow:hidden;transition:transform .5s var(--msz-ease),box-shadow .5s}
+#msz .msz-card::before{content:"";position:absolute;right:-90px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(closest-side,rgba(221,169,211,.22),rgba(221,169,211,0));transition:transform .7s var(--msz-ease)}
+#msz .msz-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -28px rgba(73,60,75,.38)}
+#msz .msz-card:hover::before{transform:scale(1.5)}
+#msz .msz-card-icon{position:relative;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--msz-lilac);color:var(--msz-purple)}
+#msz .msz-card-icon svg{width:28px;height:28px}
+#msz .msz-card h3{margin-top:auto;padding-top:48px;font-size:clamp(18px,.3vw + 15px,21px);font-weight:600;text-wrap:wrap}
+#msz .msz-card p{margin-top:12px;font-size:14.5px;line-height:1.55}
+#msz .msz-card .msz-more{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-size:13px;font-weight:600;color:var(--msz-plum);transition:color .25s}
+#msz .msz-card .msz-more svg{width:14px;height:14px;transition:transform .3s var(--msz-ease)}
+#msz .msz-card .msz-more:hover{color:var(--msz-purple)}
+#msz .msz-card:hover .msz-more svg{transform:translateX(4px)}
+#msz .msz-center{text-align:center;margin-top:clamp(32px,4vw,48px)}
+#msz .msz-cards-hint{display:none;text-align:center;font-size:12px;letter-spacing:.06em;color:var(--msz-text);opacity:.7;margin-top:-8px}
+
+/* ============ Sobre ============ */
+#msz .msz-about{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:clamp(36px,5vw,72px);align-items:center;max-width:1100px;margin:0 auto}
+#msz .msz-about-photo{position:relative}
+#msz .msz-about-photo::before{content:"";position:absolute;inset:8% -7% -6% 9%;border-radius:28px;background:linear-gradient(140deg,rgba(221,169,211,.45),rgba(237,232,240,.9));z-index:-1}
+#msz .msz-about-photo img{width:100%;height:auto}
+#msz .msz-about-text .msz-title{font-size:clamp(26px,1.2vw + 16px,36px);margin-bottom:22px}
+#msz .msz-about-text p{font-size:15.5px;line-height:1.7;max-width:620px}
+#msz .msz-about-text p + p{margin-top:16px}
+#msz .msz-quote{position:relative;margin-top:clamp(32px,4vw,52px);padding-left:30px;font-family:var(--msz-serif);font-style:italic;font-weight:500;font-size:clamp(21px,.9vw + 14px,28px);line-height:1.38;color:var(--msz-plum)}
+#msz .msz-quote::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:3px;background:linear-gradient(var(--msz-rose),var(--msz-purple))}
+
+/* ============ Espaço / Galeria ============ */
+#msz .msz-gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(8px,1vw,14px);height:clamp(380px,32vw,480px);max-width:1100px;margin:0 auto}
+#msz .msz-shot{position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:18px;background:var(--msz-line);cursor:zoom-in}
+#msz .msz-gallery .msz-shot:nth-child(1){grid-column:1;grid-row:1 / span 2}
+#msz .msz-gallery .msz-shot:nth-child(2){grid-column:2;grid-row:1}
+#msz .msz-gallery .msz-shot:nth-child(3){grid-column:2;grid-row:2}
+#msz .msz-gallery .msz-shot:nth-child(4){grid-column:3;grid-row:1 / span 2}
+#msz .msz-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.1s var(--msz-ease)}
+#msz .msz-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(158,85,172,0) 55%,rgba(158,85,172,.28));opacity:0;transition:opacity .5s}
+#msz .msz-shot:hover img{transform:scale(1.1)}
+#msz .msz-shot:hover::after{opacity:1}
+
+/* ============ Contato ============ */
+#msz .msz-contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,96px);align-items:center;max-width:1100px;margin:0 auto}
+#msz .msz-contact .msz-title{font-size:clamp(25px,1vw + 16px,32px);max-width:400px;margin-bottom:clamp(28px,3vw,40px)}
+#msz .msz-contact-list li + li{margin-top:22px}
+#msz .msz-contact-item{display:flex;align-items:center;gap:22px}
+#msz .msz-contact-icon{flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;border:1.5px solid var(--msz-purple);color:var(--msz-purple);transition:background-color .3s,color .3s}
+#msz .msz-contact-icon svg{width:24px;height:24px}
+#msz a.msz-contact-item:hover .msz-contact-icon{background:var(--msz-purple);color:#fff}
+#msz .msz-contact-label{display:block;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--msz-text);margin-bottom:4px}
+#msz .msz-contact-value{display:block;font-size:clamp(16px,.3vw + 15px,18px);font-weight:600;line-height:1.4;color:#2F2631}
+#msz .msz-map{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--msz-shadow);background:var(--msz-lilac);aspect-ratio:16/10}
+#msz .msz-map iframe{width:100%;height:100%;border:0;filter:saturate(.85)}
+#msz .msz-map-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;font-weight:600;color:var(--msz-purple)}
+#msz .msz-map-link svg{width:16px;height:16px;transition:transform .3s var(--msz-ease)}
+#msz .msz-map-link:hover svg{transform:translateX(3px)}
+
+/* ============ CTA ============ */
+#msz .msz-cta{text-align:center}
+#msz .msz-cta .msz-title{font-size:clamp(26px,1.3vw + 15px,38px)}
+#msz .msz-cta .msz-lead{margin:16px auto 0;max-width:470px}
+#msz .msz-cta .msz-btn{margin-top:clamp(28px,3vw,40px);min-height:52px;padding:14px 40px;font-size:16px}
+
+/* ============ Rodapé ============ */
+#msz .msz-footer{padding:clamp(48px,5vw,64px) 0 28px}
+#msz .msz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+#msz .msz-footer-brand{max-width:340px;text-align:center}
+#msz .msz-footer-brand img{width:200px;height:auto;margin:0 auto 14px}
+#msz .msz-footer-brand p{font-size:14px;line-height:1.5;color:var(--msz-purple)}
+#msz .msz-footer-nav{justify-self:end}
+#msz .msz-footer-nav li + li{margin-top:12px}
+#msz .msz-footer-nav a{font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#A65BB2;transition:color .25s}
+#msz .msz-footer-nav a:hover{color:var(--msz-plum)}
+#msz .msz-footer-contact li + li{margin-top:12px}
+#msz .msz-footer-contact a,#msz .msz-footer-contact address{font-size:14px;font-style:italic;line-height:1.45;color:#A65BB2;transition:color .25s}
+#msz .msz-footer-contact a:hover{color:var(--msz-plum)}
+#msz .msz-footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:clamp(36px,4vw,56px);padding-top:24px;border-top:1px solid var(--msz-line);font-size:13px;color:#A65BB2}
+#msz .msz-footer-bottom a:hover{color:var(--msz-plum)}
+
+/* ============ WhatsApp flutuante ============ */
+#msz .msz-fab{position:fixed;right:clamp(16px,2.4vw,28px);bottom:clamp(16px,2.4vw,28px);z-index:9991;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--msz-purple);color:#fff;box-shadow:0 14px 30px -10px rgba(130,64,143,.65);opacity:0;visibility:hidden;transform:translateY(16px) scale(.9);transition:opacity .4s,visibility .4s,transform .4s var(--msz-ease),background-color .3s}
+#msz .msz-fab svg{width:28px;height:28px}
+#msz .msz-fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--msz-purple);animation:msz-pulse 2.8s ease-out infinite}
+#msz .msz-fab.is-visible{opacity:1;visibility:visible;transform:none}
+#msz .msz-fab:hover{background:var(--msz-purple-dark)}
+
+/* ============ Lightbox ============ */
+#msz .msz-lightbox{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:clamp(16px,5vw,64px);background:rgba(43,30,46,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+#msz .msz-lightbox.is-open{opacity:1;visibility:visible}
+#msz .msz-lightbox img{max-width:min(1100px,100%);max-height:84vh;width:auto;height:auto;border-radius:16px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);transform:scale(.96);transition:transform .45s var(--msz-ease)}
+#msz .msz-lightbox.is-open img{transform:none}
+#msz .msz-lb-btn{position:absolute;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;transition:background-color .25s}
+#msz .msz-lb-btn:hover{background:rgba(255,255,255,.28)}
+#msz .msz-lb-btn svg{width:22px;height:22px}
+#msz .msz-lb-close{top:18px;right:18px}
+#msz .msz-lb-prev{left:18px;top:50%;margin-top:-24px}
+#msz .msz-lb-next{right:18px;top:50%;margin-top:-24px}
+
+/* ============ Animações ============ */
+#msz.msz-js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .9s var(--msz-ease),transform .9s var(--msz-ease);transition-delay:var(--d,0s)}
+#msz.msz-js [data-reveal].is-visible{opacity:1;transform:none}
+@keyframes msz-kenburns{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes msz-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes msz-drop{from{transform:translateY(-100%)}to{transform:none}}
+@keyframes msz-pulse{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(1.45);opacity:0}}
+
+/* ============ Responsivo ============ */
+@media (max-width:1100px){
+  #msz .msz-cards{grid-template-columns:repeat(2,1fr)}
+  #msz .msz-card{min-height:320px}
+  #msz .msz-features{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:960px){
+  #msz{--msz-header-h:68px}
+  #msz .msz-logo img{height:30px}
+  #msz .msz-burger{display:inline-flex}
+  #msz .msz-nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:20px;padding:20px var(--msz-gutter) 28px;background:var(--msz-cream);box-shadow:0 24px 40px -24px rgba(73,60,75,.35);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s,visibility .3s,transform .35s var(--msz-ease)}
+  #msz .msz-nav.is-open{opacity:1;visibility:visible;transform:none}
+  #msz .msz-nav-links{flex-direction:column;align-items:stretch;gap:0}
+  #msz .msz-nav-links a{display:block;padding:14px 0;font-size:17px;border-bottom:1px solid var(--msz-line)}
+  #msz .msz-nav-links a::after{display:none}
+  #msz .msz-nav .msz-btn{min-height:50px;font-size:13px}
+  #msz .msz-intro{grid-template-columns:1fr;gap:24px}
+  #msz .msz-intro-head{padding:40px 12px 8px}
+  #msz .msz-arc--tl{left:0}
+  #msz .msz-arc--br{display:none}
+  #msz .msz-area-list{grid-template-columns:1fr;max-width:560px}
+  #msz .msz-about{grid-template-columns:1fr;max-width:560px}
+  #msz .msz-about-photo{max-width:380px;margin:0 auto;width:100%}
+  #msz .msz-contact{grid-template-columns:1fr}
+  #msz .msz-footer-grid{grid-template-columns:1fr 1fr}
+  #msz .msz-footer-brand{grid-column:1/-1;margin:0 auto}
+  #msz .msz-footer-nav{justify-self:start}
+}
+@media (max-width:640px){
+  #msz .msz-hero{min-height:calc(100svh - var(--msz-header-h));max-height:760px;align-items:flex-end;padding:48px 0 56px}
+  #msz .msz-hero-bg{object-position:2% 22%}
+  #msz .msz-hero::before{background:linear-gradient(180deg,rgba(247,226,214,.10) 0%,rgba(226,176,210,.34) 28%,rgba(196,136,198,.84) 52%,rgba(178,116,190,.95) 72%,rgba(172,108,186,.97) 100%)}
+  #msz .msz-hero-content{margin:0;text-align:left;max-width:none}
+  #msz .msz-hero-text{margin-left:0}
+  #msz .msz-features{grid-template-columns:1fr;gap:22px;max-width:420px;margin:0 auto}
+  #msz .msz-feature{display:flex;align-items:center;gap:18px;text-align:left}
+  #msz .msz-feature svg{width:46px;height:46px;margin:0;flex:none}
+  #msz .msz-feature p{margin:0;max-width:none;font-size:15px}
+  #msz .msz-area-icon{width:68px;border-radius:12px}
+  #msz .msz-cards{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 calc(-1*var(--msz-gutter));padding:6px var(--msz-gutter) 28px;scroll-padding:0 var(--msz-gutter)}
+  #msz .msz-cards::-webkit-scrollbar{display:none}
+  #msz .msz-card{flex:0 0 80%;min-height:300px;scroll-snap-align:start}
+  #msz .msz-cards-hint{display:block}
+  #msz .msz-gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,auto);height:auto}
+  #msz .msz-shot{aspect-ratio:4/5;height:auto}
+  #msz .msz-shot--wide{aspect-ratio:auto;height:150px}
+  #msz .msz-gallery .msz-shot:nth-child(1){grid-column:1;grid-row:1}
+  #msz .msz-gallery .msz-shot:nth-child(4){grid-column:2;grid-row:1}
+  #msz .msz-gallery .msz-shot:nth-child(2){grid-column:1;grid-row:2}
+  #msz .msz-gallery .msz-shot:nth-child(3){grid-column:2;grid-row:2}
+  #msz .msz-contact-item{gap:16px}
+  #msz .msz-contact-icon{width:50px;height:50px}
+  #msz .msz-footer-grid{grid-template-columns:1fr;text-align:center}
+  #msz .msz-footer-nav,#msz .msz-footer-contact{justify-self:center}
+  #msz .msz-footer-bottom{flex-direction:column;text-align:center}
+  #msz .msz-lb-prev,#msz .msz-lb-next{top:auto;bottom:18px;margin:0}
+}
+@media (prefers-reduced-motion:reduce){
+  #msz *,#msz *::before,#msz *::after{animation:none!important;transition:none!important}
+  #msz.msz-js [data-reveal]{opacity:1;transform:none}
+}
+</style>
+
+<div id="msz" lang="pt-BR">
+
+  <!-- Cabeçalho -->
+  <div class="msz-header-wrap">
+    <header class="msz-header">
+      <div class="msz-container msz-header-inner">
+        <a class="msz-logo" href="#msz-inicio" aria-label="Dra. Mari’Stela Zen — início">
+          <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Logotipo%20Mari%27Stela%20Zen%20-%20Com%20ap%C3%B3stofro%201.png" alt="Dra. Mari’Stela Zen" width="246" height="36">
+        </a>
+        <button class="msz-burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="msz-nav"><span></span></button>
+        <nav class="msz-nav" id="msz-nav" aria-label="Menu principal">
+          <ul class="msz-nav-links">
+            <li><a href="#msz-areas">Áreas de cuidado</a></li>
+            <li><a href="#msz-procedimentos">Procedimentos</a></li>
+            <li><a href="#msz-sobre">Sobre Nós</a></li>
+            <li><a href="#msz-contato">Contato</a></li>
+          </ul>
+          <a class="msz-btn msz-btn--primary" data-msz-wa href="https://wa.me/5551986831387?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Mari%27Stela%20Zen." target="_blank" rel="noopener">Agende sua consulta</a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="msz-hero" id="msz-inicio" aria-label="Apresentação">
+      <img class="msz-hero-bg" src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Cl%C3%ADnica%20%2819%29%202.png" alt="" fetchpriority="high" width="1440" height="884">
+      <div class="msz-container">
+        <div class="msz-hero-content">
+          <h1 class="msz-hero-title"><strong>Cuidado feminino</strong> <span>em todas as fases da vida.</span></h1>
+          <p class="msz-hero-text">Ginecologia clínica e regenerativa com experiência e atendimento individualizado.</p>
+          <a class="msz-btn msz-btn--light" data-msz-wa href="https://wa.me/5551986831387?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Mari%27Stela%20Zen." target="_blank" rel="noopener">Agende sua consulta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro + Áreas de atuação -->
+    <section class="msz-section" id="msz-areas" aria-labelledby="msz-intro-title">
+      <img class="msz-deco msz-flowers" src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/flores.png" alt="" aria-hidden="true" loading="lazy" width="1920" height="626">
+      <div class="msz-container">
+        <div class="msz-intro">
+          <div class="msz-intro-head" data-reveal>
+            <svg class="msz-arc msz-arc--tl" viewBox="0 0 96 120" fill="none" aria-hidden="true">
+              <path d="M90 6C44 6 8 42 8 86" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+              <path d="M8 98c-3.2 5-4.8 8.4-4.8 11a4.8 4.8 0 0 0 9.6 0c0-2.6-1.6-6-4.8-11z" fill="currentColor"/>
+            </svg>
+            <span class="msz-eyebrow">Dra. Mari’Stela Zen</span>
+            <h2 class="msz-title" id="msz-intro-title">Há mais de 30 anos dedicados à saúde da mulher</h2>
+          </div>
+          <div class="msz-features">
+            <div class="msz-feature" data-reveal style="--d:.05s">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 6H9a2 2 0 0 0-2 2v9a9.5 9.5 0 0 0 19 0V8a2 2 0 0 0-2-2h-2"/><path d="M16.5 26.5V32a10 10 0 0 0 20 0v-5"/><circle cx="36.5" cy="22.5" r="4.5"/><circle cx="36.5" cy="22.5" r="1.2"/><circle cx="12" cy="6" r="1.6"/><circle cx="21" cy="6" r="1.6"/></svg>
+              <p>Atendimento personalizado por uma equipe altamente qualificada</p>
+            </div>
+            <div class="msz-feature" data-reveal style="--d:.15s">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="40" height="27" rx="2.5"/><path d="M18 41h12M24 34v7"/><path d="M9 13h10M9 17.5h8M9 22h10M9 26.5h7"/><path d="M27 18v-5M31.5 18v-7M36 18v-4"/><path d="M24 26h5l2-3.5 3 6 2-3.5h3"/></svg>
+              <p>Tecnologia de ponta para resultados seguros e naturais</p>
+            </div>
+            <div class="msz-feature" data-reveal style="--d:.25s">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 15.5C14 12 9.5 11 6.8 13c-1.9 1.4-2 3.9-.3 5.4"/><ellipse cx="8.6" cy="21.6" rx="3.6" ry="2.9"/><path d="M30.5 15.5C34 12 38.5 11 41.2 13c1.9 1.4 2 3.9.3 5.4"/><ellipse cx="39.4" cy="21.6" rx="3.6" ry="2.9"/><path d="M17.2 15.2c2.6-3.6 11-3.6 13.6 0l-2.7 11.6c-.5 2-1.4 3.2-2.3 3.8V37h-3.6v-6.4c-.9-.6-1.8-1.8-2.3-3.8z"/><path d="M21 18.6c1.7-1.3 4.3-1.3 6 0l-1.9 7.2h-2.2z"/><path d="M22.2 37v5M25.8 37v5"/></svg>
+              <p>Experiência médica aliada à atualização constante em saúde feminina.</p>
+            </div>
+            <svg class="msz-arc msz-arc--br" viewBox="0 0 96 96" fill="none" aria-hidden="true"><path d="M88 8c0 44-36 80-80 80" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <div class="msz-areas">
+          <div class="msz-head" data-reveal>
+            <span class="msz-eyebrow">Áreas de atuação</span>
+            <h2 class="msz-title">Um cuidado ginecológico que acompanha diferentes necessidades e fases da vida da mulher.</h2>
+          </div>
+          <div class="msz-area-list">
+            <article class="msz-area" data-reveal style="--d:.05s">
+              <div class="msz-area-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><path d="M29.5 29.5 42 42"/><circle cx="20" cy="20" r="6.5" stroke-dasharray="2.4 3"/><circle cx="20" cy="20" r="1.8" fill="currentColor"/></svg></div>
+              <div><h3>Ginecologia<br>Clínica</h3><p>Prevenção, diagnóstico e tratamento das principais condições ginecológicas.</p></div>
+            </article>
+            <article class="msz-area" data-reveal style="--d:.15s">
+              <div class="msz-area-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="4.5"/><circle cx="35" cy="9" r="4"/><circle cx="24" cy="24" r="4.5"/><circle cx="38.5" cy="31" r="4"/><circle cx="11" cy="37" r="4.5"/><circle cx="27" cy="41" r="3"/><path d="M14.4 15.2 20.6 21M33 12.6l-6.6 7.6M28.2 25.8l6.6 3.4M20.6 27.2l-6.4 6.6M24.8 28.4l1.6 9.6"/></svg></div>
+              <div><h3>Ginecologia<br>Regenerativa</h3><p>Cuidados e tratamentos voltados à saúde íntima feminina.</p></div>
+            </article>
+            <article class="msz-area" data-reveal style="--d:.25s">
+              <div class="msz-area-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="36" r="6"/><path d="M16.3 16.3 24 24M41 7 16.3 31.7M29.6 29.6 41 41"/></svg></div>
+              <div><h3>Cirurgia<br>Ginecológica</h3><p>Procedimentos cirúrgicos destinados ao diagnóstico e tratamento de doenças relacionadas aos órgãos genitais femininos.</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Procedimentos -->
+    <section class="msz-section msz-section--lilac" id="msz-procedimentos" aria-labelledby="msz-proc-title">
+      <img class="msz-deco msz-flor msz-flor--left" src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Flor%203.png" alt="" aria-hidden="true" loading="lazy" width="348" height="614">
+      <div class="msz-container">
+        <div class="msz-head" data-reveal>
+          <h2 class="msz-title" id="msz-proc-title">Procedimentos em destaque</h2>
+          <p class="msz-lead">Conheça alguns dos tratamentos e cuidados realizados na clínica.</p>
+        </div>
+        <div class="msz-cards">
+          <article class="msz-card" data-reveal style="--d:.05s">
+            <span class="msz-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5l1.9 4.9 4.9 1.9-4.9 1.9L11 17.1l-1.9-4.9-4.9-1.9 4.9-1.9z"/><path d="M18.5 15.5v5M16 18h5"/></svg></span>
+            <h3>Laser de CO₂</h3>
+            <p>Tecnologia utilizada para tratar condições da região íntima feminina.</p>
+            <a class="msz-more" data-msz-wa="Olá! Gostaria de saber mais sobre o Laser de CO₂." href="https://wa.me/5551986831387" target="_blank" rel="noopener">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="msz-card" data-reveal style="--d:.12s">
+            <span class="msz-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-2.2-2-3.1-4.6-3.1-7.4 0-2.4 1.2-4.7 3.1-6.6 1.9 1.9 3.1 4.2 3.1 6.6 0 2.8-.9 5.4-3.1 7.4z"/><path d="M12 20c-4.2 0-7.3-2.5-8.3-6.2 2.2-.4 4.4.2 6 1.6"/><path d="M12 20c4.2 0 7.3-2.5 8.3-6.2-2.2-.4-4.4.2-6 1.6"/></svg></span>
+            <h3>Ninfoplastia</h3>
+            <p>Cirurgia íntima que reduz o tamanho dos pequenos lábios vaginais.</p>
+            <a class="msz-more" data-msz-wa="Olá! Gostaria de saber mais sobre a Ninfoplastia." href="https://wa.me/5551986831387" target="_blank" rel="noopener">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="msz-card" data-reveal style="--d:.19s">
+            <span class="msz-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s-6 6.4-6 10.6a6 6 0 0 0 12 0c0-4.2-6-10.6-6-10.6z"/><path d="M9.3 14.4a2.9 2.9 0 0 0 2.6 2.8"/></svg></span>
+            <h3>Tratamentos para Incontinência Urinária</h3>
+            <p>Pode envolver laser, fisioterapia íntima ou procedimentos minimamente invasivos.</p>
+            <a class="msz-more" data-msz-wa="Olá! Gostaria de saber mais sobre os tratamentos para incontinência urinária." href="https://wa.me/5551986831387" target="_blank" rel="noopener">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="msz-card" data-reveal style="--d:.26s">
+            <span class="msz-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-7.6 5.4-13.4 14-14 0 8.4-5.6 14-14 14z"/><path d="M5 19l8.5-8.5M9.5 14.5h3.4M11.6 12.4V9.1"/></svg></span>
+            <h3>Tratamentos para Menopausa</h3>
+            <p>Acompanhamento ginecológico para aliviar os sintomas e preservar a saúde da mulher.</p>
+            <a class="msz-more" data-msz-wa="Olá! Gostaria de saber mais sobre os tratamentos para menopausa." href="https://wa.me/5551986831387" target="_blank" rel="noopener">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+        </div>
+        <p class="msz-cards-hint" aria-hidden="true">Deslize para ver mais →</p>
+        <div class="msz-center" data-reveal>
+          <a class="msz-btn msz-btn--soft" data-msz-wa="Olá! Gostaria de conhecer os procedimentos realizados na clínica." href="https://wa.me/5551986831387" target="_blank" rel="noopener">Ver todos os procedimentos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="msz-section" id="msz-sobre" aria-labelledby="msz-sobre-title">
+      <img class="msz-deco msz-flor msz-flor--right" src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Flor%203.png" alt="" aria-hidden="true" loading="lazy" width="348" height="614">
+      <div class="msz-container">
+        <div class="msz-about">
+          <div class="msz-about-photo" data-reveal>
+            <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/DRA%20Maristela%20Zen.png" alt="Dra. Mari’Stela Zen sorrindo em seu consultório" loading="lazy" width="404" height="482">
+          </div>
+          <div class="msz-about-text" data-reveal style="--d:.12s">
+            <h2 class="msz-title" id="msz-sobre-title">Dra. Mari’Stela Zen</h2>
+            <p>Com mais de 30 anos de experiência em Ginecologia, a Dra. Mari’Stela Zen une sólida formação médica, atualização constante e um olhar individualizado para o cuidado da saúde da mulher.</p>
+            <p>Formada pela UFRGS, com Residência em Ginecologia e Obstetrícia pelo Hospital de Clínicas de Porto Alegre e Pós-Graduação em Ginecologia Regenerativa, sua atuação combina experiência, conhecimento e tecnologia para oferecer um cuidado seguro, acolhedor e personalizado.</p>
+            <blockquote class="msz-quote">“Experiência que acompanha cada fase da mulher.”</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Espaço -->
+    <section class="msz-section msz-section--lilac" id="msz-espaco" aria-labelledby="msz-espaco-title">
+      <img class="msz-deco msz-flor msz-flor--gallery" src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Flor%203.png" alt="" aria-hidden="true" loading="lazy" width="348" height="614">
+      <div class="msz-container">
+        <div class="msz-head" data-reveal>
+          <h2 class="msz-title" id="msz-espaco-title">Um espaço pensado para acolher.</h2>
+          <p class="msz-lead">Desde 2021, a Dra. Mari’Stela atende em um novo espaço, especialmente pensado e planejado para receber suas pacientes com mais conforto e acolhimento.</p>
+        </div>
+        <div class="msz-gallery" data-reveal>
+          <button class="msz-shot msz-shot--tall" type="button" aria-label="Ampliar foto: recepção da clínica">
+            <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/foto%201.png" alt="Recepção da clínica Salute Zen" loading="lazy" width="1041" height="1301">
+          </button>
+          <button class="msz-shot msz-shot--wide" type="button" aria-label="Ampliar foto: consultório">
+            <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Cl%C3%ADnica%20%2810%29%202.png" alt="Consultório da Dra. Mari’Stela Zen" loading="lazy" width="1140" height="877">
+          </button>
+          <button class="msz-shot msz-shot--wide" type="button" aria-label="Ampliar foto: ambiente de espera">
+            <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Cl%C3%ADnica%20%2819%29%202.png" alt="Ambiente de espera com o logotipo Salute Zen" loading="lazy" width="1440" height="884">
+          </button>
+          <button class="msz-shot msz-shot--tall" type="button" aria-label="Ampliar foto: Dra. Mari’Stela Zen e equipe">
+            <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Dra.%20Mari%20Stela%20Zen%20%2821%29%201.png" alt="Dra. Mari’Stela Zen e sua equipe na recepção" loading="lazy" width="1063" height="1339">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="msz-section" id="msz-contato" aria-labelledby="msz-contato-title">
+      <div class="msz-container">
+        <div class="msz-contact">
+          <div data-reveal>
+            <h2 class="msz-title" id="msz-contato-title">Para informações e agendamentos, fale com a clínica!</h2>
+            <ul class="msz-contact-list">
+              <li>
+                <a class="msz-contact-item" data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener">
+                  <span class="msz-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.6v2.9a1.9 1.9 0 0 1-2.1 1.9 18.9 18.9 0 0 1-8.2-2.9 18.6 18.6 0 0 1-5.7-5.7A18.9 18.9 0 0 1 2.6 4.6 1.9 1.9 0 0 1 4.5 2.5h2.9a1.9 1.9 0 0 1 1.9 1.6c.1.9.4 1.8.7 2.7a1.9 1.9 0 0 1-.4 2L8.3 10a15.2 15.2 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.7.7a1.9 1.9 0 0 1 1.6 1.9z"/></svg></span>
+                  <span><span class="msz-contact-label">WhatsApp</span><span class="msz-contact-value">+55 (51) 98683-1387</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="msz-contact-item" href="mailto:clinicazen@outlook.com">
+                  <span class="msz-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6.5 9 6.5 9-6.5M3.2 18.2 9.6 12M20.8 18.2 14.4 12"/></svg></span>
+                  <span><span class="msz-contact-label">E-mail</span><span class="msz-contact-value">clinicazen@outlook.com</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="msz-contact-item" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Benjamin%20Constant%2C%201058%20-%20Centro%2C%20Lajeado%20-%20RS" target="_blank" rel="noopener">
+                  <span class="msz-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9.5" r="2.6"/></svg></span>
+                  <span><span class="msz-contact-label">Endereço</span><span class="msz-contact-value">Av. Benjamin Constant, 1058 - Sala 01<br>Centro, Lajeado/RS</span></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div data-reveal style="--d:.12s">
+            <div class="msz-map">
+              <iframe src="https://maps.google.com/maps?q=Av.%20Benjamin%20Constant%2C%201058%20-%20Centro%2C%20Lajeado%20-%20RS&amp;z=16&amp;hl=pt-BR&amp;output=embed" title="Mapa: Av. Benjamin Constant, 1058 - Centro, Lajeado/RS" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+            <a class="msz-map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.%20Benjamin%20Constant%2C%201058%20-%20Centro%2C%20Lajeado%20-%20RS" target="_blank" rel="noopener">Como chegar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="msz-section msz-section--lilac msz-cta" aria-labelledby="msz-cta-title">
+      <div class="msz-container" data-reveal>
+        <h2 class="msz-title" id="msz-cta-title">Seu cuidado começa com uma conversa.</h2>
+        <p class="msz-lead">Agende sua consulta e cuide da sua saúde com atenção, experiência e acolhimento.</p>
+        <a class="msz-btn msz-btn--soft" data-msz-wa href="https://wa.me/5551986831387?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Mari%27Stela%20Zen." target="_blank" rel="noopener">Agende sua consulta</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="msz-footer">
+    <div class="msz-container">
+      <div class="msz-footer-grid">
+        <div class="msz-footer-brand">
+          <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Logotipo%20-%20%20Mari%27Stela%20Zen%20-%20Com%20ap%C3%B3stofro%201.png" alt="Dra. Mari’Stela Zen" loading="lazy" width="1212" height="796">
+          <p>Ginecologista clínica e regenerativa com experiência e atendimento individualizado.</p>
+          <!-- <p>CRM-RS 00000 · RQE 00000</p> -->
+        </div>
+        <ul class="msz-footer-nav" aria-label="Links do rodapé">
+          <li><a href="#msz-areas">Áreas de cuidado</a></li>
+          <li><a href="#msz-procedimentos">Procedimentos</a></li>
+          <li><a href="#msz-sobre">Sobre Nós</a></li>
+          <li><a href="#msz-contato">Contato</a></li>
+          <li><a data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener">Agende sua consulta</a></li>
+        </ul>
+        <ul class="msz-footer-contact">
+          <li><a data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener">+55 (51) 98683-1387</a></li>
+          <li><a href="mailto:clinicazen@outlook.com">clinicazen@outlook.com</a></li>
+          <li><address>Av. Benjamin Constant, 1058 - Sala 01<br>Centro, Lajeado/RS</address></li>
+        </ul>
+      </div>
+      <div class="msz-footer-bottom">
+        <span>© <span data-msz-year>2026</span> Dra. Mari’Stela Zen. Todos os direitos reservados.</span>
+        <a href="https://agenciacapp.com.br" target="_blank" rel="noopener">Desenvolvido por Agência CAPP</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a class="msz-fab" data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>
+  </a>
+
+  <!-- Lightbox da galeria -->
+  <div class="msz-lightbox" role="dialog" aria-modal="true" aria-label="Fotos da clínica" aria-hidden="true">
+    <button class="msz-lb-btn msz-lb-close" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="msz-lb-btn msz-lb-prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img alt="">
+    <button class="msz-lb-btn msz-lb-next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var BLOCK_ID = 'b_3673729_2_179511681424173873';
+  var WHATSAPP = '5551986831387';
+  var DEFAULT_MSG = 'Olá! Gostaria de agendar uma consulta com a Dra. Mari’Stela Zen.';
+
+  var root = document.getElementById('msz');
+  if (!root || root.getAttribute('data-ready')) return;
+  root.setAttribute('data-ready', '1');
+  root.classList.add('msz-js');
+
+  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || root).querySelectorAll(sel)); };
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1) Great Pages: o bloco passa a ocupar a largura total e a crescer com o conteúdo */
+  var chain = (function () {
+    var block = document.getElementById(BLOCK_ID);
+    var list = [], el = root.parentElement;
+    while (el && el !== document.body && el !== document.documentElement) {
+      list.push(el);
+      if (block ? el === block : /^b_/.test(el.id || '')) return list;
+      el = el.parentElement;
+    }
+    return [];
+  })();
+  function important(el, props) { for (var p in props) el.style.setProperty(p, props[p], 'important'); }
+  function unlock() {
+    chain.forEach(function (el, i) {
+      important(el, { height: 'auto', 'min-height': '0', 'max-height': 'none', width: '100%', 'max-width': 'none', overflow: 'visible', transform: 'none', padding: '0' });
+      if (i < chain.length - 1) important(el, { position: 'relative', top: '0', left: '0', right: 'auto', bottom: 'auto', margin: '0' });
+    });
+  }
+  unlock();
+  window.addEventListener('load', unlock);
+  if (chain.length && window.MutationObserver) {
+    var guard = new MutationObserver(function () {
+      if (chain.some(function (el) { return el.style.getPropertyPriority('height') !== 'important'; })) unlock();
+    });
+    chain.forEach(function (el) { guard.observe(el, { attributes: true, attributeFilter: ['style'] }); });
+  }
+
+  /* 2) Links de WhatsApp com mensagem pronta */
+  $$('[data-msz-wa]').forEach(function (a) {
+    var msg = a.getAttribute('data-msz-wa') || DEFAULT_MSG;
+    a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+  });
+
+  /* 3) Ano no rodapé */
+  $$('[data-msz-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  /* 4) Cabeçalho fixo + botão flutuante */
+  var header = root.querySelector('.msz-header');
+  var fab = root.querySelector('.msz-fab');
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var r = root.getBoundingClientRect();
+    var h = header.offsetHeight;
+    header.classList.toggle('is-fixed', r.top < 0 && r.bottom > h);
+    fab.classList.toggle('is-visible', r.top < -420 && r.bottom > window.innerHeight * 0.6);
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* 5) Menu mobile */
+  var burger = root.querySelector('.msz-burger');
+  var nav = root.querySelector('.msz-nav');
+  function setMenu(open) {
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    nav.classList.toggle('is-open', open);
+  }
+  burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+  $$('a', nav).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  /* 6) Rolagem suave até as seções (compensa o cabeçalho) */
+  $$('a[href^="#msz-"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight + 1;
+      window.scrollTo({ top: target.id === 'msz-inicio' ? root.getBoundingClientRect().top + window.pageYOffset : top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* 7) Animações de entrada + item ativo do menu */
+  if ('IntersectionObserver' in window) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-visible'); revealIO.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    $$('[data-reveal]').forEach(function (el) { revealIO.observe(el); });
+
+    var links = $$('.msz-nav-links a');
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (l) { l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['msz-inicio', 'msz-areas', 'msz-procedimentos', 'msz-sobre', 'msz-espaco', 'msz-contato'].forEach(function (id) {
+      var s = document.getElementById(id); if (s) navIO.observe(s);
+    });
+  } else {
+    $$('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* 8) Galeria com lightbox */
+  var lb = root.querySelector('.msz-lightbox');
+  var lbImg = lb.querySelector('img');
+  var shots = $$('.msz-shot');
+  var current = 0, lastFocus = null;
+  function show(i) {
+    current = (i + shots.length) % shots.length;
+    var img = shots[current].querySelector('img');
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+  }
+  function openLb(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    lb.querySelector('.msz-lb-close').focus();
+  }
+  function closeLb() {
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    if (lastFocus) lastFocus.focus();
+  }
+  shots.forEach(function (b, i) { b.addEventListener('click', function () { openLb(i); }); });
+  lb.querySelector('.msz-lb-close').addEventListener('click', closeLb);
+  lb.querySelector('.msz-lb-prev').addEventListener('click', function () { show(current - 1); });
+  lb.querySelector('.msz-lb-next').addEventListener('click', function () { show(current + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) setMenu(false);
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+})();
+</script>
