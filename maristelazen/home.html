@@ -975,7 +975,7 @@
       infos.forEach(function (i) { i.hidden = i.getAttribute('data-area-info') !== key; });
       var n = 0;
       cards.forEach(function (c) {
-        var on = key === 'todos' || c.getAttribute('data-area') === key;
+        var on = key === 'todos' || (' ' + c.getAttribute('data-area') + ' ').indexOf(' ' + key + ' ') >= 0;
         c.hidden = !on;
         if (on) c.style.setProperty('--d', (n++ * 0.09) + 's');
       });

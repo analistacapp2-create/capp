@@ -642,8 +642,9 @@ var MSZ_PROC_DATA = {
       "nome": "Atrofia vaginal e vulvar",
       "resumo": "Tratamentos direcionados às alterações dos tecidos que podem ocorrer especialmente durante determinadas fases da vida.",
       "subtitulo": "Avaliação e tratamento individualizado das alterações dos tecidos íntimos, mais comuns na menopausa e em outras fases de queda hormonal.",
-      "imagem": "",
-      "alt": "",
+      "imagem": "ExdOXD1nsZYmtR3JDlOxXPOk.jpg",
+      "alt": "Mãos segurando flores de gladíolo rosa",
+      "pos": "50% 35%",
       "oque": {
         "textos": [
           "A atrofia vaginal e vulvar é o afinamento dos tecidos da vulva e da vagina, que tendem a ficar mais secos, menos elásticos e mais sensíveis. Na maioria dos casos, está relacionada à redução dos níveis de estrogênio.",
@@ -1110,7 +1111,7 @@ var MSZ_PROC_DATA = {
       infos.forEach(function (i) { i.hidden = i.getAttribute('data-area-info') !== key; });
       var n = 0;
       cards.forEach(function (c) {
-        var on = key === 'todos' || c.getAttribute('data-area') === key;
+        var on = key === 'todos' || (' ' + c.getAttribute('data-area') + ' ').indexOf(' ' + key + ' ') >= 0;
         c.hidden = !on;
         if (on) c.style.setProperty('--d', (n++ * 0.09) + 's');
       });

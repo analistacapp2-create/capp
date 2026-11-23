@@ -270,6 +270,36 @@
   #msz .msz-footer-nav,#msz .msz-footer-contact{justify-self:center}
   #msz .msz-footer-bottom{flex-direction:column;text-align:center}
 }
+/* ============ Áreas: medidas do PDF ============ */
+#msz .msz-pagehero--areas{padding:clamp(56px,4.6vw,88px) 0 clamp(40px,2.6vw,50px)}
+#msz .msz-pagehero--areas h1{font-size:clamp(24px,.7vw + 16px,29px)}
+#msz .msz-pagehero--areas .msz-pagehero-text{margin-top:12px;max-width:740px}
+#msz .msz-pagehero--areas .msz-pagehero-text p{font-size:15px;line-height:1.5;color:#3A2F3C}
+#msz .msz-pagehero--areas .msz-pagehero-text p + p{margin-top:18px}
+#msz .msz-pagehero--areas .msz-pagehero-text a{color:inherit;font-weight:inherit}
+#msz .msz-pagehero--areas .msz-pagehero-text a:hover{color:var(--msz-purple)}
+#msz .msz-areas-list{padding:clamp(36px,2.6vw,46px) 0 clamp(40px,3vw,50px)}
+#msz .msz-areas-list .msz-tab{padding:10px 26px;font-size:15px}
+#msz .msz-areas-list .msz-areainfo{max-width:952px;margin:30px auto 24px}
+#msz .msz-areas-list .msz-pgrid{max-width:952px;gap:26px 32px;justify-content:flex-start}
+#msz .msz-areas-list .msz-pgrid > .msz-pcard{flex-basis:calc((100% - 64px) / 3)}
+#msz .msz-areas-list .msz-pcard{border-radius:20px}
+#msz .msz-areas-list .msz-pcard-media{aspect-ratio:296/190}
+#msz .msz-areas-list .msz-pcard-body{padding:12px 20px 22px}
+#msz .msz-areas-list .msz-pcard h3{display:flex;align-items:flex-end;min-height:2.5em;font-size:clamp(17px,.3vw + 14.5px,20px);line-height:1.15}
+#msz .msz-areas-list .msz-pcard p{margin-top:8px;font-size:14px;line-height:1.45;color:#3A2F3C}
+#msz .msz-areas-list .msz-more{padding-top:18px;font-size:12px;font-weight:700}
+#msz .msz-cta--areas{padding:clamp(48px,3.4vw,64px) 0}
+#msz .msz-cta--areas .msz-title{max-width:540px;margin:0 auto;font-size:clamp(26px,.8vw + 18px,34px);line-height:1.2}
+#msz .msz-cta--areas .msz-lead{max-width:310px;margin-top:12px;font-size:15px}
+#msz .msz-cta--areas .msz-btn{margin-top:22px}
+@media (max-width:960px){
+  #msz .msz-areas-list .msz-pgrid > .msz-pcard{flex-basis:calc((100% - 32px) / 2)}
+}
+@media (max-width:560px){
+  #msz .msz-areas-list .msz-pgrid > .msz-pcard{flex-basis:100%}
+  #msz .msz-areas-list .msz-pcard h3{min-height:0}
+}
 /* Modo suave ("reduzir movimento" no sistema): fades e cores continuam; saem deslocamentos e loops */
 #msz.msz-motion-soft .msz-petals{display:none}
 #msz.msz-motion-soft .msz-flor,#msz.msz-motion-soft .msz-flower,#msz.msz-motion-soft .msz-pattern,#msz.msz-motion-soft .msz-header.is-fixed{animation:none}
@@ -306,7 +336,7 @@
 
   <main>
     <!-- Abertura -->
-    <section class="msz-pagehero" aria-labelledby="msz-areas-h1">
+    <section class="msz-pagehero msz-pagehero--areas" aria-labelledby="msz-areas-h1">
       <img class="msz-pattern msz-pattern--l" data-reveal src="https://files.greatpages.com.br/images/67944/f9ECh4lHnpDUxwIJwDcdmWD3.webp" alt="" aria-hidden="true" width="1391" height="1150">
       <img class="msz-pattern msz-pattern--r" data-reveal style="--d:.25s" src="https://files.greatpages.com.br/images/67944/gBfHAJYPsknDBJXlJzEUXmwT.webp" alt="" aria-hidden="true" width="1085" height="1201">
       <div class="msz-petals" aria-hidden="true">
@@ -316,8 +346,7 @@
         <i style="--x:88%;--s:.75;--t:26s;--w:-18s;--dx:-60px"></i>
       </div>
       <div class="msz-container msz-container--narrow">
-        <span class="msz-kicker" data-reveal>Áreas de cuidado</span>
-        <h1 id="msz-areas-h1" data-reveal="words" style="--d:.15s">Cuidado completo em todas as fases da saúde da mulher</h1>
+        <h1 id="msz-areas-h1" data-reveal="words" style="--d:.1s">Cuidado completo em todas as fases da saúde da mulher</h1>
         <div class="msz-pagehero-text" data-reveal style="--d:.55s">
           <p>A ginecologia acompanha a mulher em diferentes momentos da vida, oferecendo cuidado, prevenção, diagnóstico e tratamento de forma individualizada. Nosso atendimento integra diferentes áreas da ginecologia para proporcionar uma visão completa e humanizada da saúde feminina.</p>
           <p>Atuamos nas áreas de <a href="#clinica">Ginecologia Clínica</a>, <a href="#regenerativa">Ginecologia Regenerativa</a> e <a href="#cirurgica">Cirurgia Ginecológica</a>, com uma abordagem que une conhecimento, experiência e atenção às necessidades de cada paciente.</p>
@@ -327,7 +356,7 @@
     </section>
 
     <!-- Abas + procedimentos -->
-    <section class="msz-section" id="msz-areas-lista" aria-label="Áreas de cuidado e procedimentos">
+    <section class="msz-section msz-areas-list" id="msz-areas-lista" aria-label="Áreas de cuidado e procedimentos">
       <div class="msz-container">
         <div class="msz-tabs-wrap" data-reveal>
           <div class="msz-tabs" role="tablist" aria-label="Áreas de cuidado" data-msz-tabs>
@@ -362,12 +391,43 @@
           </div>
 
           <div class="msz-pgrid" data-msz-cards>
-            <!-- Ginecologia Clínica -->
+            <article class="msz-pcard" data-area="clinica regenerativa" data-reveal="petal">
+              <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/UWbZArdBwt9jM2Wf5hHUVvRg.webp" alt="Profissional segurando o equipamento de Laser de CO₂" loading="lazy" width="1436" height="1002"></div>
+              <div class="msz-pcard-body">
+                <h3>Laser de CO₂</h3>
+                <p>Tecnologia utilizada para tratar condições da região íntima feminina.</p>
+                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#laser-co2" aria-label="Saiba mais sobre o Laser de CO₂">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+            <article class="msz-pcard" data-area="clinica cirurgica" data-reveal="petal">
+              <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/lZfbK9CvbkVJ9lzVZcLm3Bm2.webp" alt="Mãos segurando uma rosa" loading="lazy" width="1048" height="676"></div>
+              <div class="msz-pcard-body">
+                <h3>Ninfoplastia</h3>
+                <p>Cirurgia íntima que reduz o tamanho dos pequenos lábios vaginais.</p>
+                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#ninfoplastia" aria-label="Saiba mais sobre a ninfoplastia">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+            <article class="msz-pcard" data-area="clinica regenerativa" data-reveal="petal">
+              <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/DO99uMUw9TPDDH3CnLnZfHlT.webp" alt="Mulher com as mãos sobre o abdômen" loading="lazy" width="1410" height="905"></div>
+              <div class="msz-pcard-body">
+                <h3>Tratamentos para Incontinência Urinária</h3>
+                <p>Pode envolver laser, fisioterapia íntima ou procedimentos minimamente invasivos.</p>
+                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#incontinencia-urinaria" aria-label="Saiba mais sobre os tratamentos para incontinência urinária">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
+            <article class="msz-pcard" data-area="regenerativa" data-reveal="petal">
+              <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/ExdOXD1nsZYmtR3JDlOxXPOk.jpg" alt="Mãos segurando flores de gladíolo rosa" loading="lazy" width="1332" height="1998" style="object-position:50% 35%"></div>
+              <div class="msz-pcard-body">
+                <h3>Atrofia vaginal e vulvar</h3>
+                <p>Tratamentos direcionados às alterações dos tecidos que podem ocorrer especialmente durante determinadas fases da vida.</p>
+                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#atrofia-vaginal" aria-label="Saiba mais sobre atrofia vaginal e vulvar">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </article>
             <article class="msz-pcard" data-area="clinica" data-reveal="petal">
               <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/MhmwHU21292iWf9uVGLVUdCv.webp" alt="Mulher madura com expressão serena" loading="lazy" width="1389" height="896" style="object-position:40% 35%"></div>
               <div class="msz-pcard-body">
                 <h3>Tratamentos para Menopausa</h3>
-                <p>Acompanhamento individualizado para as mudanças e sintomas relacionados à menopausa.</p>
+                <p>Acompanhamento ginecológico para aliviar os sintomas e preservar a saúde da mulher.</p>
                 <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#menopausa" aria-label="Saiba mais sobre os tratamentos para menopausa">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </article>
@@ -375,41 +435,11 @@
               <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/9EJmroiizhjDvU5pGLP2mjT3.webp" alt="Flor de lírio branco sobre a roupa íntima" loading="lazy" width="1783" height="1150"></div>
               <div class="msz-pcard-body">
                 <h3>Tratamentos para Líquen</h3>
-                <p>Controle dos sintomas e acompanhamento de uma condição inflamatória que afeta a região genital.</p>
+                <p>Controle dos sintomas e de uma condição inflamatória que afeta a região genital.</p>
                 <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#liquen" aria-label="Saiba mais sobre os tratamentos para líquen">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </article>
-            <!-- Ginecologia Regenerativa -->
-            <article class="msz-pcard" data-area="regenerativa" data-reveal="petal">
-              <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/UWbZArdBwt9jM2Wf5hHUVvRg.webp" alt="Profissional segurando o equipamento de Laser de CO₂" loading="lazy" width="1436" height="1002"></div>
-              <div class="msz-pcard-body">
-                <h3>Laser de CO₂</h3>
-                <p>Tecnologia voltada à regeneração e melhora da qualidade dos tecidos da região íntima.</p>
-                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#laser-co2" aria-label="Saiba mais sobre o Laser de CO₂">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              </div>
-            </article>
-            <article class="msz-pcard" data-area="regenerativa" data-reveal="petal">
-              <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/DO99uMUw9TPDDH3CnLnZfHlT.webp" alt="Mulher com as mãos sobre o abdômen" loading="lazy" width="1410" height="905"></div>
-              <div class="msz-pcard-body">
-                <h3>Tratamentos para Incontinência Urinária</h3>
-                <p>Avaliação e tratamento individualizado para perdas involuntárias de urina.</p>
-                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#incontinencia-urinaria" aria-label="Saiba mais sobre os tratamentos para incontinência urinária">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              </div>
-            </article>
-            <article class="msz-pcard" data-area="regenerativa" data-reveal="petal">
-              <div class="msz-pcard-media">
-                <div class="msz-art" aria-hidden="true">
-                  <img src="https://files.greatpages.com.br/images/67944/gBfHAJYPsknDBJXlJzEUXmwT.webp" alt="" loading="lazy" width="1085" height="1201">
-                  <svg class="msz-flower" data-reveal="flower" viewBox="-20 -20 40 40"><path style="--r:0deg;--i:0" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:72deg;--i:1" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:144deg;--i:2" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:216deg;--i:3" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:288deg;--i:4" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><circle r="2.6"/></svg>
-                </div>
-              </div>
-              <div class="msz-pcard-body">
-                <h3>Atrofia vaginal e vulvar</h3>
-                <p>Tratamentos direcionados às alterações dos tecidos que podem ocorrer especialmente durante determinadas fases da vida.</p>
-                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#atrofia-vaginal" aria-label="Saiba mais sobre atrofia vaginal e vulvar">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              </div>
-            </article>
-            <article class="msz-pcard" data-area="regenerativa" data-reveal="petal">
+            <article class="msz-pcard" data-area="clinica regenerativa" data-reveal="petal">
               <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/piPmYwl1Y3XjTvZc9fcdunYL.webp" alt="Flor de lírio branco apoiada no quadril" loading="lazy" width="1031" height="665" style="object-position:62% 45%"></div>
               <div class="msz-pcard-body">
                 <h3>Peeling íntimo</h3>
@@ -417,16 +447,7 @@
                 <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#peeling-intimo" aria-label="Saiba mais sobre o peeling íntimo">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </article>
-            <!-- Cirurgia Ginecológica -->
-            <article class="msz-pcard" data-area="cirurgica" data-reveal="petal">
-              <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/lZfbK9CvbkVJ9lzVZcLm3Bm2.webp" alt="Mãos segurando uma rosa" loading="lazy" width="1048" height="676"></div>
-              <div class="msz-pcard-body">
-                <h3>Ninfoplastia</h3>
-                <p>Procedimento cirúrgico para redução ou remodelação dos pequenos lábios.</p>
-                <a class="msz-more" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos#ninfoplastia" aria-label="Saiba mais sobre a ninfoplastia">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              </div>
-            </article>
-            <article class="msz-pcard" data-area="cirurgica" data-reveal="petal">
+            <article class="msz-pcard" data-area="clinica cirurgica" data-reveal="petal">
               <div class="msz-pcard-media"><img src="https://files.greatpages.com.br/images/67944/9EktsDhbkeUkxB94ngUGVzhR.webp" alt="Mãos envolvendo um damasco" loading="lazy" width="1335" height="866"></div>
               <div class="msz-pcard-body">
                 <h3>Tratamentos para Fissuras</h3>
@@ -440,7 +461,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="msz-section msz-section--lilac msz-cta" aria-labelledby="msz-cta-title">
+    <section class="msz-section msz-section--lilac msz-cta msz-cta--areas" aria-labelledby="msz-cta-title">
       <img class="msz-deco msz-flor msz-flor--cta-l" data-reveal="grow" src="https://files.greatpages.com.br/images/67944/pu5ODiL9vYLTUc9YmetYKYVY.webp" alt="" aria-hidden="true" width="1062" height="1755">
       <img class="msz-deco msz-flor msz-flor--cta-r" data-reveal="grow" style="--d:.3s" src="https://files.greatpages.com.br/images/67944/9X9R5OcXfhLzHdIBEsUMoZTL.webp" alt="" aria-hidden="true" width="905" height="1699">
       <div class="msz-petals" aria-hidden="true">
@@ -449,7 +470,6 @@
         <i style="--x:76%;--s:.7;--t:26s;--w:-18s;--dx:-60px"></i>
       </div>
       <div class="msz-container">
-        <svg class="msz-flower" data-reveal="flower" viewBox="-20 -20 40 40" aria-hidden="true"><path style="--r:0deg;--i:0" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:72deg;--i:1" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:144deg;--i:2" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:216deg;--i:3" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><path style="--r:288deg;--i:4" d="M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z"/><circle r="2.6"/></svg>
         <h2 class="msz-title" id="msz-cta-title" data-reveal="words" style="--d:.2s">Não sabe qual procedimento é indicado para você?</h2>
         <p class="msz-lead" data-reveal style="--d:.5s">Agende uma avaliação e construa um plano de cuidado personalizado.</p>
         <div data-reveal style="--d:.65s">
@@ -788,7 +808,7 @@
       infos.forEach(function (i) { i.hidden = i.getAttribute('data-area-info') !== key; });
       var n = 0;
       cards.forEach(function (c) {
-        var on = key === 'todos' || c.getAttribute('data-area') === key;
+        var on = key === 'todos' || (' ' + c.getAttribute('data-area') + ' ').indexOf(' ' + key + ' ') >= 0;
         c.hidden = !on;
         if (on) c.style.setProperty('--d', (n++ * 0.09) + 's');
       });
