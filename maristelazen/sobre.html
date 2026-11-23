@@ -159,6 +159,9 @@
 #msz .msz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
 #msz .msz-footer-brand{max-width:340px;text-align:center}
 #msz .msz-footer-brand img{width:200px;height:auto;margin:0 auto 14px}
+#msz .msz-footer-logo{display:block;width:max-content;margin:0 auto;border-radius:12px}
+#msz .msz-footer-logo img{transition:opacity .7s var(--msz-soft),transform 1s var(--msz-back)}
+#msz .msz-footer-logo:hover img{opacity:.8;transform:translateY(-3px) scale(1.02)}
 #msz .msz-footer-brand p{font-size:14px;line-height:1.5;color:var(--msz-purple)}
 #msz .msz-footer-nav{justify-self:end}
 #msz .msz-footer-nav li + li,#msz .msz-footer-contact li + li{margin-top:12px}
@@ -440,7 +443,7 @@
     <div class="msz-container">
       <div class="msz-footer-grid">
         <div class="msz-footer-brand" data-reveal>
-          <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Logotipo%20-%20%20Mari%27Stela%20Zen%20-%20Com%20ap%C3%B3stofro%201.png" alt="Dra. Mari’Stela Zen" loading="lazy" width="1212" height="796">
+          <a class="msz-footer-logo" href="https://marketing.agenciacapp.com.br/maristelazen" aria-label="Dra. Mari’Stela Zen — página inicial"><img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Logotipo%20-%20%20Mari%27Stela%20Zen%20-%20Com%20ap%C3%B3stofro%201.png" alt="Dra. Mari’Stela Zen" loading="lazy" width="1212" height="796"></a>
           <p>Ginecologista clínica e regenerativa com experiência e atendimento individualizado.</p>
           <!-- <p>CRM-RS 00000 · RQE 00000</p> -->
         </div>
