@@ -23,12 +23,48 @@ coloque o ID do bloco em `BLOCK_ID`.
 Imagens novas desta página vêm do Great Pages (`files.greatpages.com.br/images/67944/...`); a galeria
 reaproveita as fotos da Home.
 
+## Áreas de cuidado — `areas.html`
+
+Publicação: https://marketing.agenciacapp.com.br/maristelazen/areas
+
+Abas Ginecologia Clínica · Ginecologia Regenerativa · Cirurgia Ginecológica · Todos os Procedimentos.
+Cada aba tem link próprio (a Home usa esses links):
+
+| Aba | Link | Procedimentos |
+|---|---|---|
+| Ginecologia Clínica | `/areas#clinica` (padrão) | Menopausa, Líquen |
+| Ginecologia Regenerativa | `/areas#regenerativa` | Laser de CO₂, Incontinência urinária, Atrofia vaginal e vulvar, Peeling íntimo |
+| Cirurgia Ginecológica | `/areas#cirurgica` | Ninfoplastia, Fissuras |
+| Todos | `/areas#todos` | os 8 |
+
+Os cards são HTML comum (atributo `data-area` define a aba). "Saiba mais" leva ao detalhe em `/procedimentos#...`.
+
+## Procedimentos — `procedimentos.html`
+
+Publicação: https://marketing.agenciacapp.com.br/maristelazen/procedimentos
+
+Uma página só, com dois modos:
+
+- **sem `#`** → lista de procedimentos agrupada por área;
+- **com `#`** → página de detalhe (layout do PDF): `#laser-co2`, `#incontinencia-urinaria`, `#atrofia-vaginal`,
+  `#peeling-intimo`, `#ninfoplastia`, `#fissuras`, `#menopausa`, `#liquen`.
+
+A troca entre telas acontece sem recarregar (com fade), o botão "voltar" do navegador funciona e o título da aba do
+navegador muda para o nome do procedimento.
+
+**Todos os textos ficam no bloco `<script type="application/json" id="msz-proc-data">`**, no fim do arquivo:
+nome, resumo (card), subtítulo (abertura), imagem, "O que é", lista de indicações/sintomas, cuidados e etapas.
+Para mudar um texto, edite ali (mantendo as aspas e vírgulas do formato JSON). Itens de lista com `"link"`
+viram atalho para outro procedimento (ex.: no Laser, "Atrofia vaginal e vulvar" leva a `#atrofia-vaginal`).
+Para usar uma foto na Atrofia, preencha `"imagem"` com o nome do arquivo no Great Pages.
+
 ## Código compartilhado entre as páginas
 
-As duas páginas usam o **mesmo `<script id="msz-script">`** (só muda o `BLOCK_ID`) e os mesmos tokens de CSS.
-Ao corrigir algo no script ou nos estilos base, aplique nas duas. Os links entre páginas usam o endereço
-completo (`https://marketing.agenciacapp.com.br/maristelazen...`); os do menu que apontam para seções da Home
-(`#msz-areas`, `#msz-procedimentos`, `#msz-contato`) posicionam a seção logo abaixo do cabeçalho.
+As 4 páginas usam o **mesmo `<script id="msz-script">`** (só muda o `BLOCK_ID`) e os mesmos tokens de CSS.
+Para alterar o script, edite em uma página e rode `python3 sincronizar_script.py <página editada>` nesta pasta:
+ele copia para as outras mantendo o `BLOCK_ID` de cada uma. Os links entre páginas usam o endereço completo
+(`https://marketing.agenciacapp.com.br/maristelazen...`); o link de "Contato" (`#msz-contato`) posiciona a seção
+logo abaixo do cabeçalho.
 
 ### O que dá para editar com facilidade
 

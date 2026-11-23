@@ -1,0 +1,1353 @@
+<!--
+  Mari'Stela Zen — PROCEDIMENTOS
+  Great Pages · cole este código inteiro em um elemento HTML dentro do bloco da página
+  https://marketing.agenciacapp.com.br/maristelazen/procedimentos
+  Sem # no link: lista de procedimentos por área.
+  Com #: página de detalhe — #laser-co2 · #incontinencia-urinaria · #atrofia-vaginal · #peeling-intimo
+                               #ninfoplastia · #fissuras · #menopausa · #liquen
+  Os textos ficam no bloco <script id="msz-proc-data"> (JSON), no fim do código.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://files.greatpages.com.br" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300..700&display=swap">
+
+<style>
+/* ============ Base / tokens (idênticos em todas as páginas) ============ */
+#msz{
+  --msz-cream:#F8F5F2;
+  --msz-lilac:#EDE8F0;
+  --msz-purple:#9E55AC;
+  --msz-purple-dark:#82408F;
+  --msz-plum:#493C4B;
+  --msz-text:#5B4E5D;
+  --msz-rose:#DDA9D3;
+  --msz-line:#E2D3E4;
+  --msz-serif:'Libre Baskerville',Georgia,'Times New Roman',serif;
+  --msz-sans:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --msz-max:1280px;
+  --msz-gutter:clamp(20px,4vw,40px);
+  --msz-header-h:76px;
+  --msz-shadow:0 22px 48px -24px rgba(73,60,75,.30);
+  --msz-card-shadow:0 14px 34px -22px rgba(73,60,75,.34);
+  --msz-soft:cubic-bezier(.45,.05,.25,1);
+  --msz-bloom:cubic-bezier(.3,.05,.12,1);
+  --msz-back:cubic-bezier(.3,1.25,.5,1);
+  position:relative;width:100%;
+  font-family:var(--msz-sans);font-size:16px;line-height:1.6;font-weight:400;
+  color:var(--msz-text);background:var(--msz-cream);text-align:left;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
+}
+#msz :where(*),#msz :where(*)::before,#msz :where(*)::after{box-sizing:border-box;margin:0;padding:0;border:0}
+#msz :where(img,svg,iframe){display:block;max-width:100%}
+#msz :where(a){color:inherit;text-decoration:none}
+#msz :where(ul,ol){list-style:none}
+#msz :where(button){font:inherit;color:inherit;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#msz :where(h1,h2,h3,h4){font-family:var(--msz-serif);font-weight:600;color:var(--msz-plum);line-height:1.22;letter-spacing:-.005em;text-wrap:balance}
+#msz :where(p){text-wrap:pretty}
+#msz :where(a,button):focus-visible{outline:2px solid var(--msz-purple);outline-offset:3px;border-radius:6px}
+#msz [hidden]{display:none!important}
+
+#msz .msz-container{width:100%;max-width:calc(var(--msz-max) + 2*var(--msz-gutter));margin:0 auto;padding:0 var(--msz-gutter);position:relative;z-index:1}
+#msz .msz-container--narrow{max-width:calc(980px + 2*var(--msz-gutter))}
+#msz .msz-section{position:relative;overflow:hidden;padding:clamp(56px,6.2vw,88px) 0}
+#msz .msz-section--lilac{background:var(--msz-lilac)}
+#msz section[id]{scroll-margin-top:calc(var(--msz-header-h) - 1px)}
+#msz .msz-kicker{display:block;font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--msz-plum);margin-bottom:12px}
+#msz .msz-title{font-size:clamp(26px,1.2vw + 14px,37px)}
+#msz .msz-lead{font-size:clamp(15px,.3vw + 14px,17px);color:var(--msz-text);max-width:560px}
+#msz .msz-deco{position:absolute;pointer-events:none;user-select:none;z-index:0}
+#msz .msz-w{display:inline-block}
+
+/* Flor que desabrocha (ornamento) */
+#msz .msz-flower{display:block;width:34px;height:34px;margin:0 auto 14px;overflow:visible}
+#msz .msz-flower path{fill:rgba(221,169,211,.38);stroke:var(--msz-purple);stroke-width:1.1;stroke-linejoin:round;transform-box:view-box;transform-origin:0 0;transform:rotate(var(--r))}
+#msz .msz-flower circle{fill:var(--msz-purple);transform-box:fill-box;transform-origin:center}
+
+/* ============ Botões ============ */
+#msz .msz-btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 28px;border-radius:999px;font-family:var(--msz-sans);font-size:14px;font-weight:600;line-height:1.2;white-space:nowrap;transition:color .6s var(--msz-soft),box-shadow .9s var(--msz-soft),transform .9s var(--msz-bloom)}
+#msz .msz-btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:260%;height:0;padding-bottom:260%;border-radius:50%;background:var(--msz-btn-bloom);transform:translate(-50%,-50%) scale(0);transition:transform 1s var(--msz-bloom);pointer-events:none}
+#msz .msz-btn:hover::before{transform:translate(-50%,-50%) scale(1)}
+#msz .msz-btn:hover{transform:translateY(-2px)}
+#msz .msz-btn:active{transform:translateY(0) scale(.98);transition-duration:.6s,.6s,.25s}
+#msz .msz-btn svg{width:16px;height:16px;flex:none;transition:transform .8s var(--msz-bloom)}
+#msz .msz-btn:hover svg{transform:translateX(4px)}
+#msz .msz-btn--primary{background:var(--msz-purple);color:#fff;text-transform:uppercase;letter-spacing:.03em;font-weight:700;font-size:13px;--msz-btn-bloom:radial-gradient(closest-side,#B573C2,#86429A)}
+#msz .msz-btn--primary:hover{box-shadow:0 14px 30px -14px rgba(130,64,143,.75)}
+#msz .msz-btn--soft{background:#fff;color:var(--msz-plum);font-weight:500;font-size:15px;box-shadow:0 8px 24px -16px rgba(73,60,75,.45);--msz-btn-bloom:radial-gradient(closest-side,#B06ABE,#8E479C)}
+#msz .msz-btn--soft:hover{color:#fff;box-shadow:0 16px 32px -16px rgba(130,64,143,.65)}
+#msz .msz-text-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--msz-purple);transition:color .6s var(--msz-soft)}
+#msz .msz-text-link:hover{color:var(--msz-purple-dark)}
+#msz .msz-text-link svg{width:16px;height:16px;transition:transform .9s var(--msz-bloom)}
+#msz .msz-text-link:hover svg{transform:translateX(5px)}
+
+/* ============ Header ============ */
+#msz .msz-header-wrap{position:relative;height:var(--msz-header-h);z-index:9990}
+#msz .msz-header{position:absolute;top:0;left:0;right:0;height:var(--msz-header-h);background:rgba(248,245,242,.94);-webkit-backdrop-filter:saturate(1.3) blur(14px);backdrop-filter:saturate(1.3) blur(14px);transition:box-shadow .8s var(--msz-soft)}
+#msz .msz-header.is-fixed{position:fixed;animation:msz-drop .9s var(--msz-bloom) both;box-shadow:0 10px 30px -18px rgba(73,60,75,.45)}
+#msz .msz-header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+#msz .msz-logo{display:flex;align-items:center;flex:none}
+#msz .msz-logo img{height:34px;width:auto;transition:opacity .7s var(--msz-soft)}
+#msz .msz-logo:hover img{opacity:.75}
+#msz .msz-nav{display:flex;align-items:center;gap:clamp(20px,2.6vw,44px)}
+#msz .msz-nav-links{display:flex;align-items:center;gap:clamp(18px,2.2vw,36px)}
+#msz .msz-nav-links a{position:relative;font-size:15px;font-weight:500;color:var(--msz-purple);padding:6px 0;transition:color .6s var(--msz-soft)}
+#msz .msz-nav-links a:hover{color:var(--msz-purple-dark)}
+#msz .msz-nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;border-radius:2px;background:currentColor;transform:scaleX(0);transform-origin:right center;transition:transform .8s var(--msz-bloom)}
+#msz .msz-nav-links a:hover::after,#msz .msz-nav-links a.is-active::after{transform:scaleX(1);transform-origin:left center}
+#msz .msz-nav .msz-btn{min-height:40px;padding:10px 22px;font-size:12px}
+#msz .msz-burger{display:none;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;color:var(--msz-purple)}
+#msz .msz-burger span{position:relative;display:block;width:22px;height:1.8px;background:currentColor;border-radius:2px;transition:background-color .4s var(--msz-soft)}
+#msz .msz-burger span::before,#msz .msz-burger span::after{content:"";position:absolute;left:0;width:100%;height:100%;background:currentColor;border-radius:2px;transition:transform .6s var(--msz-bloom)}
+#msz .msz-burger span::before{transform:translateY(-7px)}
+#msz .msz-burger span::after{transform:translateY(7px)}
+#msz .msz-burger[aria-expanded="true"] span{background:transparent}
+#msz .msz-burger[aria-expanded="true"] span::before{transform:rotate(45deg)}
+#msz .msz-burger[aria-expanded="true"] span::after{transform:rotate(-45deg)}
+
+/* ============ Abertura da página ============ */
+#msz .msz-pagehero{position:relative;overflow:hidden;background:var(--msz-lilac);padding:clamp(56px,6vw,90px) 0}
+#msz .msz-pagehero h1{font-size:clamp(26px,.9vw + 16px,34px);line-height:1.22}
+#msz .msz-pagehero .msz-lead{margin-top:14px;max-width:640px;font-size:clamp(16px,.35vw + 14px,18px)}
+#msz .msz-pagehero-text{margin-top:16px;max-width:700px}
+#msz .msz-pagehero-text p{font-size:clamp(15px,.25vw + 14px,16.5px);line-height:1.65}
+#msz .msz-pagehero-text p + p{margin-top:12px}
+#msz .msz-pagehero-text a{color:var(--msz-purple);font-weight:600;background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;transition:background-size .8s var(--msz-bloom),color .6s var(--msz-soft)}
+#msz .msz-pagehero-text a:hover{background-size:100% 1.5px;color:var(--msz-purple-dark)}
+#msz .msz-pattern{position:absolute;pointer-events:none;z-index:0;height:auto;max-width:none}
+#msz .msz-pattern--l{left:-7%;top:-22%;width:clamp(300px,30vw,560px)}
+#msz .msz-pattern--r{right:-6%;top:-14%;width:clamp(260px,26vw,470px)}
+#msz .msz-pattern.is-visible{animation:msz-breathe 14s ease-in-out 2.5s infinite}
+
+/* Pétalas caindo */
+#msz .msz-petals{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#msz .msz-petals i{position:absolute;top:-30px;left:var(--x);width:13px;height:17px;border-radius:0 100% 0 100%;background:linear-gradient(135deg,rgba(221,169,211,.85),rgba(158,85,172,.35));box-shadow:0 2px 6px rgba(120,60,130,.12);scale:var(--s,1);opacity:0;animation:msz-fall var(--t,20s) ease-in-out var(--w,0s) infinite;will-change:transform,opacity}
+
+/* ============ Abas das áreas ============ */
+#msz .msz-tabs-wrap{display:flex;justify-content:center}
+#msz .msz-tabs{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;padding:4px}
+#msz .msz-tab{position:relative;z-index:1;min-height:44px;padding:10px 22px;border-radius:999px;border:1.5px solid var(--msz-purple);color:var(--msz-purple);font-size:14.5px;font-weight:500;white-space:nowrap;transition:color .6s var(--msz-soft),background-color .6s var(--msz-soft),border-color .6s var(--msz-soft)}
+#msz .msz-tab:hover{background-color:rgba(158,85,172,.08)}
+#msz .msz-tab[aria-selected="true"]{color:#fff;background-color:var(--msz-purple)}
+#msz .msz-tabs.has-indicator .msz-tab[aria-selected="true"]{background-color:transparent}
+#msz .msz-tab-indicator{position:absolute;z-index:0;left:0;top:0;width:0;height:0;border-radius:999px;background:var(--msz-purple);box-shadow:0 12px 26px -14px rgba(130,64,143,.8);opacity:0;transition:transform .8s var(--msz-bloom),width .8s var(--msz-bloom),height .8s var(--msz-bloom),opacity .4s var(--msz-soft)}
+#msz .msz-tabs.has-indicator .msz-tab-indicator{opacity:1}
+#msz .msz-tab-indicator.is-instant{transition:none}
+
+#msz .msz-areainfo{position:relative;max-width:960px;margin:28px auto 26px;background:#fff;border-radius:24px;box-shadow:var(--msz-shadow);padding:clamp(26px,3vw,36px) clamp(22px,7vw,110px);text-align:center;transition:opacity .35s var(--msz-soft),filter .35s var(--msz-soft),translate .5s var(--msz-bloom)}
+#msz .msz-areainfo.is-swapping{opacity:0;filter:blur(4px);translate:0 8px}
+#msz .msz-areainfo h2{font-size:clamp(24px,.8vw + 16px,30px)}
+#msz .msz-areainfo p{margin:12px auto 0;font-size:15px;line-height:1.65;max-width:640px}
+
+/* ============ Cards de procedimento ============ */
+#msz .msz-pgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:960px;margin:0 auto}
+#msz .msz-pgrid > .msz-pcard{flex:0 1 calc((100% - 48px) / 3);min-width:0}
+#msz .msz-pcard{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--msz-shadow);transition:transform 1.1s var(--msz-bloom),box-shadow 1.1s var(--msz-soft)}
+#msz .msz-pcard:hover{transform:translateY(-8px);box-shadow:0 34px 60px -30px rgba(73,60,75,.4)}
+#msz .msz-pcard-media{position:relative;aspect-ratio:206/133;overflow:hidden;background:var(--msz-lilac)}
+#msz .msz-pcard-media > img{width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--msz-soft)}
+#msz .msz-pcard:hover .msz-pcard-media > img{transform:scale(1.07)}
+#msz .msz-pcard-body{display:flex;flex-direction:column;flex:1;padding:20px 22px 24px}
+#msz .msz-pcard h3{font-size:clamp(18px,.35vw + 15px,21px)}
+#msz .msz-pcard p{margin-top:10px;font-size:14.5px;line-height:1.55}
+#msz .msz-more{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:20px;font-size:13px;font-weight:600;color:var(--msz-plum);transition:color .6s var(--msz-soft)}
+#msz .msz-more::after{content:"";position:absolute;inset:0;z-index:2}
+#msz .msz-more svg{width:14px;height:14px;transition:transform .9s var(--msz-bloom)}
+#msz .msz-pcard:hover .msz-more{color:var(--msz-purple)}
+#msz .msz-pcard:hover .msz-more svg{transform:translateX(5px)}
+/* arte para procedimento sem foto */
+#msz .msz-art{position:relative;display:grid;place-items:center;width:100%;height:100%;overflow:hidden;background:radial-gradient(120% 95% at 28% 18%,#F8EDF6 0%,#EEDFF1 52%,#E3CCE7 100%)}
+#msz .msz-art > img{position:absolute;left:-15%;top:-15%;width:130%;height:130%;max-width:none;object-fit:cover;opacity:.95}
+#msz .msz-art .msz-flower{position:relative;width:clamp(52px,22%,86px);height:auto;aspect-ratio:1;margin:0}
+#msz .msz-pcard:hover .msz-art .msz-flower{rotate:18deg;transition:rotate 1.4s var(--msz-back)}
+
+/* ============ CTA ============ */
+#msz .msz-cta{text-align:center}
+#msz .msz-cta .msz-title{font-size:clamp(26px,1.3vw + 15px,38px)}
+#msz .msz-cta .msz-lead{margin:16px auto 0;max-width:470px}
+#msz .msz-cta .msz-btn{margin-top:clamp(26px,3vw,36px);min-height:52px;padding:14px 40px;font-size:16px}
+#msz .msz-flor{height:auto;transform-origin:50% 100%}
+#msz .msz-flor--cta-l{left:clamp(0px,10vw,170px);bottom:-6px;width:clamp(120px,10vw,190px)}
+#msz .msz-flor--cta-r{right:clamp(0px,11vw,190px);bottom:-6px;width:clamp(110px,9vw,170px)}
+
+/* ============ Rodapé ============ */
+#msz .msz-footer{padding:clamp(48px,5vw,64px) 0 28px}
+#msz .msz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+#msz .msz-footer-brand{max-width:340px;text-align:center}
+#msz .msz-footer-brand img{width:200px;height:auto;margin:0 auto 14px}
+#msz .msz-footer-logo{display:block;width:max-content;margin:0 auto;border-radius:12px}
+#msz .msz-footer-logo img{transition:opacity .7s var(--msz-soft),transform 1s var(--msz-back)}
+#msz .msz-footer-logo:hover img{opacity:.8;transform:translateY(-3px) scale(1.02)}
+#msz .msz-footer-brand p{font-size:14px;line-height:1.5;color:var(--msz-purple)}
+#msz .msz-footer-nav{justify-self:end}
+#msz .msz-footer-nav li + li,#msz .msz-footer-contact li + li{margin-top:12px}
+#msz .msz-footer-nav a,#msz .msz-footer-contact a{display:inline-block;transition:color .6s var(--msz-soft),transform .8s var(--msz-bloom)}
+#msz .msz-footer-nav a{font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#A65BB2}
+#msz .msz-footer-contact a,#msz .msz-footer-contact address{font-size:14px;font-style:italic;line-height:1.45;color:#A65BB2}
+#msz .msz-footer-nav a:hover,#msz .msz-footer-contact a:hover{color:var(--msz-plum);transform:translateX(4px)}
+#msz .msz-footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:clamp(36px,4vw,56px);padding-top:24px;border-top:1px solid var(--msz-line);font-size:13px;color:#A65BB2}
+#msz .msz-footer-bottom a{transition:color .6s var(--msz-soft)}
+#msz .msz-footer-bottom a:hover{color:var(--msz-plum)}
+
+/* ============ WhatsApp flutuante ============ */
+#msz .msz-fab{position:fixed;right:clamp(16px,2.4vw,28px);bottom:clamp(16px,2.4vw,28px);z-index:9991;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--msz-purple);color:#fff;box-shadow:0 14px 30px -10px rgba(130,64,143,.65);opacity:0;visibility:hidden;transform:translateY(18px) scale(.6) rotate(-30deg);transition:opacity .8s var(--msz-soft),visibility .8s,transform 1.1s var(--msz-back),background-color .7s var(--msz-soft),box-shadow .9s var(--msz-soft)}
+#msz .msz-fab svg{width:28px;height:28px}
+#msz .msz-fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--msz-purple);animation:msz-pulse 3.2s var(--msz-soft) infinite}
+#msz .msz-fab.is-visible{opacity:1;visibility:visible;transform:none}
+#msz .msz-fab.is-visible:hover{transform:scale(1.07);background-color:var(--msz-purple-dark);box-shadow:0 18px 36px -12px rgba(130,64,143,.7)}
+
+/* ============ Aparições (só com JS ativo) ============ */
+#msz.msz-js [data-reveal=""]{transition:opacity 1.4s var(--msz-soft) var(--d,0s),translate 1.7s var(--msz-bloom) var(--d,0s),scale 1.7s var(--msz-bloom) var(--d,0s),filter 1.4s var(--msz-soft) var(--d,0s)}
+#msz.msz-js [data-reveal=""]:not(.is-visible){opacity:0;translate:0 36px;scale:.98;filter:blur(5px)}
+#msz.msz-js [data-reveal="petal"]{transform-origin:50% 100%;transition:opacity 1.4s var(--msz-soft) var(--d,0s),translate 1.8s var(--msz-bloom) var(--d,0s),rotate 1.8s var(--msz-bloom) var(--d,0s),scale 1.8s var(--msz-bloom) var(--d,0s),filter .9s var(--msz-soft),transform 1.1s var(--msz-bloom),box-shadow 1.1s var(--msz-soft)}
+#msz.msz-js [data-reveal="petal"]:not(.is-visible){opacity:0;translate:0 44px;rotate:-3deg;scale:.94}
+#msz.msz-js [data-reveal="words"] .msz-w{transition:opacity 1.2s var(--msz-soft),translate 1.5s var(--msz-bloom),filter 1.2s var(--msz-soft);transition-delay:calc(var(--d,0s) + var(--i,0) * 70ms)}
+#msz.msz-js [data-reveal="words"]:not(.is-visible) .msz-w{opacity:0;translate:0 .6em;filter:blur(5px)}
+#msz.msz-js [data-reveal="grow"]{clip-path:inset(0 0 0 0);transition:clip-path 3s var(--msz-soft) var(--d,0s),opacity 1.8s var(--msz-soft) var(--d,0s)}
+#msz.msz-js [data-reveal="grow"]:not(.is-visible){clip-path:inset(100% 0 0 0);opacity:0}
+#msz .msz-flor.is-visible{animation:msz-sway 12s ease-in-out 3s infinite}
+#msz.msz-js .msz-flower path{transition:transform 1.5s var(--msz-bloom) calc(var(--d,0s) + var(--i) * 90ms),opacity 1s var(--msz-soft) calc(var(--d,0s) + var(--i) * 90ms)}
+#msz.msz-js .msz-flower:not(.is-visible) path{transform:rotate(calc(var(--r) - 60deg)) scale(.1);opacity:0}
+#msz.msz-js .msz-flower circle{transition:transform 1s var(--msz-back) calc(var(--d,0s) + .55s)}
+#msz.msz-js .msz-flower:not(.is-visible) circle{transform:scale(0)}
+#msz .msz-cta .msz-flower.is-visible,#msz .msz-areas-head .msz-flower.is-visible{animation:msz-breathe-flower 10s ease-in-out 2.4s infinite}
+/* troca de aba: cards somem suave e os novos pousam como pétalas */
+#msz.msz-js .msz-pgrid.is-swapping [data-reveal="petal"]{opacity:0;scale:.96;filter:blur(4px);transition:opacity .32s var(--msz-soft),scale .32s var(--msz-soft),filter .32s var(--msz-soft)}
+#msz.msz-js .msz-pgrid.is-instant [data-reveal="petal"]{transition:none}
+
+@keyframes msz-drop{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
+@keyframes msz-pulse{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(1.5);opacity:0}}
+@keyframes msz-sway{0%,100%{rotate:0deg}25%{rotate:1.6deg}75%{rotate:-1.6deg}}
+@keyframes msz-breathe{0%,100%{scale:1;opacity:1}50%{scale:1.02;opacity:.8}}
+@keyframes msz-breathe-flower{0%,100%{rotate:0deg;scale:1}50%{rotate:12deg;scale:1.06}}
+@keyframes msz-fall{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scaleX(1);opacity:0}
+  10%{opacity:.9}
+  25%{transform:translate3d(calc(var(--dx) * .5),200px,0) rotate(80deg) scaleX(.55)}
+  50%{transform:translate3d(calc(var(--dx) * -.3),400px,0) rotate(170deg) scaleX(1)}
+  75%{transform:translate3d(var(--dx),600px,0) rotate(250deg) scaleX(.6)}
+  88%{opacity:.8}
+  100%{transform:translate3d(calc(var(--dx) * .2),820px,0) rotate(340deg) scaleX(1);opacity:0}
+}
+
+/* ============ Responsivo ============ */
+@media (max-width:960px){
+  #msz{--msz-header-h:68px}
+  #msz .msz-logo img{height:30px}
+  #msz .msz-burger{display:inline-flex}
+  #msz .msz-nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:20px;padding:20px var(--msz-gutter) 28px;background:var(--msz-cream);box-shadow:0 24px 40px -24px rgba(73,60,75,.35);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .6s var(--msz-soft),visibility .6s,transform .8s var(--msz-bloom)}
+  #msz .msz-nav.is-open{opacity:1;visibility:visible;transform:none}
+  #msz .msz-nav-links{flex-direction:column;align-items:stretch;gap:0}
+  #msz .msz-nav-links li,#msz .msz-nav > .msz-btn{opacity:0;translate:0 12px;transition:opacity .7s var(--msz-soft),translate .9s var(--msz-bloom),color .6s var(--msz-soft),transform .9s var(--msz-bloom),box-shadow .9s var(--msz-soft)}
+  #msz .msz-nav.is-open .msz-nav-links li,#msz .msz-nav.is-open > .msz-btn{opacity:1;translate:none}
+  #msz .msz-nav.is-open .msz-nav-links li:nth-child(1){transition-delay:.06s}
+  #msz .msz-nav.is-open .msz-nav-links li:nth-child(2){transition-delay:.12s}
+  #msz .msz-nav.is-open .msz-nav-links li:nth-child(3){transition-delay:.18s}
+  #msz .msz-nav.is-open .msz-nav-links li:nth-child(4){transition-delay:.24s}
+  #msz .msz-nav.is-open > .msz-btn{transition-delay:.3s,.3s,0s,0s,0s}
+  #msz .msz-nav-links a{display:block;padding:14px 0;font-size:17px;border-bottom:1px solid var(--msz-line)}
+  #msz .msz-nav-links a::after{display:none}
+  #msz .msz-nav .msz-btn{min-height:50px;font-size:13px}
+  #msz .msz-pgrid{max-width:640px}
+  #msz .msz-pgrid > .msz-pcard{flex-basis:calc((100% - 24px) / 2)}
+  #msz .msz-pattern{opacity:.7}
+  #msz .msz-footer-grid{grid-template-columns:1fr 1fr}
+  #msz .msz-footer-brand{grid-column:1/-1;margin:0 auto}
+  #msz .msz-footer-nav{justify-self:start}
+}
+@media (max-width:720px){
+  #msz .msz-tabs-wrap{margin:0 calc(-1*var(--msz-gutter))}
+  #msz .msz-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px var(--msz-gutter);gap:10px;scroll-padding:0 var(--msz-gutter)}
+  #msz .msz-tabs::-webkit-scrollbar{display:none}
+  #msz .msz-flor--cta-l,#msz .msz-flor--cta-r{opacity:.55}
+}
+@media (max-width:560px){
+  #msz .msz-pgrid{max-width:420px}
+  #msz .msz-pgrid > .msz-pcard{flex-basis:100%}
+  #msz .msz-pattern--l{left:-40%;top:-10%;width:340px}
+  #msz .msz-pattern--r{right:-45%;width:300px}
+  #msz .msz-flor--cta-l{left:-30px}
+  #msz .msz-flor--cta-r{right:-30px}
+  #msz .msz-footer-grid{grid-template-columns:1fr;text-align:center}
+  #msz .msz-footer-nav,#msz .msz-footer-contact{justify-self:center}
+  #msz .msz-footer-bottom{flex-direction:column;text-align:center}
+}
+/* Modo suave ("reduzir movimento" no sistema): fades e cores continuam; saem deslocamentos e loops */
+#msz.msz-motion-soft .msz-petals{display:none}
+#msz.msz-motion-soft .msz-flor,#msz.msz-motion-soft .msz-flower,#msz.msz-motion-soft .msz-pattern,#msz.msz-motion-soft .msz-header.is-fixed{animation:none}
+#msz.msz-motion-soft [data-reveal]:not(.is-visible),
+#msz.msz-motion-soft [data-reveal]:not(.is-visible) .msz-w,
+#msz.msz-motion-soft [data-reveal]:not(.is-visible) img{translate:none;rotate:none;scale:none}
+@media (prefers-reduced-motion:reduce){
+  #msz:not(.msz-js) .msz-petals{display:none}
+}
+
+/* ============ Procedimentos: troca de tela ============ */
+#msz .msz-proc-app{transition:opacity .36s var(--msz-soft),filter .36s var(--msz-soft)}
+#msz .msz-proc-app.is-leaving{opacity:0;filter:blur(6px)}
+
+/* ============ Lista por área ============ */
+#msz .msz-group-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px 40px;margin-bottom:clamp(26px,3vw,36px)}
+#msz .msz-group-head .msz-lead{margin-top:10px}
+#msz .msz-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#msz .msz-row{position:relative;display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);min-height:210px;background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--msz-card-shadow)}
+#msz.msz-js .msz-row,#msz .msz-row{transition:opacity 1.4s var(--msz-soft) var(--d,0s),translate 1.8s var(--msz-bloom) var(--d,0s),rotate 1.8s var(--msz-bloom) var(--d,0s),scale 1.8s var(--msz-bloom) var(--d,0s),transform 1.1s var(--msz-bloom),box-shadow 1.1s var(--msz-soft)}
+#msz .msz-row:hover{transform:translateY(-6px);box-shadow:0 30px 54px -30px rgba(73,60,75,.42)}
+#msz .msz-row-media{position:relative;display:block;overflow:hidden;background:var(--msz-lilac)}
+#msz .msz-row-media > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--msz-soft)}
+#msz .msz-row:hover .msz-row-media > img{transform:scale(1.07)}
+#msz .msz-row-media .msz-art{position:absolute;inset:0}
+#msz .msz-row-body{display:flex;flex-direction:column;align-items:flex-start;padding:22px 24px 24px}
+#msz .msz-row h3{font-size:clamp(18px,.35vw + 15px,21px)}
+#msz .msz-row-text{display:block;margin:8px 0 18px;font-size:14.5px;line-height:1.55;color:var(--msz-text)}
+#msz .msz-pill{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:8px 16px;border-radius:999px;border:1.5px solid var(--msz-purple);color:var(--msz-purple);font-size:13px;font-weight:600;transition:background-color .7s var(--msz-soft),color .6s var(--msz-soft)}
+#msz .msz-pill svg{width:14px;height:14px;transition:transform .9s var(--msz-bloom)}
+#msz .msz-row:hover .msz-pill{background-color:var(--msz-purple);color:#fff}
+#msz .msz-row:hover .msz-pill svg{transform:translateX(4px)}
+
+/* ============ Detalhe ============ */
+#msz .msz-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-bottom:14px;font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--msz-plum)}
+#msz .msz-crumbs a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .8s var(--msz-bloom),color .6s var(--msz-soft)}
+#msz .msz-crumbs a:hover{color:var(--msz-purple);background-size:100% 1px}
+#msz .msz-crumbs [aria-current]{color:var(--msz-purple)}
+#msz .msz-hero-actions{margin-top:26px}
+#msz .msz-what{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:clamp(36px,6vw,100px);align-items:center;max-width:1000px;margin:0 auto}
+#msz .msz-what h2{font-size:clamp(24px,.9vw + 15px,31px);margin-bottom:16px}
+#msz .msz-what p{font-size:clamp(15px,.25vw + 14px,16.5px);line-height:1.7;max-width:520px}
+#msz .msz-what p + p{margin-top:14px}
+#msz .msz-media-wrap{position:relative}
+#msz .msz-media-wrap::before{content:"";position:absolute;inset:8% -7% -6% 9%;border-radius:28px;background:linear-gradient(140deg,rgba(221,169,211,.45),rgba(237,232,240,.9));z-index:-1;transition:opacity 1.2s var(--msz-soft) calc(var(--d,0s) + .5s),translate 1.8s var(--msz-bloom) calc(var(--d,0s) + .5s),transform 1.6s var(--msz-soft)}
+#msz .msz-media-wrap:hover::before{transform:translate(10px,10px) rotate(1.5deg)}
+#msz .msz-media{position:relative;aspect-ratio:283/340;border-radius:24px;overflow:hidden;background:var(--msz-lilac);box-shadow:0 26px 50px -26px rgba(73,60,75,.45);transition:opacity 1s var(--msz-soft) var(--d,0s)}
+#msz .msz-media > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#msz .msz-media .msz-art{position:absolute;inset:0}
+#msz .msz-media .msz-art .msz-flower{width:96px}
+#msz.msz-js [data-reveal="photo"] img{clip-path:inset(0 0 0 0 round 0px);transition:clip-path 1.7s var(--msz-bloom) var(--d,0s),scale 2.4s var(--msz-bloom) var(--d,0s),opacity 1s var(--msz-soft) var(--d,0s),transform 1.8s var(--msz-soft)}
+#msz.msz-js [data-reveal="photo"]:not(.is-visible) img{clip-path:inset(14% 14% 14% 14% round 40px);scale:1.16;opacity:0}
+#msz.msz-js [data-reveal="photo"]:not(.is-visible) .msz-media{opacity:0}
+#msz.msz-js .msz-media-wrap:not(.is-visible)::before{opacity:0;translate:-22px -22px}
+
+#msz .msz-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,64px);max-width:960px;margin:0 auto;align-items:start}
+#msz .msz-list h2{font-size:clamp(20px,.6vw + 15px,24px);margin-bottom:18px}
+#msz .msz-list ol{display:grid;gap:10px}
+#msz .msz-li{display:flex;align-items:center;gap:16px;min-height:52px;padding:12px 18px;background:#fff;border-radius:14px;box-shadow:0 10px 24px -18px rgba(73,60,75,.42);transition:transform .9s var(--msz-bloom),box-shadow .9s var(--msz-soft)}
+#msz .msz-li--desc{align-items:flex-start;padding:16px 18px}
+#msz .msz-li-n{flex:none;min-width:30px;font-family:var(--msz-serif);font-size:19px;font-weight:600;color:var(--msz-plum);line-height:1.25}
+#msz .msz-li-text{flex:1;font-size:14.5px;line-height:1.5;color:#3A2F3C}
+#msz .msz-li-text strong{display:block;font-weight:600;color:var(--msz-plum);margin-bottom:3px}
+#msz .msz-li-text span{display:block;color:var(--msz-text)}
+#msz .msz-li-go{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:var(--msz-purple);background:var(--msz-lilac);transition:background-color .7s var(--msz-soft),color .6s var(--msz-soft),transform .9s var(--msz-bloom)}
+#msz .msz-li-go svg{width:14px;height:14px}
+#msz .msz-li--link:hover{transform:translateX(4px);box-shadow:0 18px 32px -20px rgba(73,60,75,.5)}
+#msz .msz-li--link:hover .msz-li-go{background:var(--msz-purple);color:#fff;transform:translateX(2px)}
+
+#msz .msz-steps{max-width:680px;margin-top:22px}
+#msz .msz-step{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:8px;padding:22px 12px 24px}
+#msz .msz-step::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,var(--msz-purple),var(--msz-rose) 70%,rgba(221,169,211,.15));transform-origin:0 50%;transition:transform 1.6s var(--msz-bloom) calc(var(--d,0s) + .3s)}
+#msz .msz-step:last-child::after{display:none}
+#msz.msz-js .msz-step:not(.is-visible)::after{transform:scaleX(0)}
+#msz .msz-step-n{grid-row:span 2;font-family:var(--msz-serif);font-size:clamp(24px,1vw + 16px,30px);font-weight:600;color:var(--msz-plum);line-height:1}
+#msz .msz-step h3{font-family:var(--msz-sans);font-size:17px;font-weight:600;color:var(--msz-plum);letter-spacing:0}
+#msz .msz-step p{margin-top:6px;font-size:14.5px;line-height:1.55}
+
+#msz .msz-related{padding-top:0}
+#msz .msz-related .msz-container{padding-top:clamp(44px,4.5vw,64px)}
+#msz .msz-related .msz-container::before{content:"";position:absolute;top:0;left:var(--msz-gutter);right:var(--msz-gutter);height:1px;background:var(--msz-line)}
+#msz .msz-pgrid--wide{max-width:none}
+
+@media (max-width:960px){
+  #msz .msz-rows{grid-template-columns:1fr;max-width:640px;margin:0 auto}
+  #msz .msz-what{grid-template-columns:1fr;max-width:560px}
+  #msz .msz-media-wrap{order:-1;max-width:400px;margin:0 auto;width:100%}
+  #msz .msz-lists{grid-template-columns:1fr;max-width:560px}
+}
+@media (max-width:560px){
+  #msz .msz-row{grid-template-columns:minmax(0,36%) minmax(0,1fr);min-height:180px}
+  #msz .msz-row-body{padding:16px 16px 18px}
+  #msz .msz-row-text{font-size:14px;margin-bottom:14px}
+  #msz .msz-pill{padding:7px 12px;font-size:12px}
+  #msz .msz-step{grid-template-columns:48px minmax(0,1fr);padding:18px 4px 20px}
+  #msz .msz-li{padding:12px 14px;gap:12px}
+}
+</style>
+
+<div id="msz" lang="pt-BR">
+
+  <!-- Cabeçalho -->
+  <div class="msz-header-wrap">
+    <header class="msz-header">
+      <div class="msz-container msz-header-inner">
+        <a class="msz-logo" href="https://marketing.agenciacapp.com.br/maristelazen" aria-label="Dra. Mari’Stela Zen — página inicial">
+          <img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Logotipo%20Mari%27Stela%20Zen%20-%20Com%20ap%C3%B3stofro%201.png" alt="Dra. Mari’Stela Zen" width="246" height="36">
+        </a>
+        <button class="msz-burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="msz-nav"><span></span></button>
+        <nav class="msz-nav" id="msz-nav" aria-label="Menu principal">
+          <ul class="msz-nav-links">
+            <li><a href="https://marketing.agenciacapp.com.br/maristelazen/areas">Áreas de cuidado</a></li>
+            <li><a class="is-active" aria-current="page" href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos">Procedimentos</a></li>
+            <li><a href="https://marketing.agenciacapp.com.br/maristelazen/sobre">Sobre Nós</a></li>
+            <li><a href="https://marketing.agenciacapp.com.br/maristelazen#msz-contato">Contato</a></li>
+          </ul>
+          <a class="msz-btn msz-btn--primary" data-msz-wa href="https://wa.me/5551986831387?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Mari%27Stela%20Zen." target="_blank" rel="noopener">Agende sua consulta</a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <!-- Conteúdo montado pelo script a partir dos dados (lista ou detalhe, conforme o # do link) -->
+  <main class="msz-proc-app" data-msz-proc-app aria-live="polite"></main>
+
+  <!-- Rodapé -->
+  <footer class="msz-footer">
+    <div class="msz-container">
+      <div class="msz-footer-grid">
+        <div class="msz-footer-brand" data-reveal>
+          <a class="msz-footer-logo" href="https://marketing.agenciacapp.com.br/maristelazen" aria-label="Dra. Mari’Stela Zen — página inicial"><img src="https://cdn.jsdelivr.net/gh/analistacapp2-create/capp-maristelazen@main/Logotipo%20-%20%20Mari%27Stela%20Zen%20-%20Com%20ap%C3%B3stofro%201.png" alt="Dra. Mari’Stela Zen" loading="lazy" width="1212" height="796"></a>
+          <p>Ginecologista clínica e regenerativa com experiência e atendimento individualizado.</p>
+          <!-- <p>CRM-RS 00000 · RQE 00000</p> -->
+        </div>
+        <ul class="msz-footer-nav" data-reveal style="--d:.12s" aria-label="Links do rodapé">
+          <li><a href="https://marketing.agenciacapp.com.br/maristelazen/areas">Áreas de cuidado</a></li>
+          <li><a href="https://marketing.agenciacapp.com.br/maristelazen/procedimentos" aria-current="page">Procedimentos</a></li>
+          <li><a href="https://marketing.agenciacapp.com.br/maristelazen/sobre">Sobre Nós</a></li>
+          <li><a href="https://marketing.agenciacapp.com.br/maristelazen#msz-contato">Contato</a></li>
+          <li><a data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener">Agende sua consulta</a></li>
+        </ul>
+        <ul class="msz-footer-contact" data-reveal style="--d:.24s">
+          <li><a data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener">+55 (51) 98683-1387</a></li>
+          <li><a href="mailto:clinicazen@outlook.com">clinicazen@outlook.com</a></li>
+          <li><address>Av. Benjamin Constant, 1058 - Sala 01<br>Centro, Lajeado/RS</address></li>
+        </ul>
+      </div>
+      <div class="msz-footer-bottom">
+        <span>© <span data-msz-year>2026</span> Dra. Mari’Stela Zen. Todos os direitos reservados.</span>
+        <a href="https://agenciacapp.com.br" target="_blank" rel="noopener">Desenvolvido por Agência CAPP</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a class="msz-fab" data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>
+  </a>
+</div>
+
+<!-- ============ TEXTOS DOS PROCEDIMENTOS (edite aqui) ============ -->
+<script type="application/json" id="msz-proc-data">
+{
+  "imagens": "https://files.greatpages.com.br/images/67944/",
+  "arte": "gBfHAJYPsknDBJXlJzEUXmwT.webp",
+  "padroes": ["f9ECh4lHnpDUxwIJwDcdmWD3.webp", "gBfHAJYPsknDBJXlJzEUXmwT.webp"],
+  "flores": ["pu5ODiL9vYLTUc9YmetYKYVY.webp", "9X9R5OcXfhLzHdIBEsUMoZTL.webp"],
+  "indice": {
+    "titulo": "Procedimentos",
+    "texto": "Tratamentos individualizados para a saúde, bem-estar e qualidade de vida da mulher."
+  },
+  "cta": {
+    "titulo": "Não sabe qual procedimento é indicado para você?",
+    "texto": "Agende uma avaliação e construa um plano de cuidado personalizado.",
+    "msg": "Olá! Gostaria de agendar uma avaliação para saber qual tratamento é indicado para mim."
+  },
+  "ctaDetalhe": {
+    "titulo": "Agende sua avaliação",
+    "texto": "Converse com a Dra. Mari’Stela sobre a indicação mais adequada para você."
+  },
+  "ordem": ["clinica", "regenerativa", "cirurgica"],
+  "areas": {
+    "clinica": { "nome": "Ginecologia Clínica", "resumo": "Prevenção, diagnóstico e acompanhamento das principais condições ginecológicas, em todas as fases da vida." },
+    "regenerativa": { "nome": "Ginecologia Regenerativa", "resumo": "Tratamentos voltados à saúde íntima e à qualidade dos tecidos da região íntima." },
+    "cirurgica": { "nome": "Cirurgia Ginecológica", "resumo": "Procedimentos indicados de forma individualizada, com planejamento e acompanhamento em todas as etapas." }
+  },
+  "procedimentos": [
+    {
+      "slug": "menopausa",
+      "area": "clinica",
+      "nome": "Menopausa",
+      "resumo": "Acompanhamento individualizado para as mudanças e sintomas relacionados à menopausa.",
+      "subtitulo": "Acompanhamento individualizado para cuidar da saúde e da qualidade de vida da mulher durante uma nova fase.",
+      "imagem": "MhmwHU21292iWf9uVGLVUdCv.webp",
+      "alt": "Mulher madura com expressão serena",
+      "pos": "38% 35%",
+      "oque": {
+        "titulo": "O que acontece durante a menopausa?",
+        "textos": [
+          "A menopausa marca o fim natural dos ciclos menstruais e da fase reprodutiva da mulher.",
+          "A transição hormonal pode provocar diferentes mudanças no corpo e na rotina, tornando o acompanhamento ginecológico importante para compreender os sintomas e definir as possibilidades de cuidado."
+        ]
+      },
+      "lista": {
+        "rotulo": "Sintomas",
+        "titulo": "Algumas das mudanças que podem acontecer",
+        "itens": [
+          "Ondas de calor",
+          { "t": "Ressecamento vaginal", "link": "atrofia-vaginal" },
+          "Alterações do sono",
+          "Alterações de humor",
+          "Queda da libido",
+          "Mudanças no corpo e no peso"
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "Cuidar da menopausa é cuidar da saúde como um todo",
+        "itens": [
+          "Mantenha acompanhamento ginecológico regular.",
+          "Converse sobre sintomas que estejam afetando sua qualidade de vida.",
+          "Busque orientação individualizada antes de iniciar qualquer tratamento."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do acompanhamento",
+        "itens": [
+          { "t": "Escuta", "d": "Compreensão dos sintomas, histórico e mudanças percebidas." },
+          { "t": "Avaliação", "d": "Análise individual das necessidades e características de cada mulher." },
+          { "t": "Plano de cuidado", "d": "Definição das possibilidades de tratamento e acompanhamento." },
+          { "t": "Acompanhamento contínuo", "d": "Reavaliação ao longo do tempo para acompanhar as mudanças dessa fase." }
+        ]
+      }
+    },
+    {
+      "slug": "liquen",
+      "area": "clinica",
+      "nome": "Líquen escleroso",
+      "resumo": "Controle dos sintomas e acompanhamento de uma condição inflamatória que afeta a região genital.",
+      "subtitulo": "Cuidado ginecológico para controle dos sintomas e acompanhamento de uma condição inflamatória que afeta a região genital.",
+      "imagem": "9EJmroiizhjDvU5pGLP2mjT3.webp",
+      "alt": "Flor de lírio branco sobre a roupa íntima",
+      "pos": "50% 50%",
+      "oque": {
+        "titulo": "O que é o líquen escleroso?",
+        "textos": [
+          "O líquen escleroso é uma condição inflamatória crônica que pode afetar a região genital.",
+          "Pode provocar coceira intensa, ressecamento, manchas esbranquiçadas e afinamento da pele. Em casos mais avançados, também podem surgir fissuras e dor durante o contato íntimo."
+        ]
+      },
+      "lista": {
+        "rotulo": "Sintomas",
+        "titulo": "O que observar",
+        "itens": [
+          "Coceira intensa",
+          "Ressecamento",
+          "Manchas esbranquiçadas",
+          "Afinamento da pele",
+          { "t": "Fissuras", "link": "fissuras" },
+          "Dor ou desconforto no contato íntimo"
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "O acompanhamento é essencial",
+        "itens": [
+          "Mantenha acompanhamento ginecológico.",
+          "Observe mudanças na pele ou surgimento de novos sintomas.",
+          "Siga corretamente o tratamento indicado."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do acompanhamento",
+        "itens": [
+          { "t": "Avaliação", "d": "Análise dos sintomas e das alterações apresentadas." },
+          { "t": "Investigação", "d": "Avaliação das características da condição e das necessidades da paciente." },
+          { "t": "Tratamento", "d": "Definição da abordagem adequada para controlar os sintomas e evitar a progressão da condição." },
+          { "t": "Acompanhamento", "d": "Monitoramento contínuo para acompanhar a evolução e a resposta ao tratamento." }
+        ]
+      }
+    },
+    {
+      "slug": "laser-co2",
+      "area": "regenerativa",
+      "nome": "Laser de CO₂",
+      "resumo": "Tecnologia voltada à regeneração e melhora da qualidade dos tecidos da região íntima.",
+      "subtitulo": "Tecnologia para estimular a regeneração dos tecidos e promover melhora da saúde e qualidade da região íntima.",
+      "imagem": "UWbZArdBwt9jM2Wf5hHUVvRg.webp",
+      "alt": "Profissional segurando o equipamento de Laser de CO₂",
+      "pos": "45% 50%",
+      "oque": {
+        "titulo": "O que é o Laser de CO₂?",
+        "textos": [
+          "O Laser de CO₂ é uma tecnologia utilizada para estimular a regeneração dos tecidos por meio da aplicação controlada de energia na região tratada.",
+          "O tratamento pode ser indicado após avaliação médica, considerando as características e necessidades de cada paciente."
+        ]
+      },
+      "lista": {
+        "rotulo": "Indicações",
+        "titulo": "Para que pode ser indicado",
+        "itens": [
+          { "t": "Atrofia vaginal e vulvar", "link": "atrofia-vaginal" },
+          { "t": "Alterações relacionadas à menopausa", "link": "menopausa" },
+          { "t": "Incontinência urinária", "link": "incontinencia-urinaria" },
+          "Alterações da qualidade dos tecidos"
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "Orientações após o procedimento",
+        "itens": [
+          "Seguir as recomendações médicas.",
+          "Respeitar o período de recuperação indicado.",
+          "Comparecer às consultas de acompanhamento."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do tratamento",
+        "itens": [
+          { "t": "Avaliação individualizada", "d": "Consulta para compreender as queixas, histórico e necessidades da paciente." },
+          { "t": "Planejamento", "d": "Após a avaliação, é definida a indicação e o protocolo mais adequado para cada caso." },
+          { "t": "Realização", "d": "O procedimento é realizado em ambiente adequado, com acompanhamento profissional." },
+          { "t": "Acompanhamento", "d": "A evolução é acompanhada de acordo com a resposta de cada paciente e as orientações médicas." }
+        ]
+      }
+    },
+    {
+      "slug": "incontinencia-urinaria",
+      "area": "regenerativa",
+      "nome": "Incontinência urinária",
+      "resumo": "Avaliação e tratamento individualizado para perdas involuntárias de urina.",
+      "subtitulo": "Avaliação individualizada das causas da perda urinária e definição do tratamento mais adequado para cada mulher.",
+      "imagem": "DO99uMUw9TPDDH3CnLnZfHlT.webp",
+      "alt": "Mulher com as mãos sobre o abdômen",
+      "pos": "40% 50%",
+      "oque": {
+        "titulo": "O que é a incontinência urinária?",
+        "textos": [
+          "A incontinência urinária é caracterizada pela perda involuntária de urina e pode ocorrer em diferentes fases da vida.",
+          "A avaliação médica permite identificar as características de cada caso e orientar o tratamento mais adequado."
+        ]
+      },
+      "lista": {
+        "rotulo": "Para que pode ser indicada",
+        "titulo": "Quando procurar avaliação",
+        "itens": [
+          { "t": "Perda de urina aos esforços", "d": "Perdas que acontecem ao tossir, espirrar, rir, correr ou realizar atividades físicas." },
+          { "t": "Urgência urinária", "d": "Vontade repentina e difícil de controlar de urinar." },
+          { "t": "Alterações urinárias", "d": "Mudanças no controle urinário que começam a interferir na rotina e na qualidade de vida." }
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "Cuidados importantes",
+        "itens": [
+          "Não considerar a perda urinária como algo que precisa ser simplesmente aceito.",
+          "Buscar avaliação quando os sintomas começam a interferir na rotina.",
+          "Seguir o tratamento e as orientações indicadas individualmente."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do atendimento",
+        "itens": [
+          { "t": "Avaliação individualizada", "d": "Investigação das queixas, histórico e características dos sintomas." },
+          { "t": "Identificação das causas", "d": "A avaliação médica permite compreender os fatores envolvidos e as possibilidades de tratamento." },
+          { "t": "Definição do tratamento", "d": "O tratamento é definido de acordo com a causa, intensidade dos sintomas e características de cada paciente." },
+          { "t": "Acompanhamento", "d": "A evolução é acompanhada para avaliar a resposta ao tratamento e realizar ajustes quando necessário." }
+        ]
+      }
+    },
+    {
+      "slug": "atrofia-vaginal",
+      "area": "regenerativa",
+      "nome": "Atrofia vaginal e vulvar",
+      "resumo": "Tratamentos direcionados às alterações dos tecidos que podem ocorrer especialmente durante determinadas fases da vida.",
+      "subtitulo": "Avaliação e tratamento individualizado das alterações dos tecidos íntimos, mais comuns na menopausa e em outras fases de queda hormonal.",
+      "imagem": "",
+      "alt": "",
+      "oque": {
+        "titulo": "O que é a atrofia vaginal e vulvar?",
+        "textos": [
+          "A atrofia vaginal e vulvar é o afinamento dos tecidos da vulva e da vagina, que tendem a ficar mais secos, menos elásticos e mais sensíveis. Na maioria dos casos, está relacionada à redução dos níveis de estrogênio.",
+          "É mais comum após a menopausa, mas também pode surgir no pós-parto e durante a amamentação, com o uso de alguns medicamentos hormonais ou após tratamentos como a retirada dos ovários, quimioterapia e radioterapia. Quando relacionada à menopausa, faz parte do quadro conhecido como síndrome geniturinária da menopausa.",
+          "A avaliação ginecológica permite identificar a causa, a intensidade dos sintomas e as opções de tratamento mais adequadas para cada mulher."
+        ]
+      },
+      "lista": {
+        "rotulo": "Sintomas",
+        "titulo": "Quando procurar avaliação",
+        "itens": [
+          "Ressecamento vaginal",
+          "Ardência, coceira ou irritação na região íntima",
+          "Dor ou desconforto durante as relações",
+          "Sangramento leve ou sensibilidade após o contato íntimo",
+          { "t": "Infecções urinárias de repetição ou urgência para urinar", "link": "incontinencia-urinaria" }
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "Cuidados importantes",
+        "itens": [
+          "Não considerar o desconforto íntimo como algo que precisa ser simplesmente aceito.",
+          "Evitar duchas vaginais e produtos perfumados na região íntima.",
+          "Não usar hormônios ou cremes sem orientação médica."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do tratamento",
+        "itens": [
+          { "t": "Avaliação individualizada", "d": "Conversa sobre os sintomas e o histórico de saúde, com exame ginecológico." },
+          { "t": "Definição do tratamento", "d": "As opções vão de hidratantes e lubrificantes íntimos a terapias hormonais locais e tecnologias como o Laser de CO₂, sempre conforme indicação médica." },
+          { "t": "Tratamento", "d": "Realização da abordagem escolhida, com orientações sobre uso e cuidados." },
+          { "t": "Acompanhamento", "d": "Reavaliação periódica para acompanhar a resposta e ajustar o cuidado quando necessário." }
+        ]
+      }
+    },
+    {
+      "slug": "peeling-intimo",
+      "area": "regenerativa",
+      "nome": "Peeling íntimo",
+      "resumo": "Procedimento voltado à melhora da aparência e qualidade da pele da região íntima, conforme indicação.",
+      "subtitulo": "Tratamento voltado ao clareamento da região íntima, realizado de forma individualizada após avaliação profissional.",
+      "imagem": "piPmYwl1Y3XjTvZc9fcdunYL.webp",
+      "alt": "Flor de lírio branco apoiada no quadril",
+      "pos": "62% 45%",
+      "oque": {
+        "titulo": "O que é o peeling íntimo?",
+        "textos": [
+          "O peeling íntimo é um procedimento realizado com produtos específicos para promover renovação da pele e auxiliar no clareamento da região íntima.",
+          "A escolha do protocolo deve considerar as características da pele e as necessidades individuais de cada paciente."
+        ]
+      },
+      "lista": {
+        "rotulo": "Para quem pode ser indicado",
+        "titulo": "Uma avaliação individualizada",
+        "itens": [
+          "Alterações de pigmentação",
+          "Diferenças de tonalidade da pele",
+          "Interesse no clareamento da região íntima"
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "Após o procedimento",
+        "itens": [
+          "Seguir as orientações fornecidas pela profissional.",
+          "Evitar produtos não recomendados durante o período de recuperação.",
+          "Respeitar os cuidados indicados para a região tratada."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do tratamento",
+        "itens": [
+          { "t": "Avaliação", "d": "Análise da pele e compreensão das expectativas da paciente." },
+          { "t": "Definição do protocolo", "d": "Escolha dos produtos e abordagem adequada para cada caso." },
+          { "t": "Aplicação", "d": "Realização do procedimento seguindo os cuidados necessários." },
+          { "t": "Acompanhamento", "d": "Orientações e acompanhamento da evolução da pele." }
+        ]
+      }
+    },
+    {
+      "slug": "ninfoplastia",
+      "area": "cirurgica",
+      "nome": "Ninfoplastia",
+      "resumo": "Procedimento cirúrgico para redução ou remodelação dos pequenos lábios.",
+      "subtitulo": "Procedimento cirúrgico para remodelação dos pequenos lábios, realizado de forma individualizada e respeitando a anatomia de cada mulher.",
+      "imagem": "lZfbK9CvbkVJ9lzVZcLm3Bm2.webp",
+      "alt": "Mãos segurando uma rosa",
+      "pos": "50% 50%",
+      "oque": {
+        "titulo": "O que é a ninfoplastia?",
+        "textos": [
+          "A ninfoplastia é um procedimento cirúrgico realizado para remodelar os pequenos lábios da região íntima.",
+          "A indicação é individualizada e considera aspectos anatômicos, funcionais e as necessidades de cada paciente, sempre buscando um resultado natural e adequado às características de cada mulher."
+        ]
+      },
+      "lista": {
+        "rotulo": "Para que pode ser indicada",
+        "titulo": "Indicações",
+        "itens": [
+          { "t": "Desconforto físico", "d": "Alterações que possam causar desconforto no dia a dia ou durante atividades físicas." },
+          { "t": "Questões funcionais", "d": "Quando alterações anatômicas interferem na rotina ou nas relações íntimas." },
+          { "t": "Assimetria ou excesso de tecido", "d": "Casos em que existe uma alteração anatômica que possa ser avaliada para correção cirúrgica." }
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "Orientações após a cirurgia",
+        "itens": [
+          "Seguir rigorosamente as orientações médicas.",
+          "Respeitar o período de recuperação indicado.",
+          "Evitar atividades e situações que possam comprometer a cicatrização pelo período recomendado."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do tratamento",
+        "itens": [
+          { "t": "Avaliação individualizada", "d": "Consulta para compreender as queixas, avaliar a anatomia e conversar sobre expectativas e possibilidades." },
+          { "t": "Planejamento cirúrgico", "d": "Definição da técnica e dos cuidados necessários de acordo com as características de cada paciente." },
+          { "t": "Realização do procedimento", "d": "A cirurgia é realizada em ambiente adequado, seguindo protocolos de segurança e cuidados médicos." },
+          { "t": "Acompanhamento", "d": "A paciente recebe orientações específicas e realiza o acompanhamento necessário durante o período de recuperação." }
+        ]
+      }
+    },
+    {
+      "slug": "fissuras",
+      "area": "cirurgica",
+      "nome": "Fissuras",
+      "resumo": "Avaliação e tratamento de fissuras e alterações da região íntima.",
+      "subtitulo": "Avaliação e tratamento de pequenas lesões da região íntima que podem provocar dor, ardência e desconforto.",
+      "imagem": "9EktsDhbkeUkxB94ngUGVzhR.webp",
+      "alt": "Mãos envolvendo um damasco",
+      "pos": "50% 50%",
+      "oque": {
+        "titulo": "O que são fissuras?",
+        "textos": [
+          "Fissuras vaginais são pequenos cortes ou lesões na mucosa da região íntima que podem provocar dor, ardência e, em alguns casos, sangramento.",
+          "Elas podem estar relacionadas a fatores como ressecamento vaginal, atrito, infecções ou alterações hormonais."
+        ]
+      },
+      "lista": {
+        "rotulo": "Sintomas",
+        "titulo": "Quando procurar avaliação",
+        "itens": [
+          "Dor",
+          "Ardência",
+          "Sangramento",
+          "Desconforto durante ou após as relações",
+          "Lesões recorrentes"
+        ]
+      },
+      "cuidados": {
+        "rotulo": "Cuidados",
+        "titulo": "Durante o tratamento",
+        "itens": [
+          "Seguir as orientações médicas.",
+          "Evitar fatores que possam agravar a região.",
+          "Observar a evolução dos sintomas."
+        ]
+      },
+      "etapas": {
+        "titulo": "Etapas do cuidado",
+        "itens": [
+          { "t": "Avaliação individualizada", "d": "Investigação dos sintomas e análise da região afetada." },
+          { "t": "Identificação da causa", "d": "Busca pelos fatores que podem estar relacionados ao surgimento das fissuras." },
+          { "t": "Definição do tratamento", "d": "Escolha da abordagem mais adequada de acordo com a causa identificada." },
+          { "t": "Acompanhamento", "d": "Monitoramento da cicatrização e da resposta ao tratamento." }
+        ]
+      }
+    }
+  ]
+}
+</script>
+
+<script id="msz-script">
+(function () {
+  'use strict';
+  /* ID do bloco no Great Pages. Vazio = detecta sozinho o bloco (id começando com "b_") em volta do código. */
+  var BLOCK_ID = '';
+  var WHATSAPP = '5551986831387';
+  var DEFAULT_MSG = 'Olá! Gostaria de agendar uma consulta com a Dra. Mari’Stela Zen.';
+  var SITE_NAME = 'Dra. Mari’Stela Zen';
+  var SITE = 'https://marketing.agenciacapp.com.br/maristelazen';
+
+  var root = document.getElementById('msz');
+  if (!root || root.getAttribute('data-ready')) return;
+  root.setAttribute('data-ready', '1');
+  root.classList.add('msz-js');
+
+  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || root).querySelectorAll(sel)); };
+  /* Movimento: "completo" por padrão; "suave" (só fades) se o sistema pedir para reduzir movimento.
+     Para conferir o modo completo em qualquer computador, abra a página com ?msz-motion=full */
+  var forced = /[?&]msz-motion=(full|soft)\b/.exec(window.location.search);
+  var systemReduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var motion = forced ? forced[1] : (systemReduce ? 'soft' : 'full');
+  var reduceMotion = motion === 'soft';
+  if (reduceMotion) root.classList.add('msz-motion-soft');
+  if (window.console && console.info) {
+    console.info('[Mari’Stela Zen] animações ativas · modo ' + (reduceMotion ? 'suave (o sistema pede "reduzir movimento"; use ?msz-motion=full para ver o modo completo)' : 'completo'));
+  }
+
+  /* 1) Great Pages: o bloco passa a ocupar a largura total e a crescer com o conteúdo */
+  var chain = (function () {
+    var block = BLOCK_ID ? document.getElementById(BLOCK_ID) : null;
+    var list = [], el = root.parentElement;
+    while (el && el !== document.body && el !== document.documentElement) {
+      list.push(el);
+      if (block ? el === block : /^b_/.test(el.id || '')) return list;
+      el = el.parentElement;
+    }
+    return [];
+  })();
+  function important(el, props) { for (var p in props) el.style.setProperty(p, props[p], 'important'); }
+  function unlock() {
+    chain.forEach(function (el, i) {
+      important(el, { height: 'auto', 'min-height': '0', 'max-height': 'none', width: '100%', 'max-width': 'none', overflow: 'visible', transform: 'none', padding: '0' });
+      if (i < chain.length - 1) important(el, { position: 'relative', top: '0', left: '0', right: 'auto', bottom: 'auto', margin: '0' });
+    });
+  }
+  unlock();
+  window.addEventListener('load', unlock);
+  if (chain.length && window.MutationObserver) {
+    var guard = new MutationObserver(function () {
+      if (chain.some(function (el) { return el.style.getPropertyPriority('height') !== 'important'; })) unlock();
+    });
+    chain.forEach(function (el) { guard.observe(el, { attributes: true, attributeFilter: ['style'] }); });
+  }
+
+  /* 2) Recursos aplicados à página e a todo conteúdo novo (enhance) */
+  function waLink(msg) { return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg || DEFAULT_MSG); }
+  function wireWa(scope) {
+    $$('[data-msz-wa]', scope).forEach(function (a) { a.href = waLink(a.getAttribute('data-msz-wa')); });
+  }
+  /* títulos: cada palavra vira um elemento para surgir em cascata */
+  function splitWords(scope) {
+    $$('[data-reveal="words"]', scope).forEach(function (title) {
+      if (title.getAttribute('data-split')) return;
+      title.setAttribute('data-split', '1');
+      var i = 0;
+      (function walk(node) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+          if (child.nodeType === 1 && child.tagName !== 'BR') return walk(child);
+          if (child.nodeType !== 3 || !child.textContent.trim()) return;
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (!part.trim()) return frag.appendChild(document.createTextNode(part));
+            var w = document.createElement('span');
+            w.className = 'msz-w';
+            w.style.setProperty('--i', i++);
+            w.textContent = part;
+            frag.appendChild(w);
+          });
+          node.replaceChild(frag, child);
+        });
+      })(title);
+    });
+  }
+  /* ícones e arcos: os traços se desenham quando aparecem */
+  function drawShapes(scope) {
+    $$('.msz-feature svg, .msz-area-icon svg, .msz-card-icon svg, .msz-contact-icon svg, .msz-arc', scope).forEach(function (svg) {
+      if (svg.getAttribute('data-drawn')) return;
+      svg.setAttribute('data-drawn', '1');
+      var k = 0;
+      $$('path, circle, rect, ellipse, line, polyline', svg).forEach(function (shape) {
+        if (shape.hasAttribute('stroke-dasharray') || shape.classList.contains('msz-arc-drop')) return;
+        var fill = window.getComputedStyle(shape).fill;
+        if (fill && fill !== 'none') return;
+        var len;
+        try { len = Math.ceil(shape.getTotalLength()) + 1; } catch (e) { return; }
+        if (!len || len < 2) return;
+        shape.style.strokeDasharray = len + ' ' + (len + 2);
+        shape.style.setProperty('--len', len);
+        shape.style.setProperty('--k', k++);
+        shape.classList.add('msz-draw');
+      });
+    });
+  }
+  /* botões: o preenchimento desabrocha a partir do ponto onde o cursor entra e sai */
+  function wireBloom(scope) {
+    $$('.msz-btn', scope).forEach(function (btn) {
+      if (btn.__mszBloom) return;
+      btn.__mszBloom = true;
+      function at(e) {
+        var r = btn.getBoundingClientRect();
+        btn.style.setProperty('--x', (e.clientX - r.left) + 'px');
+        btn.style.setProperty('--y', (e.clientY - r.top) + 'px');
+      }
+      btn.addEventListener('pointerenter', at);
+      btn.addEventListener('pointerleave', at);
+    });
+  }
+  /* aparições: flores que "brotam" (recortadas) são observadas pela seção onde estão */
+  var revealIO = null, targetsOf = null;
+  if ('IntersectionObserver' in window && typeof Map === 'function') {
+    targetsOf = new Map();
+    revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        (targetsOf.get(en.target) || []).forEach(function (el) { el.classList.add('is-visible'); });
+        targetsOf.delete(en.target);
+        revealIO.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+  }
+  function observeReveals(scope) {
+    $$('[data-reveal]', scope).forEach(function (el) {
+      if (el.__mszObs || el.classList.contains('is-visible')) return;
+      el.__mszObs = true;
+      if (!revealIO) { el.classList.add('is-visible'); return; }
+      var trigger = el.getAttribute('data-reveal') === 'grow' ? el.parentElement : el;
+      if (!targetsOf.has(trigger)) { targetsOf.set(trigger, []); revealIO.observe(trigger); }
+      targetsOf.get(trigger).push(el);
+    });
+  }
+  function enhance(scope) { splitWords(scope); drawShapes(scope); wireWa(scope); wireBloom(scope); observeReveals(scope); }
+
+  /* 3) Ano no rodapé */
+  $$('[data-msz-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  /* 4) Hero com foto (Home): o conteúdo aparece já e a foto desabrocha assim que carrega */
+  var hero = root.querySelector('.msz-hero');
+  if (hero) {
+    var heroImg = hero.querySelector('.msz-hero-bg');
+    $$('[data-reveal]', hero).forEach(function (el) { el.classList.add('is-visible'); });
+    var heroReady = function () { hero.classList.add('is-loaded'); };
+    if (!heroImg || (heroImg.complete && heroImg.naturalWidth)) heroReady();
+    else {
+      heroImg.addEventListener('load', heroReady);
+      heroImg.addEventListener('error', heroReady);
+      setTimeout(heroReady, 3500);
+    }
+  }
+
+  /* 5) Cabeçalho fixo + botão flutuante */
+  var header = root.querySelector('.msz-header');
+  var fab = root.querySelector('.msz-fab');
+  var ticking = false;
+  function headerH() { return header ? header.offsetHeight : 0; }
+  function rootTop() { return root.getBoundingClientRect().top + window.pageYOffset; }
+  function onScroll() {
+    ticking = false;
+    var r = root.getBoundingClientRect();
+    if (header) header.classList.toggle('is-fixed', r.top < 0 && r.bottom > headerH());
+    if (fab) fab.classList.toggle('is-visible', r.top < -420 && r.bottom > window.innerHeight * 0.6);
+  }
+  /* captura também rolagens de contêineres internos (alguns construtores rolam um wrapper, não a janela) */
+  document.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true, capture: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* 6) Menu mobile */
+  var burger = root.querySelector('.msz-burger');
+  var nav = root.querySelector('.msz-nav');
+  function setMenu(open) {
+    if (!burger || !nav) return;
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    nav.classList.toggle('is-open', open);
+  }
+  if (burger && nav) {
+    burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+    $$('a', nav).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  }
+
+  /* 7) Rolagem suave até as seções da própria página (compensa o cabeçalho) */
+  function scrollToTarget(target, smooth) {
+    var top = target.id === 'msz-inicio' ? rootTop() : target.getBoundingClientRect().top + window.pageYOffset - headerH() + 1;
+    window.scrollTo({ top: top, behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
+  }
+  root.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="#msz-"]') : null;
+    if (!a) return;
+    var target = document.getElementById(a.getAttribute('href').slice(1));
+    if (!target) return;
+    e.preventDefault();
+    scrollToTarget(target, true);
+  });
+  /* chegando de outra página com âncora (ex.: .../maristelazen#msz-contato) */
+  if (/^#msz-/.test(window.location.hash)) {
+    var hashTarget = document.getElementById(window.location.hash.slice(1));
+    if (hashTarget) window.addEventListener('load', function () { setTimeout(function () { scrollToTarget(hashTarget, false); }, 80); });
+  }
+
+  /* 8) Item ativo do menu: só links para seções desta página, conforme a rolagem */
+  var navLinks = $$('.msz-nav-links a[href^="#"]');
+  if (navLinks.length && 'IntersectionObserver' in window) {
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (l) { l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    $$('section[id]').forEach(function (s) { navIO.observe(s); });
+  }
+
+  /* 9) Galeria com lightbox (troca de foto em fade suave) */
+  var lb = root.querySelector('.msz-lightbox');
+  var shots = $$('.msz-shot');
+  var lbImg = lb ? lb.querySelector('img') : null;
+  var current = 0, lastFocus = null, swapTimer = null;
+  function setImg(img) { lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; }
+  function show(i, animate) {
+    current = (i + shots.length) % shots.length;
+    var img = shots[current].querySelector('img');
+    if (!animate) return setImg(img);
+    clearTimeout(swapTimer);
+    lbImg.classList.add('is-swap');
+    swapTimer = setTimeout(function () {
+      setImg(img);
+      var done = function () { requestAnimationFrame(function () { lbImg.classList.remove('is-swap'); }); };
+      if (lbImg.complete) done(); else lbImg.onload = done;
+    }, 260);
+  }
+  function openLb(i) {
+    lastFocus = document.activeElement;
+    show(i, false);
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    lb.querySelector('.msz-lb-close').focus();
+  }
+  function closeLb() {
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    if (lastFocus) lastFocus.focus();
+  }
+  if (lb && lbImg && shots.length) {
+    shots.forEach(function (b, i) { b.addEventListener('click', function () { openLb(i); }); });
+    lb.querySelector('.msz-lb-close').addEventListener('click', closeLb);
+    lb.querySelector('.msz-lb-prev').addEventListener('click', function () { show(current - 1, true); });
+    lb.querySelector('.msz-lb-next').addEventListener('click', function () { show(current + 1, true); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav && nav.classList.contains('is-open')) setMenu(false);
+    if (!lb || !lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') show(current - 1, true);
+    if (e.key === 'ArrowRight') show(current + 1, true);
+  });
+
+  /* 10) Áreas de cuidado: abas (#clinica, #regenerativa, #cirurgica, #todos) */
+  var tabsBar = root.querySelector('[data-msz-tabs]');
+  if (tabsBar) (function () {
+    var tabs = $$('[role="tab"]', tabsBar);
+    var indicator = tabsBar.querySelector('.msz-tab-indicator');
+    var grid = root.querySelector('[data-msz-cards]');
+    var cards = grid ? $$('[data-area]', grid) : [];
+    var infoCard = root.querySelector('[data-msz-areainfo]');
+    var infos = infoCard ? $$('[data-area-info]', infoCard) : [];
+    var panel = document.getElementById('msz-area-panel');
+    var keys = tabs.map(function (t) { return t.getAttribute('data-tab'); });
+    var currentKey = null, timer = null;
+    if (indicator) tabsBar.classList.add('has-indicator');
+    function activeTab() { return tabsBar.querySelector('[aria-selected="true"]'); }
+    function place(instant) {
+      var t = activeTab();
+      if (!t || !indicator) return;
+      if (instant) indicator.classList.add('is-instant');
+      indicator.style.width = t.offsetWidth + 'px';
+      indicator.style.height = t.offsetHeight + 'px';
+      indicator.style.transform = 'translate(' + t.offsetLeft + 'px,' + t.offsetTop + 'px)';
+      if (instant) { void indicator.offsetWidth; indicator.classList.remove('is-instant'); }
+    }
+    function apply(key) {
+      infos.forEach(function (i) { i.hidden = i.getAttribute('data-area-info') !== key; });
+      var n = 0;
+      cards.forEach(function (c) {
+        var on = key === 'todos' || c.getAttribute('data-area') === key;
+        c.hidden = !on;
+        if (on) c.style.setProperty('--d', (n++ * 0.09) + 's');
+      });
+    }
+    function select(key, animate) {
+      if (keys.indexOf(key) < 0 || key === currentKey) return;
+      currentKey = key;
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-tab') === key;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (on && panel) panel.setAttribute('aria-labelledby', t.id);
+      });
+      place(!animate);
+      var t = activeTab();
+      if (t && tabsBar.scrollWidth > tabsBar.clientWidth) {
+        tabsBar.scrollTo({ left: Math.max(0, t.offsetLeft - 24), behavior: animate && !reduceMotion ? 'smooth' : 'auto' });
+      }
+      if (!animate || !grid) { apply(key); return; }
+      clearTimeout(timer);
+      if (infoCard) infoCard.classList.add('is-swapping');
+      grid.classList.add('is-swapping');
+      timer = setTimeout(function () {
+        grid.classList.add('is-instant');
+        apply(key);
+        cards.forEach(function (c) { if (!c.hidden) c.classList.remove('is-visible'); });
+        grid.classList.remove('is-swapping');
+        void grid.offsetWidth;
+        grid.classList.remove('is-instant');
+        if (infoCard) infoCard.classList.remove('is-swapping');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            cards.forEach(function (c) {
+              if (c.hidden) return;
+              c.classList.add('is-visible');
+              $$('[data-reveal]', c).forEach(function (el) { el.classList.add('is-visible'); });
+            });
+          });
+        });
+      }, 330);
+    }
+    function fromHash() {
+      var k = window.location.hash.replace(/^#/, '');
+      return keys.indexOf(k) >= 0 ? k : null;
+    }
+    function scrollToTabs(smooth) {
+      var top = tabsBar.getBoundingClientRect().top + window.pageYOffset - headerH() - 24;
+      window.scrollTo({ top: top, behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () {
+        var k = t.getAttribute('data-tab');
+        select(k, true);
+        if (window.history && history.replaceState) history.replaceState(null, '', '#' + k);
+      });
+      t.addEventListener('keydown', function (e) {
+        var dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!dir) return;
+        e.preventDefault();
+        var next = tabs[(i + dir + tabs.length) % tabs.length];
+        next.focus();
+        next.click();
+      });
+    });
+    window.addEventListener('hashchange', function () {
+      var k = fromHash();
+      if (!k) return;
+      select(k, true);
+      scrollToTabs(true);
+    });
+    window.addEventListener('resize', function () { place(true); });
+    window.addEventListener('load', function () { place(true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(true); });
+    var initial = fromHash();
+    select(initial || keys[0], false);
+    if (initial) window.addEventListener('load', function () { setTimeout(function () { scrollToTabs(false); }, 80); });
+  })();
+
+  /* 11) Procedimentos: lista (sem #) e detalhe de cada procedimento (#laser-co2, #ninfoplastia...) */
+  var app = root.querySelector('[data-msz-proc-app]');
+  var dataEl = document.getElementById('msz-proc-data');
+  if (app && dataEl) (function () {
+    var data;
+    try { data = JSON.parse(dataEl.textContent); } catch (e) { if (window.console) console.error('[Mari’Stela Zen] dados dos procedimentos inválidos', e); return; }
+    var IMG = data.imagens || '';
+    var bySlug = {};
+    data.procedimentos.forEach(function (p) { bySlug[p.slug] = p; });
+    var baseTitle = document.title;
+    var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    var PETAL = 'M0-3C-4.6-7-4.6-14 0-18 4.6-14 4.6-7 0-3z';
+    function flower(extra) {
+      var s = '<svg class="msz-flower' + (extra || '') + '" data-reveal="flower" viewBox="-20 -20 40 40" aria-hidden="true">';
+      for (var i = 0; i < 5; i++) s += '<path style="--r:' + (i * 72) + 'deg;--i:' + i + '" d="' + PETAL + '"/>';
+      return s + '<circle r="2.6"/></svg>';
+    }
+    function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function media(p, lazy) {
+      if (!p.imagem) return '<div class="msz-art" aria-hidden="true"><img src="' + IMG + data.arte + '" alt=""' + (lazy ? ' loading="lazy"' : '') + '>' + flower() + '</div>';
+      return '<img src="' + IMG + p.imagem + '" alt="' + esc(p.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' style="object-position:' + esc(p.pos || '50% 50%') + '">';
+    }
+    function heroPatterns() {
+      return '<img class="msz-pattern msz-pattern--l" data-reveal src="' + IMG + data.padroes[0] + '" alt="" aria-hidden="true">' +
+             '<img class="msz-pattern msz-pattern--r" data-reveal style="--d:.25s" src="' + IMG + data.padroes[1] + '" alt="" aria-hidden="true">' +
+             '<div class="msz-petals" aria-hidden="true"><i style="--x:14%;--s:.8;--t:22s;--w:-4s;--dx:60px"></i><i style="--x:47%;--s:.65;--t:27s;--w:-14s;--dx:-50px"></i><i style="--x:83%;--s:.85;--t:24s;--w:-9s;--dx:70px"></i></div>';
+    }
+    function cta(title, text, msg) {
+      return '<section class="msz-section msz-section--lilac msz-cta" aria-label="Agendamento">' +
+        '<img class="msz-deco msz-flor msz-flor--cta-l" data-reveal="grow" src="' + IMG + data.flores[0] + '" alt="" aria-hidden="true">' +
+        '<img class="msz-deco msz-flor msz-flor--cta-r" data-reveal="grow" style="--d:.3s" src="' + IMG + data.flores[1] + '" alt="" aria-hidden="true">' +
+        '<div class="msz-container">' + flower() +
+        '<h2 class="msz-title" data-reveal="words" style="--d:.2s">' + esc(title) + '</h2>' +
+        '<p class="msz-lead" data-reveal style="--d:.5s">' + esc(text) + '</p>' +
+        '<div data-reveal style="--d:.65s"><a class="msz-btn msz-btn--soft" data-msz-wa="' + esc(msg) + '" href="https://wa.me/' + WHATSAPP + '" target="_blank" rel="noopener">Agende sua consulta</a></div>' +
+        '</div></section>';
+    }
+    function rowCard(p, i) {
+      return '<a class="msz-row" href="#' + p.slug + '" data-reveal="petal" style="--d:' + (i * 0.1).toFixed(2) + 's">' +
+        '<span class="msz-row-media">' + media(p, true) + '</span>' +
+        '<span class="msz-row-body"><h3>' + esc(p.nome) + '</h3><span class="msz-row-text">' + esc(p.resumo) + '</span>' +
+        '<span class="msz-pill">Conhecer tratamento ' + ARROW + '</span></span></a>';
+    }
+    function renderIndex() {
+      var html = '<section class="msz-pagehero" aria-labelledby="msz-proc-h1">' + heroPatterns() +
+        '<div class="msz-container msz-container--narrow">' +
+        '<span class="msz-kicker" data-reveal>Tratamentos</span>' +
+        '<h1 id="msz-proc-h1" data-reveal="words" style="--d:.15s">' + esc(data.indice.titulo) + '</h1>' +
+        '<p class="msz-lead" data-reveal style="--d:.55s">' + esc(data.indice.texto) + '</p>' +
+        '</div></section>';
+      data.ordem.forEach(function (key, gi) {
+        var area = data.areas[key];
+        var list = data.procedimentos.filter(function (p) { return p.area === key; });
+        html += '<section class="msz-section' + (gi % 2 ? ' msz-section--lilac' : '') + '" aria-labelledby="msz-g-' + key + '">' +
+          '<div class="msz-container"><div class="msz-group-head"><div>' +
+          '<span class="msz-kicker" data-reveal>Área de cuidado</span>' +
+          '<h2 class="msz-title" id="msz-g-' + key + '" data-reveal="words" style="--d:.1s">' + esc(area.nome) + '</h2>' +
+          '<p class="msz-lead" data-reveal style="--d:.35s">' + esc(area.resumo) + '</p></div>' +
+          '<div data-reveal style="--d:.45s"><a class="msz-text-link" href="' + SITE + '/areas#' + key + '">Conhecer a área ' + ARROW + '</a></div></div>' +
+          '<div class="msz-rows">' + list.map(rowCard).join('') + '</div></div></section>';
+      });
+      return html + cta(data.cta.titulo, data.cta.texto, data.cta.msg);
+    }
+    function item(it, i, kind) {
+      if (typeof it === 'string') it = { t: it };
+      var inner = '<span class="msz-li-n">' + pad(i + 1) + '</span>' +
+        (it.d ? '<span class="msz-li-text"><strong>' + esc(it.t) + '</strong><span>' + esc(it.d) + '</span></span>' : '<span class="msz-li-text">' + esc(it.t) + '</span>');
+      var cls = 'msz-li' + (it.d ? ' msz-li--desc' : '');
+      var body = it.link && bySlug[it.link]
+        ? '<a class="' + cls + ' msz-li--link" href="#' + it.link + '" title="Conhecer: ' + esc(bySlug[it.link].nome) + '">' + inner + '<span class="msz-li-go">' + ARROW + '</span></a>'
+        : '<div class="' + cls + '">' + inner + '</div>';
+      return '<li data-reveal style="--d:' + (0.15 + i * 0.08).toFixed(2) + 's">' + body + '</li>';
+    }
+    function list(block, kind) {
+      return '<div class="msz-list"><span class="msz-kicker" data-reveal>' + esc(block.rotulo) + '</span>' +
+        '<h2 data-reveal="words" style="--d:.05s">' + esc(block.titulo) + '</h2>' +
+        '<ol>' + block.itens.map(function (it, i) { return item(it, i, kind); }).join('') + '</ol></div>';
+    }
+    function renderDetail(p) {
+      var area = data.areas[p.area];
+      var msg = 'Olá! Gostaria de agendar uma consulta sobre ' + p.nome + '.';
+      var html = '<section class="msz-pagehero" aria-labelledby="msz-proc-h1">' + heroPatterns() +
+        '<div class="msz-container msz-container--narrow">' +
+        '<nav class="msz-crumbs" aria-label="Você está em" data-reveal>' +
+        '<a href="' + SITE + '/areas">Áreas de cuidado</a><span aria-hidden="true">›</span>' +
+        '<a href="' + SITE + '/areas#' + p.area + '">' + esc(area.nome) + '</a><span aria-hidden="true">›</span>' +
+        '<span aria-current="page">' + esc(p.nome) + '</span></nav>' +
+        '<h1 id="msz-proc-h1" data-reveal="words" style="--d:.15s">' + esc(p.nome) + '</h1>' +
+        '<p class="msz-lead" data-reveal style="--d:.55s">' + esc(p.subtitulo) + '</p>' +
+        '<div class="msz-hero-actions" data-reveal style="--d:.7s"><a class="msz-btn msz-btn--primary" data-msz-wa="' + esc(msg) + '" href="https://wa.me/' + WHATSAPP + '" target="_blank" rel="noopener">Agendar consulta ' + ARROW + '</a></div>' +
+        '</div></section>';
+      html += '<section class="msz-section" aria-labelledby="msz-oque"><div class="msz-container"><div class="msz-what">' +
+        '<div class="msz-what-text"><span class="msz-kicker" data-reveal>O que é?</span>' +
+        '<h2 id="msz-oque" data-reveal="words" style="--d:.1s">' + esc(p.oque.titulo) + '</h2>' +
+        p.oque.textos.map(function (t, i) { return '<p data-reveal style="--d:' + (0.35 + i * 0.12).toFixed(2) + 's">' + esc(t) + '</p>'; }).join('') +
+        '</div><div class="msz-media-wrap" data-reveal="photo" style="--d:.15s"><div class="msz-media">' + media(p, false) + '</div></div>' +
+        '</div></div></section>';
+      html += '<section class="msz-section msz-section--lilac" aria-label="Indicações e cuidados"><div class="msz-container"><div class="msz-lists">' +
+        list(p.lista, 'lista') + list(p.cuidados, 'cuidados') + '</div></div></section>';
+      html += '<section class="msz-section" aria-labelledby="msz-etapas"><div class="msz-container msz-container--narrow">' +
+        '<span class="msz-kicker" data-reveal>Como funciona</span>' +
+        '<h2 class="msz-title" id="msz-etapas" data-reveal="words" style="--d:.1s">' + esc(p.etapas.titulo) + '</h2>' +
+        '<ol class="msz-steps">' + p.etapas.itens.map(function (s, i) {
+          return '<li class="msz-step" data-reveal style="--d:' + (0.1 + i * 0.1).toFixed(2) + 's"><span class="msz-step-n">' + pad(i + 1) + '</span>' +
+            '<h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></li>';
+        }).join('') + '</ol></div></section>';
+      var rel = data.procedimentos.filter(function (o) { return o.area === p.area && o.slug !== p.slug; });
+      rel = rel.concat(data.procedimentos.filter(function (o) { return o.area !== p.area; })).slice(0, 3);
+      html += '<section class="msz-section msz-related" aria-labelledby="msz-rel"><div class="msz-container">' +
+        '<div class="msz-group-head"><div><span class="msz-kicker" data-reveal>Veja também</span>' +
+        '<h2 class="msz-title" id="msz-rel" data-reveal="words" style="--d:.1s">Outros cuidados</h2></div>' +
+        '<div data-reveal style="--d:.3s"><a class="msz-text-link" href="#todos">Ver todos os procedimentos ' + ARROW + '</a></div></div>' +
+        '<div class="msz-pgrid msz-pgrid--wide">' + rel.map(function (o, i) {
+          return '<article class="msz-pcard" data-reveal="petal" style="--d:' + (i * 0.1).toFixed(2) + 's"><div class="msz-pcard-media">' + media(o, true) + '</div>' +
+            '<div class="msz-pcard-body"><h3>' + esc(o.nome) + '</h3><p>' + esc(o.resumo) + '</p>' +
+            '<a class="msz-more" href="#' + o.slug + '" aria-label="Conhecer: ' + esc(o.nome) + '">Conhecer tratamento ' + ARROW + '</a></div></article>';
+        }).join('') + '</div></div></section>';
+      return html + cta(data.ctaDetalhe.titulo, data.ctaDetalhe.texto, msg);
+    }
+    function slugFromHash() { return decodeURIComponent(window.location.hash.replace(/^#/, '')); }
+    var leaveTimer = null;
+    function route(first) {
+      var slug = slugFromHash();
+      if (/^msz-/.test(slug)) return;
+      var p = bySlug[slug] || null;
+      var html = p ? renderDetail(p) : renderIndex();
+      var swap = function () {
+        app.innerHTML = html;
+        app.setAttribute('data-view', p ? p.slug : 'lista');
+        enhance(app);
+        document.title = p ? p.nome + ' | ' + SITE_NAME : baseTitle;
+      };
+      if (first) { swap(); return; }
+      clearTimeout(leaveTimer);
+      app.classList.add('is-leaving');
+      leaveTimer = setTimeout(function () {
+        swap();
+        window.scrollTo(0, Math.max(0, rootTop()));
+        requestAnimationFrame(function () { app.classList.remove('is-leaving'); });
+      }, reduceMotion ? 120 : 360);
+    }
+    window.addEventListener('hashchange', function () { route(false); });
+    route(true);
+  })();
+
+  enhance(root);
+})();
+</script>
+<!-- Garantia: se o construtor inserir este código sem executar o <script> acima, esta imagem invisível o executa. -->
+<img hidden alt="" src="data:," onerror="this.parentNode&amp;&amp;this.parentNode.removeChild(this);var r=document.getElementById('msz'),c=document.getElementById('msz-script');if(r&amp;&amp;c&amp;&amp;!r.getAttribute('data-ready')){var s=document.createElement('script');s.text=c.text;document.body.appendChild(s);}">
