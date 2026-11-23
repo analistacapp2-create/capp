@@ -52,7 +52,7 @@ Uma página só, com dois modos:
 A troca entre telas acontece sem recarregar (com fade), o botão "voltar" do navegador funciona e o título da aba do
 navegador muda para o nome do procedimento.
 
-**Todos os textos ficam no bloco `<script type="application/json" id="msz-proc-data">`**, no fim do arquivo:
+**Todos os textos ficam no bloco de dados `msz-proc-data` (`var MSZ_PROC_DATA = { ... };`)**, no fim do arquivo:
 nome, resumo (card), subtítulo (abertura), imagem, "O que é", lista de indicações/sintomas, cuidados e etapas.
 Para mudar um texto, edite ali (mantendo as aspas e vírgulas do formato JSON). Itens de lista com `"link"`
 viram atalho para outro procedimento (ex.: no Laser, "Atrofia vaginal e vulvar" leva a `#atrofia-vaginal`).
@@ -97,5 +97,9 @@ desfoque, mas sem deslocamentos, pétalas ou balanço. Para ver o **modo complet
 
 **Execução garantida.** Se o Great Pages inserir o código sem rodar o `<script>`, a imagem invisível no fim do arquivo
 o executa (uma única vez).
+
+**Validador do Great Pages.** Ao salvar, o Great Pages analisa como JavaScript tudo que estiver entre
+`<script>` e `</script>` no código colado, **inclusive dentro de comentários HTML**. Por isso, nunca escreva a
+tag script por extenso em comentários. Todos os scripts destes arquivos passam por um analisador ES5 estrito.
 
 Todas as classes têm o prefixo `msz-` e todo o CSS fica restrito a `#msz`, para não conflitar com o Great Pages.

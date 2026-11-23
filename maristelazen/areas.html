@@ -870,9 +870,15 @@
   /* 11) Procedimentos: lista (sem #) e detalhe de cada procedimento (#laser-co2, #ninfoplastia...) */
   var app = root.querySelector('[data-msz-proc-app]');
   var dataEl = document.getElementById('msz-proc-data');
-  if (app && dataEl) (function () {
-    var data;
-    try { data = JSON.parse(dataEl.textContent); } catch (e) { if (window.console) console.error('[Mari’Stela Zen] dados dos procedimentos inválidos', e); return; }
+  if (app && (window.MSZ_PROC_DATA || dataEl)) (function () {
+    /* os dados vêm de "var MSZ_PROC_DATA = {...}"; se esse bloco não tiver sido executado, são lidos como texto */
+    var data = window.MSZ_PROC_DATA;
+    if (!data) {
+      try {
+        var raw = dataEl.textContent;
+        data = JSON.parse(raw.slice(raw.indexOf('{'), raw.lastIndexOf('}') + 1));
+      } catch (e) { if (window.console) console.error('[Mari’Stela Zen] dados dos procedimentos inválidos', e); return; }
+    }
     var IMG = data.imagens || '';
     var bySlug = {};
     data.procedimentos.forEach(function (p) { bySlug[p.slug] = p; });
@@ -1016,5 +1022,5 @@
   enhance(root);
 })();
 </script>
-<!-- Garantia: se o construtor inserir este código sem executar o <script> acima, esta imagem invisível o executa. -->
+<!-- Garantia: se o construtor inserir este código sem executar o script acima, esta imagem invisível o executa. -->
 <img hidden alt="" src="data:," onerror="this.parentNode&amp;&amp;this.parentNode.removeChild(this);var r=document.getElementById('msz'),c=document.getElementById('msz-script');if(r&amp;&amp;c&amp;&amp;!r.getAttribute('data-ready')){var s=document.createElement('script');s.text=c.text;document.body.appendChild(s);}">
