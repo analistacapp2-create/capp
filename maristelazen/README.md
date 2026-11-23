@@ -58,6 +58,13 @@ Para mudar um texto, edite ali (mantendo as aspas e vírgulas do formato JSON). 
 viram atalho para outro procedimento (ex.: no Laser, "Atrofia vaginal e vulvar" leva a `#atrofia-vaginal`).
 Para usar uma foto na Atrofia, preencha `"imagem"` com o nome do arquivo no Great Pages.
 
+Campos opcionais por procedimento: `"titulo"` (título da página de detalhe, se diferente do nome do card — ex.:
+Laser usa "Laser CO₂" no detalhe, como no PDF, e "Laser de CO₂" nos cards) e `"imagemDetalhe"`/`"posDetalhe"`/
+`"altDetalhe"` (foto da seção "O que é?" diferente da foto do card — o Laser usa o lírio do PDF no detalhe).
+
+O detalhe segue o PDF: abertura (trilha + título + subtítulo), "O que é?" com foto, duas listas lado a lado,
+etapas com linhas e o bloco "Agende sua avaliação".
+
 ## Código compartilhado entre as páginas
 
 As 4 páginas usam o **mesmo `<script id="msz-script">`** (só muda o `BLOCK_ID`) e os mesmos tokens de CSS.

@@ -1079,106 +1079,98 @@
     }
     function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
     function pad(n) { return (n < 10 ? '0' : '') + n; }
-    function media(p, lazy) {
-      if (!p.imagem) return '<div class="msz-art" aria-hidden="true"><img src="' + IMG + data.arte + '" alt=""' + (lazy ? ' loading="lazy"' : '') + '>' + flower() + '</div>';
-      return '<img src="' + IMG + p.imagem + '" alt="' + esc(p.alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' style="object-position:' + esc(p.pos || '50% 50%') + '">';
+    function media(p, lazy, detail) {
+      var useDetail = detail && p.imagemDetalhe;
+      var src = useDetail ? p.imagemDetalhe : p.imagem;
+      if (!src) return '<div class="msz-art" aria-hidden="true"><img src="' + IMG + data.arte + '" alt=""' + (lazy ? ' loading="lazy"' : '') + '>' + flower() + '</div>';
+      var alt = useDetail ? (p.altDetalhe || p.alt) : p.alt;
+      var pos = useDetail ? (p.posDetalhe || p.pos) : p.pos;
+      return '<img src="' + IMG + src + '" alt="' + esc(alt) + '"' + (lazy ? ' loading="lazy"' : '') + ' style="object-position:' + esc(pos || '50% 50%') + '">';
     }
     function heroPatterns() {
       return '<img class="msz-pattern msz-pattern--l" data-reveal src="' + IMG + data.padroes[0] + '" alt="" aria-hidden="true">' +
              '<img class="msz-pattern msz-pattern--r" data-reveal style="--d:.25s" src="' + IMG + data.padroes[1] + '" alt="" aria-hidden="true">' +
              '<div class="msz-petals" aria-hidden="true"><i style="--x:14%;--s:.8;--t:22s;--w:-4s;--dx:60px"></i><i style="--x:47%;--s:.65;--t:27s;--w:-14s;--dx:-50px"></i><i style="--x:83%;--s:.85;--t:24s;--w:-9s;--dx:70px"></i></div>';
     }
-    function cta(title, text, msg) {
-      return '<section class="msz-section msz-section--lilac msz-cta" aria-label="Agendamento">' +
-        '<img class="msz-deco msz-flor msz-flor--cta-l" data-reveal="grow" src="' + IMG + data.flores[0] + '" alt="" aria-hidden="true">' +
-        '<img class="msz-deco msz-flor msz-flor--cta-r" data-reveal="grow" style="--d:.3s" src="' + IMG + data.flores[1] + '" alt="" aria-hidden="true">' +
-        '<div class="msz-container">' + flower() +
-        '<h2 class="msz-title" data-reveal="words" style="--d:.2s">' + esc(title) + '</h2>' +
-        '<p class="msz-lead" data-reveal style="--d:.5s">' + esc(text) + '</p>' +
-        '<div data-reveal style="--d:.65s"><a class="msz-btn msz-btn--soft" data-msz-wa="' + esc(msg) + '" href="https://wa.me/' + WHATSAPP + '" target="_blank" rel="noopener">Agende sua consulta</a></div>' +
+    function cta(title, text, msg, plain) {
+      return '<section class="msz-section msz-section--lilac msz-cta' + (plain ? ' msz-cta--plain' : '') + '" aria-label="Agendamento">' +
+        (plain ? '' :
+          '<img class="msz-deco msz-flor msz-flor--cta-l" data-reveal="grow" src="' + IMG + data.flores[0] + '" alt="" aria-hidden="true">' +
+          '<img class="msz-deco msz-flor msz-flor--cta-r" data-reveal="grow" style="--d:.3s" src="' + IMG + data.flores[1] + '" alt="" aria-hidden="true">') +
+        '<div class="msz-container">' + (plain ? '' : flower()) +
+        '<h2 class="msz-title" data-reveal="words" style="--d:.15s">' + esc(title) + '</h2>' +
+        '<p class="msz-lead" data-reveal style="--d:.45s">' + esc(text) + '</p>' +
+        '<div data-reveal style="--d:.6s"><a class="msz-btn msz-btn--soft" data-msz-wa="' + esc(msg) + '" href="https://wa.me/' + WHATSAPP + '" target="_blank" rel="noopener">Agende sua consulta</a></div>' +
         '</div></section>';
     }
-    function rowCard(p, i) {
-      return '<a class="msz-row" href="#' + p.slug + '" data-reveal="petal" style="--d:' + (i * 0.1).toFixed(2) + 's">' +
-        '<span class="msz-row-media">' + media(p, true) + '</span>' +
-        '<span class="msz-row-body"><h3>' + esc(p.nome) + '</h3><span class="msz-row-text">' + esc(p.resumo) + '</span>' +
-        '<span class="msz-pill">Conhecer tratamento ' + ARROW + '</span></span></a>';
+    function pcard(p, i) {
+      return '<article class="msz-pcard" data-reveal="petal" style="--d:' + (i * 0.1).toFixed(2) + 's">' +
+        '<div class="msz-pcard-media">' + media(p, true) + '</div>' +
+        '<div class="msz-pcard-body"><h3>' + esc(p.nome) + '</h3><p>' + esc(p.resumo) + '</p>' +
+        '<a class="msz-more" href="#' + p.slug + '" aria-label="Saiba mais sobre ' + esc(p.nome) + '">Saiba mais ' + ARROW + '</a></div></article>';
     }
     function renderIndex() {
-      var html = '<section class="msz-pagehero" aria-labelledby="msz-proc-h1">' + heroPatterns() +
+      var html = '<section class="msz-pagehero msz-pagehero--detail" aria-labelledby="msz-proc-h1">' + heroPatterns() +
         '<div class="msz-container msz-container--narrow">' +
-        '<span class="msz-kicker" data-reveal>Tratamentos</span>' +
+        '<span class="msz-crumbs" data-reveal>Tratamentos</span>' +
         '<h1 id="msz-proc-h1" data-reveal="words" style="--d:.15s">' + esc(data.indice.titulo) + '</h1>' +
         '<p class="msz-lead" data-reveal style="--d:.55s">' + esc(data.indice.texto) + '</p>' +
-        '</div></section>';
-      data.ordem.forEach(function (key, gi) {
+        '</div></section>' +
+        '<section class="msz-section msz-groups" aria-label="Procedimentos por área"><div class="msz-container">';
+      data.ordem.forEach(function (key) {
         var area = data.areas[key];
         var list = data.procedimentos.filter(function (p) { return p.area === key; });
-        html += '<section class="msz-section' + (gi % 2 ? ' msz-section--lilac' : '') + '" aria-labelledby="msz-g-' + key + '">' +
-          '<div class="msz-container"><div class="msz-group-head"><div>' +
+        html += '<div class="msz-group" role="region" aria-labelledby="msz-g-' + key + '"><div class="msz-group-head"><div>' +
           '<span class="msz-kicker" data-reveal>Área de cuidado</span>' +
-          '<h2 class="msz-title" id="msz-g-' + key + '" data-reveal="words" style="--d:.1s">' + esc(area.nome) + '</h2>' +
+          '<h2 id="msz-g-' + key + '" data-reveal="words" style="--d:.1s">' + esc(area.nome) + '</h2>' +
           '<p class="msz-lead" data-reveal style="--d:.35s">' + esc(area.resumo) + '</p></div>' +
           '<div data-reveal style="--d:.45s"><a class="msz-text-link" href="' + SITE + '/areas#' + key + '">Conhecer a área ' + ARROW + '</a></div></div>' +
-          '<div class="msz-rows">' + list.map(rowCard).join('') + '</div></div></section>';
+          '<div class="msz-pgrid">' + list.map(pcard).join('') + '</div></div>';
       });
-      return html + cta(data.cta.titulo, data.cta.texto, data.cta.msg);
+      return html + '</div></section>' + cta(data.cta.titulo, data.cta.texto, data.cta.msg, false);
     }
-    function item(it, i, kind) {
+    function item(it, i) {
       if (typeof it === 'string') it = { t: it };
+      var label = it.d ? it.t : String(it.t).replace(/\.\s*$/, '');
       var inner = '<span class="msz-li-n">' + pad(i + 1) + '</span>' +
-        (it.d ? '<span class="msz-li-text"><strong>' + esc(it.t) + '</strong><span>' + esc(it.d) + '</span></span>' : '<span class="msz-li-text">' + esc(it.t) + '</span>');
+        (it.d ? '<span class="msz-li-text"><strong>' + esc(it.t) + '</strong><span>' + esc(it.d) + '</span></span>' : '<span class="msz-li-text">' + esc(label) + '</span>');
       var cls = 'msz-li' + (it.d ? ' msz-li--desc' : '');
       var body = it.link && bySlug[it.link]
-        ? '<a class="' + cls + ' msz-li--link" href="#' + it.link + '" title="Conhecer: ' + esc(bySlug[it.link].nome) + '">' + inner + '<span class="msz-li-go">' + ARROW + '</span></a>'
+        ? '<a class="' + cls + ' msz-li--link" href="#' + it.link + '" title="Conhecer: ' + esc(bySlug[it.link].nome) + '">' + inner + '<span class="msz-li-go" aria-hidden="true">' + ARROW + '</span></a>'
         : '<div class="' + cls + '">' + inner + '</div>';
-      return '<li data-reveal style="--d:' + (0.15 + i * 0.08).toFixed(2) + 's">' + body + '</li>';
+      return '<li data-reveal style="--d:' + (0.12 + i * 0.08).toFixed(2) + 's">' + body + '</li>';
     }
-    function list(block, kind) {
-      return '<div class="msz-list"><span class="msz-kicker" data-reveal>' + esc(block.rotulo) + '</span>' +
-        '<h2 data-reveal="words" style="--d:.05s">' + esc(block.titulo) + '</h2>' +
-        '<ol>' + block.itens.map(function (it, i) { return item(it, i, kind); }).join('') + '</ol></div>';
+    function list(block) {
+      return '<div class="msz-list"><h2 data-reveal="words">' + esc(block.titulo) + '</h2>' +
+        '<ol>' + block.itens.map(item).join('') + '</ol></div>';
     }
     function renderDetail(p) {
-      var area = data.areas[p.area];
+      var titulo = p.titulo || p.nome;
       var msg = 'Olá! Gostaria de agendar uma consulta sobre ' + p.nome + '.';
-      var html = '<section class="msz-pagehero" aria-labelledby="msz-proc-h1">' + heroPatterns() +
+      var html = '<section class="msz-pagehero msz-pagehero--detail" aria-labelledby="msz-proc-h1">' + heroPatterns() +
         '<div class="msz-container msz-container--narrow">' +
         '<nav class="msz-crumbs" aria-label="Você está em" data-reveal>' +
-        '<a href="' + SITE + '/areas">Áreas de cuidado</a><span aria-hidden="true">›</span>' +
-        '<a href="' + SITE + '/areas#' + p.area + '">' + esc(area.nome) + '</a><span aria-hidden="true">›</span>' +
-        '<span aria-current="page">' + esc(p.nome) + '</span></nav>' +
-        '<h1 id="msz-proc-h1" data-reveal="words" style="--d:.15s">' + esc(p.nome) + '</h1>' +
+        '<a href="' + SITE + '/areas#' + p.area + '">Áreas de cuidado</a><span aria-hidden="true">›</span>' +
+        '<span aria-current="page">' + esc(titulo) + '</span></nav>' +
+        '<h1 id="msz-proc-h1" data-reveal="words" style="--d:.15s">' + esc(titulo) + '</h1>' +
         '<p class="msz-lead" data-reveal style="--d:.55s">' + esc(p.subtitulo) + '</p>' +
-        '<div class="msz-hero-actions" data-reveal style="--d:.7s"><a class="msz-btn msz-btn--primary" data-msz-wa="' + esc(msg) + '" href="https://wa.me/' + WHATSAPP + '" target="_blank" rel="noopener">Agendar consulta ' + ARROW + '</a></div>' +
         '</div></section>';
-      html += '<section class="msz-section" aria-labelledby="msz-oque"><div class="msz-container"><div class="msz-what">' +
+      html += '<section class="msz-section msz-what-sec" aria-labelledby="msz-oque"><div class="msz-container msz-container--narrow"><div class="msz-what">' +
         '<div class="msz-what-text"><span class="msz-kicker" data-reveal>O que é?</span>' +
-        '<h2 id="msz-oque" data-reveal="words" style="--d:.1s">' + esc(p.oque.titulo) + '</h2>' +
+        '<h2 id="msz-oque" data-reveal="words" style="--d:.1s">' + esc(titulo) + '</h2>' +
         p.oque.textos.map(function (t, i) { return '<p data-reveal style="--d:' + (0.35 + i * 0.12).toFixed(2) + 's">' + esc(t) + '</p>'; }).join('') +
-        '</div><div class="msz-media-wrap" data-reveal="photo" style="--d:.15s"><div class="msz-media">' + media(p, false) + '</div></div>' +
+        '</div><div class="msz-media-wrap" data-reveal="photo" style="--d:.15s"><div class="msz-media">' + media(p, false, true) + '</div></div>' +
         '</div></div></section>';
-      html += '<section class="msz-section msz-section--lilac" aria-label="Indicações e cuidados"><div class="msz-container"><div class="msz-lists">' +
-        list(p.lista, 'lista') + list(p.cuidados, 'cuidados') + '</div></div></section>';
-      html += '<section class="msz-section" aria-labelledby="msz-etapas"><div class="msz-container msz-container--narrow">' +
+      html += '<section class="msz-section msz-section--lilac msz-lists-sec" aria-label="Indicações e cuidados"><div class="msz-container"><div class="msz-lists">' +
+        list(p.lista) + list(p.cuidados) + '</div></div></section>';
+      html += '<section class="msz-section msz-steps-sec" aria-labelledby="msz-etapas"><div class="msz-container msz-container--narrow">' +
         '<span class="msz-kicker" data-reveal>Como funciona</span>' +
-        '<h2 class="msz-title" id="msz-etapas" data-reveal="words" style="--d:.1s">' + esc(p.etapas.titulo) + '</h2>' +
+        '<h2 id="msz-etapas" data-reveal="words" style="--d:.1s">' + esc(p.etapas.titulo) + '</h2>' +
         '<ol class="msz-steps">' + p.etapas.itens.map(function (s, i) {
           return '<li class="msz-step" data-reveal style="--d:' + (0.1 + i * 0.1).toFixed(2) + 's"><span class="msz-step-n">' + pad(i + 1) + '</span>' +
             '<h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></li>';
         }).join('') + '</ol></div></section>';
-      var rel = data.procedimentos.filter(function (o) { return o.area === p.area && o.slug !== p.slug; });
-      rel = rel.concat(data.procedimentos.filter(function (o) { return o.area !== p.area; })).slice(0, 3);
-      html += '<section class="msz-section msz-related" aria-labelledby="msz-rel"><div class="msz-container">' +
-        '<div class="msz-group-head"><div><span class="msz-kicker" data-reveal>Veja também</span>' +
-        '<h2 class="msz-title" id="msz-rel" data-reveal="words" style="--d:.1s">Outros cuidados</h2></div>' +
-        '<div data-reveal style="--d:.3s"><a class="msz-text-link" href="#todos">Ver todos os procedimentos ' + ARROW + '</a></div></div>' +
-        '<div class="msz-pgrid msz-pgrid--wide">' + rel.map(function (o, i) {
-          return '<article class="msz-pcard" data-reveal="petal" style="--d:' + (i * 0.1).toFixed(2) + 's"><div class="msz-pcard-media">' + media(o, true) + '</div>' +
-            '<div class="msz-pcard-body"><h3>' + esc(o.nome) + '</h3><p>' + esc(o.resumo) + '</p>' +
-            '<a class="msz-more" href="#' + o.slug + '" aria-label="Conhecer: ' + esc(o.nome) + '">Conhecer tratamento ' + ARROW + '</a></div></article>';
-        }).join('') + '</div></div></section>';
-      return html + cta(data.ctaDetalhe.titulo, data.ctaDetalhe.texto, msg);
+      return html + cta(data.ctaDetalhe.titulo, data.ctaDetalhe.texto, msg, true);
     }
     function slugFromHash() { return decodeURIComponent(window.location.hash.replace(/^#/, '')); }
     var leaveTimer = null;
@@ -1191,7 +1183,7 @@
         app.innerHTML = html;
         app.setAttribute('data-view', p ? p.slug : 'lista');
         enhance(app);
-        document.title = p ? p.nome + ' | ' + SITE_NAME : baseTitle;
+        document.title = p ? (p.titulo || p.nome) + ' | ' + SITE_NAME : baseTitle;
       };
       if (first) { swap(); return; }
       clearTimeout(leaveTimer);
