@@ -54,6 +54,11 @@
 #msz .msz-head{text-align:center;margin:0 auto clamp(36px,4vw,56px);max-width:880px}
 #msz .msz-head .msz-lead{margin:14px auto 0}
 #msz .msz-deco{position:absolute;pointer-events:none;user-select:none;z-index:0}
+#msz section[id]{scroll-margin-top:calc(var(--msz-header-h) - 1px)}
+#msz .msz-text-link{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-size:14px;font-weight:600;color:var(--msz-purple);transition:color .6s var(--msz-soft)}
+#msz .msz-text-link:hover{color:var(--msz-purple-dark)}
+#msz .msz-text-link svg{width:16px;height:16px;transition:transform .9s var(--msz-bloom)}
+#msz .msz-text-link:hover svg{transform:translateX(5px)}
 #msz .msz-w{display:inline-block}
 
 /* Flor que desabrocha (ornamento dos títulos) */
@@ -396,7 +401,7 @@
           <ul class="msz-nav-links">
             <li><a href="#msz-areas">Áreas de cuidado</a></li>
             <li><a href="#msz-procedimentos">Procedimentos</a></li>
-            <li><a href="#msz-sobre">Sobre Nós</a></li>
+            <li><a href="https://marketing.agenciacapp.com.br/maristelazen/sobre">Sobre Nós</a></li>
             <li><a href="#msz-contato">Contato</a></li>
           </ul>
           <a class="msz-btn msz-btn--primary" data-msz-wa href="https://wa.me/5551986831387?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Mari%27Stela%20Zen." target="_blank" rel="noopener">Agende sua consulta</a>
@@ -539,6 +544,7 @@
             <p data-reveal style="--d:.3s">Com mais de 30 anos de experiência em Ginecologia, a Dra. Mari’Stela Zen une sólida formação médica, atualização constante e um olhar individualizado para o cuidado da saúde da mulher.</p>
             <p data-reveal style="--d:.42s">Formada pela UFRGS, com Residência em Ginecologia e Obstetrícia pelo Hospital de Clínicas de Porto Alegre e Pós-Graduação em Ginecologia Regenerativa, sua atuação combina experiência, conhecimento e tecnologia para oferecer um cuidado seguro, acolhedor e personalizado.</p>
             <blockquote class="msz-quote" data-reveal style="--d:.55s">“Experiência que acompanha cada fase da mulher.”</blockquote>
+            <div data-reveal style="--d:.7s"><a class="msz-text-link" href="https://marketing.agenciacapp.com.br/maristelazen/sobre">Conheça a trajetória completa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </div>
         </div>
       </div>
@@ -640,7 +646,7 @@
         <ul class="msz-footer-nav" data-reveal style="--d:.12s" aria-label="Links do rodapé">
           <li><a href="#msz-areas">Áreas de cuidado</a></li>
           <li><a href="#msz-procedimentos">Procedimentos</a></li>
-          <li><a href="#msz-sobre">Sobre Nós</a></li>
+          <li><a href="https://marketing.agenciacapp.com.br/maristelazen/sobre">Sobre Nós</a></li>
           <li><a href="#msz-contato">Contato</a></li>
           <li><a data-msz-wa href="https://wa.me/5551986831387" target="_blank" rel="noopener">Agende sua consulta</a></li>
         </ul>
@@ -674,6 +680,7 @@
 <script id="msz-script">
 (function () {
   'use strict';
+  /* ID do bloco no Great Pages. Vazio = detecta sozinho o bloco (id começando com "b_") em volta do código. */
   var BLOCK_ID = 'b_3673729_2_179511681424173873';
   var WHATSAPP = '5551986831387';
   var DEFAULT_MSG = 'Olá! Gostaria de agendar uma consulta com a Dra. Mari’Stela Zen.';
@@ -697,7 +704,7 @@
 
   /* 1) Great Pages: o bloco passa a ocupar a largura total e a crescer com o conteúdo */
   var chain = (function () {
-    var block = document.getElementById(BLOCK_ID);
+    var block = BLOCK_ID ? document.getElementById(BLOCK_ID) : null;
     var list = [], el = root.parentElement;
     while (el && el !== document.body && el !== document.documentElement) {
       list.push(el);
@@ -753,7 +760,7 @@
     })(title);
   });
 
-  /* 5) Ícones: os traços se desenham quando aparecem */
+  /* 5) Ícones e arcos: os traços se desenham quando aparecem */
   $$('.msz-feature svg, .msz-area-icon svg, .msz-card-icon svg, .msz-contact-icon svg, .msz-arc').forEach(function (svg) {
     var k = 0;
     $$('path, circle, rect, ellipse, line, polyline', svg).forEach(function (shape) {
@@ -770,28 +777,30 @@
     });
   });
 
-  /* 6) Hero: a foto desabrocha assim que carrega */
+  /* 6) Hero com foto (Home): o conteúdo aparece já e a foto desabrocha assim que carrega */
   var hero = root.querySelector('.msz-hero');
-  var heroImg = root.querySelector('.msz-hero-bg');
-  $$('[data-reveal]', hero).forEach(function (el) { el.classList.add('is-visible'); });
-  function heroReady() { hero.classList.add('is-loaded'); }
-  if (heroImg.complete && heroImg.naturalWidth) heroReady();
-  else {
-    heroImg.addEventListener('load', heroReady);
-    heroImg.addEventListener('error', heroReady);
-    setTimeout(heroReady, 3500);
+  if (hero) {
+    var heroImg = hero.querySelector('.msz-hero-bg');
+    $$('[data-reveal]', hero).forEach(function (el) { el.classList.add('is-visible'); });
+    var heroReady = function () { hero.classList.add('is-loaded'); };
+    if (!heroImg || (heroImg.complete && heroImg.naturalWidth)) heroReady();
+    else {
+      heroImg.addEventListener('load', heroReady);
+      heroImg.addEventListener('error', heroReady);
+      setTimeout(heroReady, 3500);
+    }
   }
 
   /* 7) Cabeçalho fixo + botão flutuante */
   var header = root.querySelector('.msz-header');
   var fab = root.querySelector('.msz-fab');
   var ticking = false;
+  function headerH() { return header ? header.offsetHeight : 0; }
   function onScroll() {
     ticking = false;
     var r = root.getBoundingClientRect();
-    var h = header.offsetHeight;
-    header.classList.toggle('is-fixed', r.top < 0 && r.bottom > h);
-    fab.classList.toggle('is-visible', r.top < -420 && r.bottom > window.innerHeight * 0.6);
+    if (header) header.classList.toggle('is-fixed', r.top < 0 && r.bottom > headerH());
+    if (fab) fab.classList.toggle('is-visible', r.top < -420 && r.bottom > window.innerHeight * 0.6);
   }
   /* captura também rolagens de contêineres internos (alguns construtores rolam um wrapper, não a janela) */
   document.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true, capture: true });
@@ -802,25 +811,36 @@
   var burger = root.querySelector('.msz-burger');
   var nav = root.querySelector('.msz-nav');
   function setMenu(open) {
+    if (!burger || !nav) return;
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     nav.classList.toggle('is-open', open);
   }
-  burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
-  $$('a', nav).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  if (burger && nav) {
+    burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+    $$('a', nav).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  }
 
-  /* 9) Rolagem suave até as seções (compensa o cabeçalho) */
+  /* 9) Rolagem suave até as seções da própria página (compensa o cabeçalho) */
+  function scrollToTarget(target, smooth) {
+    var top = target.id === 'msz-inicio'
+      ? root.getBoundingClientRect().top + window.pageYOffset
+      : target.getBoundingClientRect().top + window.pageYOffset - headerH() + 1;
+    window.scrollTo({ top: top, behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
+  }
   $$('a[href^="#msz-"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var target = document.getElementById(a.getAttribute('href').slice(1));
       if (!target) return;
       e.preventDefault();
-      var top = target.id === 'msz-inicio'
-        ? root.getBoundingClientRect().top + window.pageYOffset
-        : target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight + 1;
-      window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      scrollToTarget(target, true);
     });
   });
+  /* chegando de outra página com âncora (ex.: .../maristelazen#msz-contato) */
+  if (/^#msz-/.test(window.location.hash)) {
+    var hashTarget = document.getElementById(window.location.hash.slice(1));
+    if (hashTarget) window.addEventListener('load', function () { setTimeout(function () { scrollToTarget(hashTarget, false); }, 80); });
+  }
 
   /* 10) Aparições + item ativo do menu */
   var revealEls = $$('[data-reveal]');
@@ -841,16 +861,17 @@
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
     targetsOf.forEach(function (_, trigger) { revealIO.observe(trigger); });
 
-    var links = $$('.msz-nav-links a');
-    var navIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        links.forEach(function (l) { l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id); });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    ['msz-inicio', 'msz-areas', 'msz-procedimentos', 'msz-sobre', 'msz-espaco', 'msz-contato'].forEach(function (id) {
-      var s = document.getElementById(id); if (s) navIO.observe(s);
-    });
+    /* só os links para seções desta página são marcados conforme a rolagem */
+    var links = $$('.msz-nav-links a[href^="#"]');
+    if (links.length) {
+      var navIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          links.forEach(function (l) { l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id); });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      $$('section[id]').forEach(function (s) { navIO.observe(s); });
+    }
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
@@ -868,8 +889,8 @@
 
   /* 12) Galeria com lightbox (troca de foto em fade suave) */
   var lb = root.querySelector('.msz-lightbox');
-  var lbImg = lb.querySelector('img');
   var shots = $$('.msz-shot');
+  var lbImg = lb ? lb.querySelector('img') : null;
   var current = 0, lastFocus = null, swapTimer = null;
   function setImg(img) { lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; }
   function show(i, animate) {
@@ -896,14 +917,16 @@
     lb.setAttribute('aria-hidden', 'true');
     if (lastFocus) lastFocus.focus();
   }
-  shots.forEach(function (b, i) { b.addEventListener('click', function () { openLb(i); }); });
-  lb.querySelector('.msz-lb-close').addEventListener('click', closeLb);
-  lb.querySelector('.msz-lb-prev').addEventListener('click', function () { show(current - 1, true); });
-  lb.querySelector('.msz-lb-next').addEventListener('click', function () { show(current + 1, true); });
-  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  if (lb && lbImg && shots.length) {
+    shots.forEach(function (b, i) { b.addEventListener('click', function () { openLb(i); }); });
+    lb.querySelector('.msz-lb-close').addEventListener('click', closeLb);
+    lb.querySelector('.msz-lb-prev').addEventListener('click', function () { show(current - 1, true); });
+    lb.querySelector('.msz-lb-next').addEventListener('click', function () { show(current + 1, true); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  }
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && nav.classList.contains('is-open')) setMenu(false);
-    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape' && nav && nav.classList.contains('is-open')) setMenu(false);
+    if (!lb || !lb.classList.contains('is-open')) return;
     if (e.key === 'Escape') closeLb();
     if (e.key === 'ArrowLeft') show(current - 1, true);
     if (e.key === 'ArrowRight') show(current + 1, true);

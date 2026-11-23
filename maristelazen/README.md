@@ -12,6 +12,24 @@ Publicação: https://marketing.agenciacapp.com.br/maristelazen
 
 Se o ID do bloco mudar, troque a constante `BLOCK_ID` no início do `<script>`.
 
+## Sobre — `sobre.html`
+
+Publicação: https://marketing.agenciacapp.com.br/maristelazen/sobre
+
+Mesmo procedimento: um elemento **HTML** no bloco da página, com o conteúdo inteiro de `sobre.html`
+(visível também no mobile). O script **detecta o bloco sozinho** (`BLOCK_ID` vazio); se preferir fixar,
+coloque o ID do bloco em `BLOCK_ID`.
+
+Imagens novas desta página vêm do Great Pages (`files.greatpages.com.br/images/67944/...`); a galeria
+reaproveita as fotos da Home.
+
+## Código compartilhado entre as páginas
+
+As duas páginas usam o **mesmo `<script id="msz-script">`** (só muda o `BLOCK_ID`) e os mesmos tokens de CSS.
+Ao corrigir algo no script ou nos estilos base, aplique nas duas. Os links entre páginas usam o endereço
+completo (`https://marketing.agenciacapp.com.br/maristelazen...`); os do menu que apontam para seções da Home
+(`#msz-areas`, `#msz-procedimentos`, `#msz-contato`) posicionam a seção logo abaixo do cabeçalho.
+
 ### O que dá para editar com facilidade
 
 | O quê | Onde |
